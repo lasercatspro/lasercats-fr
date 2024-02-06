@@ -1,0 +1,96 @@
+export const meta = {
+  author: 'Lasercats',
+  date: '2022-12-13',
+  title: "Comment (bien) vérifier la validité d’une carte bancaire, d’un numéro SIRET, d’une carte d’identité et de biens d’autres codes ?",
+  description:
+    "Quand un utilisateur doit inscrire son numéro SIREN ou celui de sa carte bancaire dans un formulaire, on peut vérifier si celui-ci est valide. Comment ? Grâce à l’algorithme de Luhn ! Découvrez de quoi il s’agit dans cet article, et surtout, comment l’implémenter dans votre code.",
+}
+
+export default (props) => <div {...props} />
+
+******************************************Quand un utilisateur doit inscrire son numéro SIREN ou celui de sa carte bancaire dans un formulaire, on peut vérifier si celui-ci est valide. Comment ? Grâce à l’algorithme de Luhn ! Découvrez de quoi il s’agit dans cet article, et surtout, comment l’implémenter dans votre code.******************************************
+
+## Comment est construit un code SIREN/SIRET ?
+
+[Le SIRET (Système d’identification du répertoire des établissements)](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27identification_du_r%C3%A9pertoire_des_%C3%A9tablissements) est un code permettant l'identification d'un établissement ou d'une entreprise française. Il est composé de 14 chiffres :
+
+- Les 9 premiers chiffres correspondent au numéro SIREN
+- Les 4 suivants constituent le NIC (numéro interne de classement)
+- **le dernier chiffre correspond au code de contrôle « modulo 10 » ou algorithme Luhn**.
+
+Il est à noter que le numéro SIREN lui-même possède un code de contrôle, qui est le dernier des 9 chiffres : **on peut donc lui aussi le vérifier**.
+
+## L'algorithme Luhn c’est quoi ?
+
+L'algorithme Luhn est ce qu'on appelle, en théorie des codes, **un algorithme de détection d'erreur sur un seul digit** : en effet, grâce à l'ajout (un overhead) d'un seul chiffre et avec un algorithme assez rudimentaire, **il permet de détecter si un chiffre dans le nombre a été mal rentré**.
+
+À noter cependant que, contrairement à beaucoup d'autres algorithmes plus sophistiqués (comme [CRC](https://fr.wikipedia.org/wiki/Contr%C3%B4le_de_redondance_cyclique), [Manchester](https://fr.wikipedia.org/wiki/Codage_Manchester), [Hamming](https://fr.wikipedia.org/wiki/Code_de_Hamming)), il ne garantit pas la détection d'une erreur sur plusieurs digits. Il ne permet pas non plus de corriger l'erreur. **Cet algorithme est donc parfaitement adapté aux erreurs de frappe**.
+
+L'algorithme, aussi appelé « mod 10 », **est un simple jeu d'additions et de multiplications**. Vous pouvez en savoir plus en lisant [cet article Wikipedia](https://fr.wikipedia.org/wiki/Formule_de_Luhn#Explications_informelles) ou [ce document de l’Insee](https://www.sirene.fr/static-resources/doc/lettres/lettre-16-novembre-2013.pdf)
+
+Cet algorithme est présent **sur les numéros SIRET/SIREN**, mais aussi dans de nombreux identifiants : l**e code de carte bancaire, le numéro de carte d'identité, beaucoup de numéros de comptes de fidélité, etc.**
+
+## Comment l’implémenter ?
+
+On peut donc implémenter une vérification simple des SIRET/SIREN, carte bancaire, carte d’identité, et vérifier les entrées utilisateur. Rassurez-vous, pas besoin d’être expert en algorithmie. D’autres développeurs ce sont cassés les dents pour nous.
+
+[Voici un exemple en Ruby venant de stackoverflow](https://stackoverflow.com/questions/9188360/implementing-the-luhn-algorithm-in-ruby)
+
+```ruby
+def credit_card_valid?(account_number)
+  digits = account_number.chars.map(&:to_i)
+  check = digits.pop
+
+  sum = digits.reverse.each_slice(2).flat_map do |x, y|
+    [(x * 2).divmod(10), y || 0]
+  end.flatten.inject(:+)
+
+  check.zero? ? sum % 10 == 0 : (10 - sum % 10) == check
+end
+
+credit_card_valid? "79927398713" #=> true
+credit_card_valid? "79927398714" #=> false
+```
+
+[Et un autre exemple en Javascript recopié d’un célèbre gist](https://gist.github.com/ShirtlessKirk/2134376)
+
+```js
+/**
+ * Luhn algorithm in JavaScript: validate credit card number supplied as string of numbers
+ * @author ShirtlessKirk. Copyright (c) 2012.
+ * @license WTFPL (http://www.wtfpl.net/txt/copying)
+ */
+var luhnChk = (function (arr) {
+    return function (ccNum) {
+        var 
+            len = ccNum.length,
+            bit = 1,
+            sum = 0,
+            val;
+
+        while (len) {
+            val = parseInt(ccNum.charAt(--len), 10);
+            sum += (bit ^= 1) ? arr[val] : val;
+        }
+
+        return sum && sum % 10 === 0;
+    };
+}([0, 2, 4, 6, 8, 1, 3, 5, 7, 9]));
+```
+
+[Un petit tour sur npmtrends](https://npmtrends.com/fast-luhn-vs-luhn-vs-luhn-alg-vs-luhn-js*) nous permet de découvrir des librairies qui le font pour nous.
+
+## Quelles sont les autres bonnes pratiques ?
+
+Intégrer cet algorithme dans nos formulaires permet de gérer les fautes de frappes d’un utilisateur et de faire remonter une erreur s’il s’est trompé dans un chiffre. Mais d’autres types d’erreurs peuvent exister et nécessitent également un traitement. Voilà ce que nous recommandons chez lasercats
+
+- Si l’utilisateur ajoute des espaces ou des points pour séparer les chiffres de code SIRET, **on *parse* la chaîne de caractère et on les supprime automatiquement,** ************************************************************sans faire remonter d’erreurs************************************************************
+- Si l’utilisateur ajoute des caractères qui ne sont pas des chiffres (des lettres ou des caractères spéciaux),  **on *parse* la chaîne de caractère mais cette fois-ci on lui remonte une erreur**
+
+## En conclusion :
+
+- Grâce à l’algorithme de Luhn on peut vérifier la validité de nombreux codes : carte bancaire, numéro SIRET, carte d’identité, etc.
+- L’algorithme Luhn est adapté aux erreurs de frappe, plus précisément quand l’utilisateur s’est trompé d’un ou plusieurs chiffres
+- Il est bon de l’intégrer systématiquement dans nos applications ;
+- L’algorithme est facile implémenter ;
+- C’est une bonne une sécurité sur un digit pour les fautes de frappe. Mais ce n’est en aucun cas une sécurité se substituant à l'authentification d'un numéro de compte dans un dispositif. Sur ce point, on a souvent identifié des erreurs d'architecture qui nous permettent de passer des étapes en générant nous-même des codes validés par le Luhn check.
