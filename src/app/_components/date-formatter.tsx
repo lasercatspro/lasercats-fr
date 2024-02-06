@@ -1,11 +1,11 @@
-import { parseISO, format } from "date-fns";
+import { type ReactNode } from 'react'
 
-type Props = {
-  dateString: string;
-};
+interface Props {
+  dateString: string
+}
 
-const DateFormatter = ({ dateString }: Props) => {
-  return <time dateTime={dateString}>{new Date(dateString).toLocaleDateString('fr')}</time>;
-};
+const DateFormatter = ({ dateString }: Props): ReactNode => {
+  return <time dateTime={dateString}>{new Date(dateString).toLocaleDateString('fr')}</time>
+}
 
-export default DateFormatter;
+export default DateFormatter

@@ -1,5 +1,4 @@
 import Container from '@/app/_components/container'
-import { EXAMPLE_PATH } from '@/lib/constants'
 import cn from 'classnames'
 import { type ReactNode } from 'react'
 
@@ -34,7 +33,7 @@ const Alert = ({ preview }: Props): ReactNode => {
             <>
               The source code for this blog is{' '}
               <a
-                href={`https://github.com/vercel/next.js/tree/canary/examples/${EXAMPLE_PATH}`}
+                href={'https://github.com/vercel/next.js/tree/canary/examples/'}
                 className="underline hover:text-blue-600 duration-200 transition-colors"
               >
                 available on GitHub
