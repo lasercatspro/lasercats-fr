@@ -1,0 +1,65 @@
+export const meta = {
+  author: 'Lasercats',
+  date: '2020-01-25',
+  title: 'SPLIO: Connecter toutes les données client en temps réel',
+  description:
+    "Nous accompagnons Splio dans la synchronisation de l'information entre ses différents SAAS : Netsuite pour la gestion des données liés aux contrats, Hubspot pour l'avant-vente et Zendesk pour le support au quotidien.",
+}
+
+export default (props) => <div {...props} meta={meta} />
+
+## Mission
+ 
+Aucun logiciel ne permet d'organiser ses données client de A à Z. Quand on est une entreprise de renommée mondiale comme [Splio](https://www.splio.com/fr), les frictions dues au passage d'un logiciel à l'autre peuvent procurer énormément de perte de temps, de manque à gagner et de frustration.
+ 
+Notre mission : automatiser et synchroniser les informations entre les Saas qu'utilisent Splio : Hubspot pour les prospects, Netsuite pour les contrats et Zendesk pour le support.
+ 
+Nous avons travaillé en partenariat avec [Scalizer](https://scalizer.fr), structure innovante composée d'entrepreneurs, qui accompagne les entreprises dans leur transformation digitale. Ensemble nous avons rapidement su proposer la bonne formule fonctionnelle et techniques à mettre en place pour traiter les défis data de SPLIO.
+ 
+## Splio
+ 
+Splio édite une plateforme marketing de fidélisation qui permet aux marketeurs de communiquer et fidéliser leurs clients & prospects sur tous les canaux, afin de tous les engager dans une relation durable et profitable. En combinant marketing automation et fonctionnalités avancées de fidélisation, la plateforme permet de faire du mobile un canal d’acquisition et d’engagement, de créer et gérer des programmes de fidélité transactionnels et relationnels basés sur les interactions on & offline des clients, et d’ultra-personnaliser les campagnes marketing sur l'ensemble des canaux.
+
+Plus de 500 marques à travers l’Europe et la Chine utilisent Splio au quotidien, parmi lesquelles Fnac, Caudalie, Minelli, Le Slip Français, Longchamp, Fauchon, Smallable et GiFi.
+
+La société comprend 150 collaborateurs et 5 bureaux à travers l'Europe et la Chine.
+ 
+## Étape 1 Trouver des solutions efficaces
+ 
+Connecter entre elles des applications est une demande grandissante. Et il y a peu de risque que cela s'arrête. Il existe plusieurs services qui offrent des possibilités de synchronisation sans avoir besoin de coder. Il est souvent plus rapide et moins coûteux d'utiliser ces outils que de réinventer une application de A à Z. Encore faut-il savoir lesquelles ?  À quel prix ? Comment ? Avec quelle solidité ?
+ 
+- Pour connecter Hubspot et Zendesk, il est possible de passer par un Piesync. Il a été racheté par Hubspot ce qui assure la garantie d'une parfaite intégration dans la durée.
+- Pour connecter Netsuite et Hubspot il existe aussi des solutions clef en main, mais elles ne correspondent pas au besoin de SPLIO. Netsuite est très configurable et les outils de synchronisation tout automatique ne marchent que pour des modèles assez "simples". De plus SPLIO avait de nombreuses règles métier qu'il était impossible de configurer via un outil tout automatique.
+ 
+## Étape 2 No Code
+ 
+Grâce à PyeSync nous n'avons pas besoin d'écrire de code. Cela permet de se concentrer sur la compréhension de la structure des données de Splio. Car s'il n'y pas de code, il reste la logique métier. Comprendre quelle information dans Hubspot correspond à quelle donnée chez Zendesk, quelle est la source de vérité, à quel moment les synchroniser est le moteur de cette partie de la mission. Une étape indispensable avant de configurer PieSync pour automatiser les liens entre les Hubspot et Zendesk
+
+## Étape 3 Yes we code
+<p/>
+  <video width="100%" height="100%" autoPlay muted loop >
+    <source src="https://external-preview.redd.it/4iLw261NYmI75Vfek2tOjV7zsGVZzXAgp5GhSD0k2tE.gif?format=mp4&s=658a635332a27d9dd8835211bf58be0b25a626f8" type="video/mp4" />
+  </video>
+
+Pour Netsuite nous ne pouvions pas nous reposer sur une solution de synchronisation tout faite. Nous avons donc codé une application Rails.
+ 
+Rails est un framework Ruby pour le web qui est très stable, très sécurisé, avec un écosystème très riche et avec lequel il est très plaisant de coder.
+ 
+Nous avons pu utiliser une librairie stable pour échanger avec Netsuite. En effet Netsuite peu faire beaucoup de choses (CRM, un ERP, un outil d'analyse, de marketing email), mais peut-être qu'il peut en fait un peu trop ;-). Pour s'y connecter il en découle une complexité exagérée à plusieurs niveaux qui peut être difficile à dompter. Avec de l'expérience on en comprend ses subtilités.
+ 
+Voici donc ce que fait notre application Rails :
+- 📡 elle se connecte à Netsuite et à Hubspot
+- 🧗‍ elle va chercher les informations que Splio veut connecter avec Hubspot
+- 📊 elle les transforme dans un format de donnée compris par Hubspot
+- ⌚ elle synchronise automatiquement et régulièrement
+- 📋 elle nous indiquer à chaque synchro si tout s'est bien passé ou non
+ 
+### Étape 4 Suivi et maintenance
+ 
+Toute cette automatisation a besoin d'être suivie et surveillée. Il arrive parfois, que pour une raison ou une autre quelque chose se passe mal, le nom d'une variable a changé ou il y a besoin d'une mise à jour. Nous avons donc branché ces applications sur nos outils de monitoring 24/7.
+ 
+Depuis nous accompagnons Splio dans tous leurs besoins de synchronisation.
+ 
+> Grâce à l'association de Scalizer pour la dimension conseil à impact et Lasercats pour la partie expertise et réalisation technique, nous avons pu mettre en place une interco data absolument nécessaire à nos différentes activités. Le tout fonctionnant en temps réel nous pouvons mieux collaborer en interne et mieux servir nos clients
+ 
+_[Hugues de Calbiac, CFO de Splio](https://www.linkedin.com/in/hugues-de-calbiac-0b58a027/)_

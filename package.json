@@ -6,22 +6,46 @@
     "start": "next start"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.18",
+    "@heroicons/react": "^2.1.1",
+    "@mdx-js/loader": "^3.0.0",
+    "@mdx-js/react": "^3.0.0",
+    "@next/mdx": "^14.1.0",
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/mdx": "^2.0.11",
     "classnames": "^2.5.1",
+    "clsx": "^2.1.0",
     "date-fns": "^3.3.1",
     "gray-matter": "^4.0.3",
     "next": "14.1.0",
+    "postcss-focus-visible": "^9.0.1",
     "react": "^18",
     "react-dom": "^18",
-    "remark": "^15.0.1",
-    "remark-html": "^16.0.1"
+    "rehype-pretty-code": "^0.12.6",
+    "shikiji": "^0.10.2"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
     "autoprefixer": "^10.0.1",
+    "eslint": "^8.0.1",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.33.2",
     "postcss": "^8",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5"
-  }
+    "typescript": "*"
+  },
+  "name": "lasercats-fr-2024",
+  "version": "1.0.0",
+  "main": "src/app/index.tsx",
+  "repository": "git@github.com:lasercatspro/lasercats-fr-refonte-2024.git",
+  "author": "Antoine Brique <antoine.brique@gmail.com>",
+  "license": "MIT"
 }

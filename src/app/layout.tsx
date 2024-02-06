@@ -1,25 +1,58 @@
-import Footer from "@/app/_components/footer";
-import { CMS_NAME, HOME_OG_IMAGE_URL } from "@/lib/constants";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import Footer from '@/app/_components/footer'
+import { CMS_NAME, HOME_OG_IMAGE_URL } from '@/lib/constants'
+import type { Metadata } from 'next'
 
-import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import './globals.css'
+import Navbar from './_components/navbar'
+import { type ReactNode } from 'react'
 
 export const metadata: Metadata = {
   title: `Next.js Blog Example with ${CMS_NAME}`,
   description: `A statically generated blog example using Next.js and ${CMS_NAME}.`,
   openGraph: {
-    images: [HOME_OG_IMAGE_URL],
-  },
-};
+    images: [HOME_OG_IMAGE_URL]
+  }
+}
+const modeScript = `
+  let darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
 
-export default function RootLayout({
-  children,
+  updateMode()
+  darkModeMediaQuery.addEventListener('change', updateModeWithoutTransitions)
+  window.addEventListener('storage', updateModeWithoutTransitions)
+
+  function updateMode() {
+    let isSystemDarkMode = darkModeMediaQuery.matches
+    let isDarkMode = window.localStorage.isDarkMode === 'true' || (!('isDarkMode' in window.localStorage) && isSystemDarkMode)
+
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+
+    if (isDarkMode === isSystemDarkMode) {
+      delete window.localStorage.isDarkMode
+    }
+  }
+
+  function disableTransitionsTemporarily() {
+    document.documentElement.classList.add('[&_*]:!transition-none')
+    window.setTimeout(() => {
+      document.documentElement.classList.remove('[&_*]:!transition-none')
+    }, 0)
+  }
+
+  function updateModeWithoutTransitions() {
+    disableTransitionsTemporarily()
+    updateMode()
+  }
+`
+
+export default function RootLayout ({
+  children
 }: Readonly<{
-  children: React.ReactNode;
-}>) {
+  children: React.ReactNode
+}>): ReactNode {
   return (
     <html lang="en">
       <head>
@@ -54,11 +87,13 @@ export default function RootLayout({
         />
         <meta name="theme-color" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+        <script dangerouslySetInnerHTML={{ __html: modeScript }} />
       </head>
-      <body className={inter.className}>
-        <div className="min-h-screen">{children}</div>
+      <body className="flex h-full flex-col bg-zinc-50 dark:bg-gray-800 mt-[64px]">
+        <Navbar />
+        <div className="min-h-screen max-w-7xl mx-auto">{children}</div>
         <Footer />
       </body>
     </html>
-  );
+  )
 }
