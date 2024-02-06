@@ -52,7 +52,7 @@ function ModeToggle (): JSX.Element {
 
 export const Navbar = (): ReactNode => {
   return (
-    <Disclosure as="nav" className="bg-gray-800 dark:border-b-2 fixed top-0 left-0 w-full">
+    <Disclosure as="nav" className="z-50 bg-gray-800 dark:border-b-2 fixed top-0 left-0 w-full">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

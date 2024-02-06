@@ -2,9 +2,8 @@ import { type Post } from '@/types/post'
 import Head from 'next/head'
 import { Prose } from './prose'
 import { type ReactNode } from 'react'
-import { type MDXContent } from 'mdx/types'
 
-export function PostLayout ({ article }: { article: Post }): ReactNode | MDXContent {
+export function PostLayout ({ article }: { article: Post }): ReactNode {
   const mdx: any = article.component()
   return (
     <>
