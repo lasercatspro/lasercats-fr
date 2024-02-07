@@ -1,5 +1,5 @@
 import Footer from '@/app/_components/footer'
-import { CMS_NAME, HOME_OG_IMAGE_URL } from '@/lib/constants'
+import { HOME_OG_IMAGE_URL } from '@/lib/constants'
 import type { Metadata } from 'next'
 
 import './globals.css'
@@ -7,10 +7,10 @@ import Navbar from './_components/navbar'
 import { type ReactNode } from 'react'
 
 export const metadata: Metadata = {
-  title: `Next.js Blog Example with ${CMS_NAME}`,
-  description: `A statically generated blog example using Next.js and ${CMS_NAME}.`,
+  title: 'Lasercats - Agence de développeurs pour des solutions web',
+  description: 'Lasercats - Une agence rennaise de développeurs qui vous aide à fabriquer des applications web et mobiles.',
   openGraph: {
-    images: [HOME_OG_IMAGE_URL]
+    images: `${process.env.ROOT_URL}${HOME_OG_IMAGE_URL}`
   }
 }
 const modeScript = `
@@ -23,7 +23,7 @@ const modeScript = `
   function updateMode() {
     let isSystemDarkMode = darkModeMediaQuery.matches
     let isDarkMode = window.localStorage.isDarkMode === 'true' || (!('isDarkMode' in window.localStorage) && isSystemDarkMode)
-
+    
     if (isDarkMode) {
       document.documentElement.classList.add('dark')
     } else {
@@ -89,9 +89,9 @@ export default function RootLayout ({
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
         <script dangerouslySetInnerHTML={{ __html: modeScript }} />
       </head>
-      <body className="flex h-full flex-col bg-zinc-50 dark:bg-gray-800 mt-[64px]">
+      <body className="min-h-screen bg-zinc-50 dark:bg-gray-800 flex flex-col justify-between">
         <Navbar />
-        <div className="min-h-screen max-w-7xl mx-auto">{children}</div>
+        <div className="max-w-7xl mx-auto mt-[64px]">{children}</div>
         <Footer />
       </body>
     </html>

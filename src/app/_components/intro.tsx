@@ -1,4 +1,3 @@
-import { CMS_NAME } from '@/lib/constants'
 import { type ReactNode } from 'react'
 
 export function Intro (): ReactNode {
@@ -14,8 +13,7 @@ export function Intro (): ReactNode {
           className="underline hover:text-blue-600 duration-200 transition-colors"
         >
           Next.js
-        </a>{' '}
-        and {CMS_NAME}.
+        </a>
       </h4>
     </section>
   )
