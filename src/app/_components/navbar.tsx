@@ -1,14 +1,10 @@
 'use client'
 
-import { type ReactNode } from 'react'
+import { type ReactNode, useEffect, useState } from 'react'
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, MoonIcon, SunIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
-
-const navigation = [
-  { name: 'Projets', href: '#', current: false },
-  { name: 'Articles', href: '/articles', current: false }
-]
+import { usePathname } from 'next/navigation'
 
 function classNames (...classes: string[]): string {
   return classes.filter(Boolean).join(' ')
@@ -51,8 +47,20 @@ function ModeToggle (): JSX.Element {
 }
 
 export const Navbar = (): ReactNode => {
+  const navigation = [
+    { name: 'Projets', href: '/projets', current: false },
+    { name: 'Articles', href: '/articles', current: false }
+  ]
+  const [actualNav, setActualNav] = useState<any>(null)
+  const path = usePathname()
+  useEffect(() => {
+    const actual = navigation.find(n => n.href === path)
+    if (actual != null) {
+      setActualNav(actual?.name)
+    }
+  }, [path])
   return (
-    <Disclosure as="nav" className="z-50 bg-gray-800 dark:border-b-2 fixed top-0 left-0 w-full">
+    <Disclosure as="nav" className="z-50 bg-custom-dark dark:border-b-2 fixed top-0 left-0 w-full">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -75,7 +83,7 @@ export const Navbar = (): ReactNode => {
                 <Link className="flex flex-shrink-0 items-center" href={'/'}>
                   <img
                     className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    src="/assets/images/svg/logo-green.svg"
                     alt="Your Company"
                   />
                 </Link>
@@ -84,11 +92,10 @@ export const Navbar = (): ReactNode => {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className={classNames(
-                        item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                        'rounded-md px-3 py-2 text-sm font-medium'
-                      )}
-                      aria-current={item.current ? 'page' : undefined}
+                      className={`${actualNav === item.name
+                          ? '!text-primary bg-white'
+                          : 'text-white hover:text-primary'} 
+                          rounded-md px-3 py-2 font-bold'`}
                     >
                       {item.name}
                     </Link>
@@ -107,10 +114,9 @@ export const Navbar = (): ReactNode => {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                    actualNav === item.name ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                     'block rounded-md px-3 py-2 text-base font-medium'
                   )}
-                  aria-current={item.current ? 'page' : undefined}
                 >
                   {item.name}
                 </Disclosure.Button>
