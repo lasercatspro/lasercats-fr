@@ -16,11 +16,14 @@
     @apply text-2xl;
   }
 
-  h1, h2, p, a, time, div:not(footer) {
+  h1:not(.form), h2:not(.form), h3:not(.form), h3:not(.form), p:not(.form), span:not(footer), a, time {
     @apply text-gray-800 dark:text-gray-50;
   }
   * {
     @apply transition-all duration-200;
+  }
+  input, label, textarea {
+    @apply border-custom-dark;
   }
 }
 

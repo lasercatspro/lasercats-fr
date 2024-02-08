@@ -112,7 +112,7 @@ export const Navbar = (): ReactNode => {
 										</Link>
 									))}
 									<div className="flex gap-4">
-										<Link href={"#contact"} className="primary h-6 rounded-full">
+										<Link href={"#contact"} className="primary h-6 rounded-full text-white">
 											Nous contacter
 										</Link>
 										<ModeToggle />
