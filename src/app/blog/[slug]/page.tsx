@@ -18,7 +18,9 @@ const ArticlePage = async ({ params }: { params: { slug: string } }): Promise<JS
 	if (article === undefined) {
 		notFound();
 	}
-	return <Container><PostLayout article={article}/></Container>;
+	return <Container classes="max-w-7xl mx-auto">
+		<PostLayout article={article}/>
+	</Container>;
 };
 
 export default ArticlePage;

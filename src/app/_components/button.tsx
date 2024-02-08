@@ -1,13 +1,14 @@
 import classNames from "classnames";
 
 interface Props {
-  type: "primary" | "secondary";
+	type?: JSX.IntrinsicElements["button"]["type"];
+  role: "primary" | "secondary" | "alter-black";
   title: string;
 }
 
-const Button = ({ type, title }: Props): React.JSX.Element => {
+const Button = ({ type, role, title }: Props): React.JSX.Element => {
 	return (
-		<button className={classNames(type, "h-10 rounded-full")}>{title}</button>
+		<button type={type ?? "button"} className={classNames(role, "h-10 rounded-full")}>{title}</button>
 	);
 };
 

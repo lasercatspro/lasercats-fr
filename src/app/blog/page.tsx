@@ -23,7 +23,7 @@ export default async function Index(): Promise<JSX.Element> {
 
 	return (
 		<main>
-			<Container>
+			<Container classes="max-w-7xl mx-auto">
 				{heroPost != null && morePosts != null && (
 					<>
 						<HeroPost article={heroPost} />

@@ -95,9 +95,9 @@ export default function RootLayout({
 				/>
 				<script dangerouslySetInnerHTML={{ __html: modeScript }} />
 			</head>
-			<body className="bg-zinc-50 dark:bg-gradient-to-b dark:from-custom-dark dark:via-custom-blue dark:to-custom-dark">
+			<body className="bg-zinc-50 gradient ">
 				<Navbar />
-				<div className="mx-auto max-w-7xl">{children}</div>
+				<div className="mx-auto">{children}</div>
 				<Footer />
 			</body>
 		</html>

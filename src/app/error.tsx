@@ -16,7 +16,7 @@ export default function Error ({
 	}, [error]);
 
 	return (
-		<Container>
+		<Container classes="max-w-7xl mx-auto">
 			<h2>Something went wrong!</h2>
 			{error.message}
 			<button

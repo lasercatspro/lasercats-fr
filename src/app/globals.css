@@ -25,11 +25,21 @@
 }
 
 @layer components {
+  .gradient {
+    background: linear-gradient(180deg, #06050b 0%, #040267 35%, #06050b 72%, #06050b 100%);
+  }
   .btn-primary, .primary {
-    @apply px-6 py-4 flex justify-center items-center text-gray-50 font-bold bg-primary rounded-md hover:text-primary hover:bg-transparent border-2 border-transparent hover:border-primary;
+    @apply px-6 py-4 flex justify-center items-center text-custom-dark font-bold bg-primary rounded-md hover:text-primary hover:bg-transparent border-2 border-transparent hover:border-primary;
+  }
+  .alter-black {
+    @apply px-6 py-4 flex justify-center items-center text-primary font-bold bg-custom-dark rounded-md hover:text-custom-dark hover:bg-transparent border-2 border-transparent hover:border-custom-dark;
   }
 
   .link {
     @apply no-underline text-primary hover:underline;
+  }
+
+  .custom-input {
+    @apply border-b-2 bg-transparent focus:outline-none target:border-0 transition-none;
   }
 }

@@ -10,7 +10,6 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Button from "./button";
 
 function classNames(...classes: string[]): string {
 	return classes.filter(Boolean).join(" ");
@@ -45,11 +44,11 @@ function ModeToggle(): JSX.Element {
 		<button
 			type="button"
 			aria-label="Toggle dark mode"
-			className="my-auto h-[40px] rounded-full !bg-transparent px-3 py-2 ring-1 transition dark:ring-gray-600 dark:hover:ring-gray-400"
+			className="my-auto h-[40px] rounded-full bg-transparent px-3 py-2 transition dark:ring-gray-600 dark:hover:ring-primary border-2 border-gray-600 hover:border-primary"
 			onClick={toggleMode}
 		>
-			<SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-teal-600" />
-			<MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-500" />
+			<SunIcon className="h-5 w-5 fill-yellow-400 stroke-zinc-500 transition group-hover:fill-red-500 group-hover:stroke-red-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-yellow-400 [@media(prefers-color-scheme:dark)]:stroke-yellow-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-white dark:hover:bg-white" />
+			<MoonIcon className="hidden h-5 w-5 fill-gray-400 stroke-zinc-500 transition dark:block " />
 		</button>
 	);
 }
@@ -65,9 +64,7 @@ export const Navbar = (): ReactNode => {
 	const path = usePathname();
 	useEffect(() => {
 		const actual = navigation.find((n) => n.href === path);
-		if (actual != null) {
-			setActualNav(actual?.name);
-		}
+		actual != null ? setActualNav(actual?.name) : setActualNav(null);
 	}, [path]);
 
 	return (
@@ -115,7 +112,9 @@ export const Navbar = (): ReactNode => {
 										</Link>
 									))}
 									<div className="flex gap-4">
-										<Button title="Nous contacter" type="primary" />
+										<Link href={"#contact"} className="primary h-6 rounded-full">
+											Nous contacter
+										</Link>
 										<ModeToggle />
 									</div>
 								</div>
