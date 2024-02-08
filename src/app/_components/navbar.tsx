@@ -75,14 +75,17 @@ export const Navbar = (): ReactNode => {
 			{({ open }) => (
 				<>
 					<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-						<div className="flex h-16 justify-between">
-							<div className="flex w-full justify-between gap-4">
+						<div className="flex h-16 justify-between relative">
+							<div className="flex w-full justify-between items-center gap-4">
 								<Link className="flex flex-shrink-0 items-center" href={"/"}>
 									<img
 										className="h-8 w-auto"
 										src="/assets/images/svg/logo-green.svg"
 										alt="Your Company"
 									/>
+								</Link>
+								<Link href={"#contact"} className="md:hidden primary h-6 rounded-full !text-white hover:no-underline">
+													Nous contacter
 								</Link>
 								<div className="-ml-2 mr-2 flex items-center md:hidden">
 									{/* Mobile menu button */}
@@ -122,8 +125,8 @@ export const Navbar = (): ReactNode => {
 						</div>
 					</div>
 
-					<Disclosure.Panel className="md:hidden">
-						<div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+					<Disclosure.Panel className="md:hidden relative">
+						<div className="space-y-1 px-2 pb-3 pt-2 sm:px-3 w-2/3">
 							{navigation.map((item) => (
 								<Disclosure.Button
 									key={item.name}
@@ -139,6 +142,9 @@ export const Navbar = (): ReactNode => {
 									{item.name}
 								</Disclosure.Button>
 							))}
+						</div>
+						<div className="absolute bottom-3 right-5">
+							<ModeToggle />
 						</div>
 					</Disclosure.Panel>
 				</>

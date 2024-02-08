@@ -3,11 +3,11 @@ import { type ReactNode } from "react";
 
 export function Footer(): ReactNode {
 	return (
-		<footer className="p-24 h-[450px] max-w-7xl mx-auto flex justify-normal">
-			<ul className="flex items-end justify-between w-full">
+		<footer className="p-12 md:p-24 md:h-[450px] max-w-7xl mx-auto flex justify-normal">
+			<ul className="flex flex-col gap-4 md:flex-row md:items-end justify-between w-full mx-auto">
 				<div className="flex gap-8">
 					<li className="flex flex-col gap-y-4">
-						<h3 className="text-xl">Bureaux</h3>
+						<h3 className="">Bureaux</h3>
 						<span>2 avenue Jean Janvier <br /> 35000 RENNES</span>
 					</li>
 					<li className="flex flex-col gap-y-4">

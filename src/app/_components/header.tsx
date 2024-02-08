@@ -2,7 +2,7 @@ import { type ReactNode } from "react";
 
 const Header = (): ReactNode => {
 	return (
-		<div className='h-[100vh] flex flex-col justify-center max-w-7xl mx-auto'>
+		<div className='mx-4 h-[100vh] flex flex-col justify-center max-w-7xl md:mx-auto'>
 			<div className='h-[40%]' />
 			<h1 className="text-xl md:text-6xl font-extrabold tracking-normal mb-20 mt-8 !leading-snug">
 				<span className='text-primary mb-12'>Hey ! Nous sommes les Lasercats 👋🏻.</span>
