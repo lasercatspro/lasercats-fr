@@ -50,8 +50,8 @@ const Contact = () => {
 	};
 
 	return (
-		<div id="contact" className="bg-primary px-40 py-24">
-			<h2 className="text-5xl mt-[200px] mb-40 text-center !text-custom-dark">
+		<div id="contact" className="bg-primary px-4 md:px-40 py-24">
+			<h2 className="md:text-5xl md:mt-[200px] mb-40 text-center !text-custom-dark">
 				{
 					"Votre succès est notre mission, et nous transformons chaque projet en une expérience digitale mémorable, reflétant l'excellence et l'innovation."
 				}
@@ -61,9 +61,9 @@ const Contact = () => {
 					id="form"
 					action="#"
 					onSubmit={(e) => submitFn(e)}
-					className="flex flex-col gap-8 my-8 w-9/12 mx-auto"
+					className="flex flex-col gap-8 my-8 md:w-9/12 mx-auto"
 				>
-					<div className="flex gap-4 ">
+					<div className="flex flex-col md:flex-row gap-4">
 						<div className="flex flex-col w-full gap-2 ">
 							<label htmlFor={inputs[0]}>{inputs[0]}</label>
 							<input

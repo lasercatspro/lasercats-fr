@@ -7,13 +7,17 @@
   src: url("../../public/assets/fonts/OpenSans_SemiCondensed-Bold.ttf");
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 @layer base {
+  
   h1 {
-    @apply text-4xl;
+    @apply text-2xl md:text-5xl !important;
   }
   h2 {
-    @apply text-2xl;
+    @apply text-xl md:text-2xl !important;
   }
 
   h1, h2, h3, h3, p, a:not(nav), time, li {
