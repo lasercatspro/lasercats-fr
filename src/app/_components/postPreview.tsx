@@ -21,7 +21,7 @@ export function PostPreview ({
 				<Link
 					as={`/blog/${article?.slug}`}
 					href="/blog/[slug]"
-					className="hover:underline"
+					className="hover:no-underline hover:text-primary"
 				>
 					{article?.title}
 				</Link>

@@ -16,7 +16,7 @@
     @apply text-2xl;
   }
 
-  h1:not(.form), h2:not(.form), h3:not(.form), h3:not(.form), p:not(.form), span:not(footer), a, time {
+  h1, h2, h3, h3, p, span:not(footer), a:not(nav), time, li {
     @apply text-gray-800 dark:text-gray-50;
   }
   * {
@@ -24,6 +24,9 @@
   }
   input, label, textarea {
     @apply border-custom-dark;
+  }
+  a {
+    @apply no-underline text-primary hover:underline;
   }
 }
 
