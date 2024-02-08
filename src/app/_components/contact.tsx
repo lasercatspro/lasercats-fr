@@ -51,19 +51,20 @@ const Contact = () => {
 
 	return (
 		<div id="contact" className="bg-primary px-40 py-24">
-			<h2 className="text-5xl mt-[200px] mb-40 text-center">
+			<h2 className="text-5xl mt-[200px] mb-40 text-center !text-custom-dark">
 				{
 					"Votre succès est notre mission, et nous transformons chaque projet en une expérience digitale mémorable, reflétant l'excellence et l'innovation."
 				}
 			</h2>
 			<div className="w-2/3 max-w-7xl mx-auto">
 				<form
+					id="form"
 					action="#"
 					onSubmit={(e) => submitFn(e)}
 					className="flex flex-col gap-8 my-8 w-9/12 mx-auto"
 				>
-					<div className="flex gap-4">
-						<div className="flex flex-col w-full gap-2">
+					<div className="flex gap-4 ">
+						<div className="flex flex-col w-full gap-2 ">
 							<label htmlFor={inputs[0]}>{inputs[0]}</label>
 							<input
 								type="text"

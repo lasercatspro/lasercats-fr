@@ -103,16 +103,16 @@ export const Navbar = (): ReactNode => {
 											href={item.href}
 											className={`${
 												actualNav === item.name
-													? "bg-white !text-primary"
-													: "text-white hover:text-primary"
+													? "bg-zinc-800 !text-primary "
+													: "text-white hover:text-primary hover:bg-zinc-800"
 											} 
-                          font-bold' rounded-md px-3 py-2`}
+                          font-bold' rounded-md px-3 py-2 hover:no-underline`}
 										>
 											{item.name}
 										</Link>
 									))}
 									<div className="flex gap-4">
-										<Link href={"#contact"} className="primary h-6 rounded-full">
+										<Link href={"#contact"} className="primary h-6 rounded-full !text-white hover:no-underline">
 											Nous contacter
 										</Link>
 										<ModeToggle />
