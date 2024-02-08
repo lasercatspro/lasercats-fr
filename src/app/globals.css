@@ -16,7 +16,7 @@
     @apply text-2xl;
   }
 
-  h1, h2, h3, h3, p, span:not(footer), a:not(nav), time, li {
+  h1, h2, h3, h3, p, a:not(nav), time, li {
     @apply text-gray-800 dark:text-gray-50;
   }
   * {
