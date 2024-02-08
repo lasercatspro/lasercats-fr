@@ -1,4 +1,4 @@
-import { type MDXContent } from 'mdx/types'
+import { type MDXContent } from "mdx/types";
 
 export interface Post {
   slug: string

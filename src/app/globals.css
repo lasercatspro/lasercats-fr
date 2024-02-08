@@ -2,6 +2,11 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@font-face {
+  font-family: "Open Sans";
+  src: url("../../public/assets/fonts/OpenSans_SemiCondensed-Bold.ttf");
+}
+
 
 @layer base {
   h1 {
@@ -14,10 +19,27 @@
   h1, h2, p, a, time, div:not(footer) {
     @apply text-gray-800 dark:text-gray-50;
   }
+  * {
+    @apply transition-all duration-200;
+  }
 }
 
 @layer components {
-  .btn-primary {
-    @apply px-6 py-4 flex justify-center items-center text-gray-50 font-bold bg-primary rounded-md hover:text-primary hover:bg-gray-50 border-2 border-transparent hover:border-primary transition-all duration-300 ;
+  .gradient {
+    background: linear-gradient(180deg, #06050b 0%, #040267 35%, #06050b 72%, #06050b 100%);
+  }
+  .btn-primary, .primary {
+    @apply px-6 py-4 flex justify-center items-center text-custom-dark font-bold bg-primary rounded-md hover:text-primary hover:bg-transparent border-2 border-transparent hover:border-primary;
+  }
+  .alter-black {
+    @apply px-6 py-4 flex justify-center items-center text-primary font-bold bg-custom-dark rounded-md hover:text-custom-dark hover:bg-transparent border-2 border-transparent hover:border-custom-dark;
+  }
+
+  .link {
+    @apply no-underline text-primary hover:underline;
+  }
+
+  .custom-input {
+    @apply border-b-2 bg-transparent focus:outline-none target:border-0 transition-none;
   }
 }
