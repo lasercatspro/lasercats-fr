@@ -1,5 +1,7 @@
-const ProjectPage: () => JSX.Element = () => {
-  return (<div>coucou</div>)
-}
+import Container from "../_components/container";
 
-export default ProjectPage
+const ProjectPage: () => JSX.Element = () => {
+	return (<Container>coucou</Container>);
+};
+
+export default ProjectPage;

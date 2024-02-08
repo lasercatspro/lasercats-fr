@@ -1,15 +1,16 @@
-import Link from 'next/link'
-import { type ReactNode } from 'react'
+import { type ReactNode } from "react";
 
 const Header = (): ReactNode => {
-  return (
-    <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
-      <Link href="/" className="hover:underline">
-        Blog
-      </Link>
-      .
-    </h2>
-  )
-}
+	return (
+		<div className='h-[100vh] flex flex-col justify-center'>
+			<div className='h-[50%]' />
+			<h1 className="text-xl md:text-6xl font-extrabold tracking-normal mb-20 mt-8 !leading-snug">
+				<span className='text-primary mb-12'>Hey ! Nous sommes les Lasercats 👋🏻.</span>
+				<br/>
+				<span className='pt-12'>Nous fabriquons des applications Webs et mobiles aux petits oignons.</span>
+			</h1>
+		</div>
+	);
+};
 
-export default Header
+export default Header;

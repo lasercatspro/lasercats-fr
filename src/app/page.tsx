@@ -1,14 +1,13 @@
-import Container from '@/app/_components/container'
-import { Intro } from '@/app/_components/intro'
-import { type ReactNode } from 'react'
+import Container from "@/app/_components/container";
+import { type ReactNode } from "react";
+import Header from "./_components/header";
 
 export default function Index (): ReactNode {
-  return (
-    <main>
-      <Container>
-        <Intro />
-        <h1>Bienvenu</h1>
-      </Container>
-    </main>
-  )
+	return (
+		<main>
+			<Container>
+				<Header />
+			</Container>
+		</main>
+	);
 }
