@@ -7,7 +7,7 @@ interface Props {
 }
 
 const Container = ({ children, classes }: Props): ReactNode => {
-	return <div className={classNames(classes, "mx-auto mt-32 mb-16")}>{children}</div>;
+	return <div className={classNames(classes, "mx-auto mt-16 mb-16")}>{children}</div>;
 };
 
 export default Container;
