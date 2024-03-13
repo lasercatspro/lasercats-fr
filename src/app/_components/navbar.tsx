@@ -25,19 +25,10 @@ function ModeToggle(): JSX.Element {
 
 	function toggleMode(): void {
 		disableTransitionsTemporarily();
-
-		const darkModeMediaQuery = window.matchMedia(
-			"(prefers-color-scheme: dark)"
-		);
-		console.log(darkModeMediaQuery, window.localStorage.isDarkMode);
-		const isSystemDarkMode = darkModeMediaQuery.matches;
+		
 		const isDarkMode = document.documentElement.classList.toggle("dark");
-
-		if (isDarkMode === isSystemDarkMode) {
-			delete window.localStorage.isDarkMode;
-		} else {
-			window.localStorage.isDarkMode = isDarkMode;
-		}
+		
+		window.localStorage.isDarkMode = isDarkMode;
 	}
 
 	return (
@@ -70,7 +61,7 @@ export const Navbar = (): ReactNode => {
 	return (
 		<Disclosure
 			as="nav"
-			className="fixed left-0 top-0 z-50 w-full bg-custom-dark dark:border-b-2"
+			className="fixed left-0 top-0 z-50 w-full bg-custom-dark border-b-2"
 		>
 			{({ open }) => (
 				<>
