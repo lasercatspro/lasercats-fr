@@ -3,24 +3,24 @@
 import React, { Suspense } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 import * as THREE from "three";
 
 const Lasercat = () => {
 	const gltf = useLoader(GLTFLoader, "/assets/textures/model.gltf");
 	
 	if (gltf.scene) {
-		gltf.scene.traverse((child: { isMesh: any; material: THREE.MeshPhysicalMaterial; }) => {
-			if (child.isMesh) {
+		gltf.scene.traverse((child: THREE.Object3D<THREE.Object3DEventMap>) => {
+			const mesh = child as THREE.Mesh;
+			if (mesh.isMesh) {
 				const material = new THREE.MeshPhysicalMaterial({
 					metalness: 1,
 					roughness: 0,
 					transparent: true,
 					opacity: 0.9,
 				});
-				material.envMap = gltf.scene.environment; // Définir la propriété envMap
-				child.material = material;
+				mesh.material = material;
 			}
 		});
 	}
@@ -70,9 +70,10 @@ const ThreeLasercats = ({ progress, loading }: Props) => {
 	);
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const LaserLoader = ({ progress, loading }: Props) => {
-	return <div style={{ position: "absolute", top: 10, left: 0, width: "100%", height: "100%", backgroundColor: "black", display: "flex", justifyContent: "center", alignItems: "center", zIndex: loading ? 50 : 0, opacity: `${loading ? 1 : 0}`}}>
-		<h2 style={{ color: "white" }}>{`Chargement de l'expérience... ${Math.round(progress)}%`}</h2>
+	return <div style={{ position: "absolute", top: 10, left: 0, width: "100%", height: "100%", backgroundColor: "black", display: "flex", justifyContent: "center", alignItems: "center", opacity: `${loading ? 1 : 0}`, zIndex: 0}}>
+		{/* <h2 style={{ color: "white" }}>{`Chargement de l'expérience... ${Math.round(progress)}%`}</h2> */}
 	</div>;
 };
 
