@@ -1,20 +1,20 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React, { Suspense, useRef } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
-import * as THREE from "three";
+import {MeshPhysicalMaterial, Object3D, Object3DEventMap, Mesh} from "three";
 
 const Lasercat = () => {
 	const gltf = useLoader(GLTFLoader, "/assets/textures/model.gltf");
+	const ref = useRef<Object3D | null>(null);
 	
 	if (gltf.scene) {
-		gltf.scene.traverse((child: THREE.Object3D<THREE.Object3DEventMap>) => {
-			const mesh = child as THREE.Mesh;
+		gltf.scene.traverse((child: Object3D<Object3DEventMap>) => {
+			const mesh = child as Mesh;
 			if (mesh.isMesh) {
-				const material = new THREE.MeshPhysicalMaterial({
+				const material = new MeshPhysicalMaterial({
 					metalness: 1,
 					roughness: 0,
 					transparent: true,
@@ -32,7 +32,7 @@ const Lasercat = () => {
 	});
 
 	// eslint-disable-next-line react/no-unknown-property
-	return gltf.scene ? <primitive object={gltf.scene} /> : null;
+	return <primitive object={gltf?.scene} ref={ref} /> ;
 };
 
 interface Props {
@@ -46,26 +46,16 @@ const ThreeLasercats = ({ progress, loading }: Props) => {
 		<>
 			<Suspense fallback={null}>
 				<Canvas
-					style={{ opacity: `${loading ? 0 : 1}`}}
-					camera={{ position: [2.5, 0, -11], fov: 75 }}
-					// eslint-disable-next-line @typescript-eslint/no-unused-vars
-					onCreated={({ gl, scene, camera }) => {
-						const loader = new RGBELoader();
-						loader.load(
-							"/assets/textures/star-2.hdr",
-							(environmentMap: THREE.Texture) => {
-								environmentMap.mapping = THREE.EquirectangularReflectionMapping;
-								scene.background = environmentMap;
-								scene.environment = environmentMap;
-							}
-						);
-					}}>
+					style={{ opacity: `${loading ? 0 : 1}`, zIndex: 20 }}
+					camera={{ position: [15, 0, 0], fov: 50 }}
+				>
 					<ambientLight />
 					<Lasercat />
 					<OrbitControls />
+					<Environment files="/assets/textures/star-3.hdr" background />
 				</Canvas>
 			</Suspense>
-			<LaserLoader progress={progress} loading={loading}/>
+			<LaserLoader progress={progress} loading={loading} />
 		</>
 	);
 };
