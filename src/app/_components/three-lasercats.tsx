@@ -1,22 +1,22 @@
 "use client";
 
-import React, { Suspense, useMemo, useRef } from "react";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { Environment, OrbitControls } from "@react-three/drei";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { MeshPhysicalMaterial, Object3D, Object3DEventMap, Mesh } from "three";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Environment, OrbitControls, useGLTF, useProgress } from "@react-three/drei";
+import { Object3D, Object3DEventMap, Mesh, MeshStandardMaterial } from "three";
 
 const Lasercat = () => {
-	const gltf = useLoader(GLTFLoader, "/assets/textures/model.gltf");
+	const { scene } = useGLTF("/assets/textures/model.gltf");
 
 	// Utilisation de useMemo pour éviter de charger le modèle à chaque rendu
-	const scene = useMemo(() => {
-		if (!gltf.scene) return null;
+	useMemo(() => {
+		if (!scene) return null;
 
-		gltf.scene.traverse((child: Object3D<Object3DEventMap>) => {
+		scene.traverse((child: Object3D<Object3DEventMap>) => {
 			const mesh = child as Mesh;
 			if (mesh.isMesh) {
-				const material = new MeshPhysicalMaterial({
+				const material = new MeshStandardMaterial({
 					metalness: 1,
 					roughness: 0,
 					transparent: true,
@@ -25,9 +25,10 @@ const Lasercat = () => {
 				mesh.material = material;
 			}
 		});
+		scene.position.set(5, 0, -3);
 
-		return gltf.scene;
-	}, [gltf.scene]);
+		return scene;
+	}, [scene]);
 
 	// Utilisation de useRef pour obtenir une référence à la scène
 	const ref = useRef();
@@ -42,49 +43,20 @@ const Lasercat = () => {
 	return scene ? <primitive object={scene} ref={ref} /> : null;
 };
 
-interface Props {
-  progress: number;
-  loading: boolean;
-}
-
-const ThreeLasercats = ({ progress, loading }: Props) => {
+const ThreeLasercats = () => {
+	const { progress } = useProgress();
+	const [loading, setIsLoading] = useState<boolean>(true);
+	useEffect(() => {
+		setIsLoading(progress < 100);
+	}, [progress]);
 	return (
-		<>
-			<Suspense fallback={null}>
-				<Canvas
-					style={{ opacity: `${loading ? 0 : 1}`, zIndex: 20 }}
-					camera={{ position: [15, 0, 0], fov: 50 }}
-				>
-					<ambientLight />
-					<Lasercat />
-					<OrbitControls />
-					<Suspense fallback={null}>
-						<Environment files="/assets/textures/star-3.hdr" background />
-					</Suspense>
-				</Canvas>
-			</Suspense>
-			<LaserLoader progress={progress} loading={loading} />
-		</>
-	);
-};
-
-const LaserLoader = ({ loading }: Props) => {
-	return (
-		<div
-			style={{
-				position: "absolute",
-				top: 10,
-				left: 0,
-				width: "100%",
-				height: "100%",
-				backgroundColor: "black",
-				display: "flex",
-				justifyContent: "center",
-				alignItems: "center",
-				opacity: `${loading ? 1 : 0}`,
-				zIndex: 0,
-			}}
-		/>
+		<Canvas
+			style={{ opacity: `${loading ? 0 : 1}`, zIndex: 20 }}
+			camera={{ position: [15, 0, 0], fov: 70 }}
+		>
+			<Lasercat />
+			<Environment files="/assets/textures/star-3.hdr" background />
+		</Canvas>
 	);
 };
 

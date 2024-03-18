@@ -3,8 +3,8 @@
 @import 'tailwindcss/utilities';
 
 @font-face {
-  font-family: "Open Sans";
-  src: url("../../public/assets/fonts/OpenSans_SemiCondensed-Bold.ttf");
+  font-family: "Suisse Intl";
+  src: url("../../public/assets/fonts/SuisseIntl-Regular.ttf");
 }
 
 html {
@@ -12,23 +12,29 @@ html {
 }
 
 @layer base {
-  
-  h1 {
-    @apply text-2xl md:text-5xl !important;
-  }
-  h2 {
-    @apply text-xl md:text-2xl !important;
-  }
-
-  h1, h2, h3, h3, p, a:not(nav), time, li {
-    @apply text-gray-800 dark:text-gray-50;
-  }
   * {
     @apply transition-all duration-200;
   }
+
+  h1, h2, h3, h3, p, a:not(nav), time, li {
+    @apply !text-zinc-50;
+  }
+
+  h1 {
+    @apply text-3xl md:text-6xl !important;
+  }
+  h2 {
+    @apply text-xl md:text-3xl !important;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
   input, label, textarea {
     @apply border-custom-dark;
   }
+
   a {
     @apply no-underline text-primary hover:underline;
   }
@@ -39,10 +45,10 @@ html {
     background: linear-gradient(180deg, #06050b 0%, #040267 35%, #06050b 72%, #06050b 100%);
   }
   .btn-primary, .primary {
-    @apply px-6 py-4 flex justify-center items-center text-custom-dark font-bold bg-primary rounded-md hover:text-primary hover:bg-transparent border-2 border-transparent hover:border-primary;
+    @apply px-6 py-4 flex justify-center items-center text-custom-dark font-bold bg-primary rounded-sm hover:text-primary hover:bg-transparent border-2 border-transparent hover:border-primary;
   }
   .alter-black {
-    @apply px-6 py-4 flex justify-center items-center text-primary font-bold bg-custom-dark rounded-md hover:text-custom-dark hover:bg-transparent border-2 border-transparent hover:border-custom-dark;
+    @apply px-6 py-4 flex justify-center items-center text-primary font-bold bg-custom-dark rounded-sm hover:text-custom-dark hover:bg-transparent border-2 border-transparent hover:border-custom-dark;
   }
 
   .link {

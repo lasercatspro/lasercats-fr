@@ -8,7 +8,7 @@ interface Props {
 
 const Button = ({ type, role, title }: Props): React.JSX.Element => {
 	return (
-		<button type={type ?? "button"} className={classNames(role, "h-10 rounded-full")}>{title}</button>
+		<button type={type ?? "button"} className={classNames(role, "h-10 rounded-sm")}>{title}</button>
 	);
 };
 

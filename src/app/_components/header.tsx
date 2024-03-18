@@ -1,20 +1,16 @@
-"use client";
-import { useState, type ReactNode, useEffect } from "react";
 import dynamic from "next/dynamic";
-import { useProgress } from "@react-three/drei";
+import { type ReactNode } from "react";
 
-const ThreeLasercats = dynamic(() => import("./three-lasercats"), { ssr: false });
+// Import dynamique de ThreeLasercats pour le rendu côté client
+const ThreeLasercats = dynamic(() => import("./three-lasercats"), {
+	ssr: false,
+});
 
 const Header = (): ReactNode => {
-	const { progress } = useProgress();
-	const [loading, setIsLoading] = useState<boolean>(true);
-	useEffect(() => {
-		setIsLoading(progress < 100);
-	}, [progress]);
 	return (
-		<div className={`h-[100vh] flex flex-col justify-center relative ${loading && "bg-black"}`}>
-			<ThreeLasercats loading={loading} progress={progress} />
-			<h1 className="mx-4 md:mx-16 text-xl md:text-6xl font-extrabold tracking-normal mb-20 mt-8 !leading-snug absolute z-20">
+		<div className="h-[100vh] flex flex-col justify-center relative bg-black">
+			<ThreeLasercats />
+			<h1 className="mx-4 md:mx-16 font-extrabold tracking-normal mb-20 mt-8 !leading-snug absolute z-20">
 				<span className='text-primary mb-12'>Hey ! Nous sommes les Lasercats 👋🏻.</span>
 				<br/>
 				<span className='pt-12'>Nous fabriquons des applications Webs et mobiles aux petits oignons.</span>

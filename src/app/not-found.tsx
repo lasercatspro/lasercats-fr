@@ -10,8 +10,8 @@ export default function NotFound (): ReactNode {
 			<div className='flex flex-col p-10 justify-center items-center gap-4'>
 				<h1>Erreur 404 😥</h1>
 				<p>{"La page que vous recherchez n'existe pas."}</p>
-				<Link className="btn-primary" href="/">
-          Return Home
+				<Link className="btn-primary hover:!no-underline" href="/">
+					{"Retourner à la page d'accueil"}
 				</Link>
 			</div>
 		</Container>

@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import Navbar from "./_components/navbar";
-import { type ReactNode } from "react";
+import { Suspense, type ReactNode } from "react";
 
 export const metadata: Metadata = {
 	title: "Lasercats - Agence de développeurs pour des solutions web",
@@ -15,14 +15,6 @@ export const metadata: Metadata = {
 		images: `${process.env.ROOT_URL}${HOME_OG_IMAGE_URL}`,
 	},
 };
-const modeScript = `
-	const isDarkMode = window.localStorage.isDarkMode;
-	if (isDarkMode) {
-		document.documentElement.classList.add('dark')
-	} else {
-		document.documentElement.classList.remove('dark')
-	}
-`;
 
 export default function RootLayout({
 	children,
@@ -30,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>): ReactNode {
 	return (
-		<html lang="en">
+		<html lang="fr">
 			<head>
 				<link
 					rel="apple-touch-icon"
@@ -67,12 +59,14 @@ export default function RootLayout({
 					href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
 					rel="stylesheet"
 				/>
-				{/* Enable/Disable DARK MOD */}
-				<script dangerouslySetInnerHTML={{ __html: modeScript }} />
 			</head>
-			<body className="bg-zinc-50 dark:gradient w-full">
+			<body className="gradient w-full">
 				<Navbar />
-				<div className="mx-auto">{children}</div>
+				<div className="mx-auto">
+					<Suspense fallback={null}>
+						{children}
+					</Suspense>
+				</div>
 				<Footer />
 			</body>
 		</html>
