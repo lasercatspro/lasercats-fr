@@ -16,8 +16,8 @@ html {
     @apply transition-all duration-200;
   }
 
-  h1, h2, h3, h3, p, a:not(nav), time, li {
-    @apply !text-zinc-50;
+  h1, h2, h3, h3, p, a:not(nav), time, li, span {
+    @apply text-zinc-50;
   }
 
   h1 {
@@ -38,6 +38,10 @@ html {
   a {
     @apply no-underline text-primary hover:underline;
   }
+
+  strong {
+    @apply text-primary text-lg font-bold;
+  }
 }
 
 @layer components {
@@ -47,6 +51,7 @@ html {
   .btn-primary, .primary {
     @apply px-6 py-4 flex justify-center items-center text-custom-dark font-bold bg-primary rounded-sm hover:text-primary hover:bg-transparent border-2 border-transparent hover:border-primary;
   }
+  
   .alter-black {
     @apply px-6 py-4 flex justify-center items-center text-primary font-bold bg-custom-dark rounded-sm hover:text-custom-dark hover:bg-transparent border-2 border-transparent hover:border-custom-dark;
   }

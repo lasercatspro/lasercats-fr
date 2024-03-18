@@ -1,9 +1,9 @@
-import Footer from "@/app/_components/footer";
+import Footer from "@/app/_components/blocks/footer";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
 
 import "./globals.css";
-import Navbar from "./_components/navbar";
+import Navbar from "./_components/blocks/navbar";
 import { Suspense, type ReactNode } from "react";
 
 export const metadata: Metadata = {
