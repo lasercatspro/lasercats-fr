@@ -1,6 +1,6 @@
 "use client";
 import { ChangeEvent, FormEvent, useReducer } from "react";
-import Button from "./button";
+import Button from "../button";
 
 interface Action {
   type: "handle_text";
