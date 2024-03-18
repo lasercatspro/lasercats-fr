@@ -15,14 +15,14 @@ export function PostLayout ({ article }: { article: Post }): ReactNode {
 				<div className="mx-auto max-w-4xl">
 					<article>
 						<header className="flex flex-col">
-							<h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+							<h1 className="mt-6 font-bold tracking-tight text-zinc-50 ">
 								{article.title}
 							</h1>
 							<time
 								dateTime={article.date}
-								className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"
+								className="order-first flex items-center text-base text-zinc-50"
 							>
-								<span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
+								<span className="h-4 w-0.5 rounded-full bg-zinc-50" />
 								<span className="ml-3">{new Date(article?.date).toLocaleDateString("fr")}</span>
 							</time>
 						</header>

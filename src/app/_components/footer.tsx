@@ -11,7 +11,7 @@ export function Footer(): ReactNode {
 						<span>2 avenue Jean Janvier <br /> 35000 RENNES</span>
 					</li>
 					<li className="flex flex-col gap-y-4">
-						<h3 className="text-xl">Contact</h3>
+						<h3 className="">Contact</h3>
 						<span>+330234567890 <br /> contact@lasercats.fr</span>
 					</li>
 				</div>

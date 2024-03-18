@@ -21,7 +21,7 @@ const config = {
 			}
 		},
 		fontFamily: {
-			sans: ["Open Sans", "sans-serif"],
+			sans: ["Suisse Intl", "sans-serif"],
 			serif: ["Merriweather", "serif"]
 		},
 		typography: (theme) => ({
@@ -51,15 +51,15 @@ const config = {
 			},
 			DEFAULT: {
 				css: {
-					"--tw-prose-body": theme("colors.zinc.600"),
-					"--tw-prose-headings": theme("colors.zinc.900"),
+					"--tw-prose-body": theme("colors.zinc.50"),
+					"--tw-prose-headings": theme("colors.zinc.50"),
 					"--tw-prose-links": theme("colors.green.500"),
 					"--tw-prose-links-hover": theme("colors.green.600"),
 					"--tw-prose-underline": theme("colors.green.500 / 0.2"),
 					"--tw-prose-underline-hover": theme("colors.green.500"),
-					"--tw-prose-bold": theme("colors.zinc.900"),
-					"--tw-prose-counters": theme("colors.zinc.900"),
-					"--tw-prose-bullets": theme("colors.zinc.900"),
+					"--tw-prose-bold": theme("colors.zinc.50"),
+					"--tw-prose-counters": theme("colors.zinc.50"),
+					"--tw-prose-bullets": theme("colors.zinc.50"),
 					"--tw-prose-hr": theme("colors.zinc.100"),
 					"--tw-prose-quote-borders": theme("colors.zinc.200"),
 					"--tw-prose-captions": theme("colors.zinc.400"),
