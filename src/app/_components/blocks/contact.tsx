@@ -56,12 +56,12 @@ const Contact = () => {
 					"Votre succès est notre mission, et nous transformons chaque projet en une expérience digitale mémorable, reflétant l'excellence et l'innovation."
 				}
 			</h2>
-			<div className="w-2/3 max-w-7xl mx-auto">
+			<div className="lg:w-2/3 max-w-7xl mx-auto">
 				<form
 					id="form"
 					action="#"
 					onSubmit={(e) => submitFn(e)}
-					className="flex flex-col gap-8 my-8 md:w-9/12 mx-auto"
+					className="flex flex-col gap-8 my-8 lg:w-9/12 mx-auto"
 				>
 					<div className="flex flex-col md:flex-row gap-4">
 						<div className="flex flex-col w-full gap-2 ">

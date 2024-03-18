@@ -53,10 +53,10 @@ const config = {
 				css: {
 					"--tw-prose-body": theme("colors.zinc.50"),
 					"--tw-prose-headings": theme("colors.zinc.50"),
-					"--tw-prose-links": theme("colors.green.500"),
-					"--tw-prose-links-hover": theme("colors.green.600"),
-					"--tw-prose-underline": theme("colors.green.500 / 0.2"),
-					"--tw-prose-underline-hover": theme("colors.green.500"),
+					"--tw-prose-links": theme("colors.primary"),
+					"--tw-prose-links-hover": theme("colors.primary"),
+					"--tw-prose-underline": theme("colors.primary / 0.2"),
+					"--tw-prose-underline-hover": theme("colors.primary"),
 					"--tw-prose-bold": theme("colors.zinc.50"),
 					"--tw-prose-counters": theme("colors.zinc.50"),
 					"--tw-prose-bullets": theme("colors.zinc.50"),
@@ -73,10 +73,10 @@ const config = {
 
 					"--tw-prose-invert-body": theme("colors.zinc.400"),
 					"--tw-prose-invert-headings": theme("colors.zinc.200"),
-					"--tw-prose-invert-links": theme("colors.green.400"),
-					"--tw-prose-invert-links-hover": theme("colors.green.400"),
-					"--tw-prose-invert-underline": theme("colors.green.400 / 0.3"),
-					"--tw-prose-invert-underline-hover": theme("colors.green.400"),
+					"--tw-prose-invert-links": theme("colors.primary"),
+					"--tw-prose-invert-links-hover": theme("colors.primary"),
+					"--tw-prose-invert-underline": theme("colors.primary / 0.3"),
+					"--tw-prose-invert-underline-hover": theme("colors.primary"),
 					"--tw-prose-invert-bold": theme("colors.zinc.200"),
 					"--tw-prose-invert-counters": theme("colors.zinc.200"),
 					"--tw-prose-invert-bullets": theme("colors.zinc.200"),
@@ -93,14 +93,15 @@ const config = {
 
 					// Base
 					color: "var(--tw-prose-body)",
-					lineHeight: theme("lineHeight.7"),
+					lineHeight: theme("lineHeight.8"),
 					"> *": {
 						marginTop: theme("spacing.10"),
 						marginBottom: theme("spacing.10")
 					},
 					p: {
-						marginTop: theme("spacing.7"),
-						marginBottom: theme("spacing.7")
+						fontSize: theme("fontSize.lg")[0],
+						marginTop: theme("spacing.8"),
+						marginBottom: theme("spacing.8")
 					},
 
 					// Headings
@@ -131,6 +132,7 @@ const config = {
 
 					// Inline elements
 					a: {
+						fontSize: theme("fontSize.lg")[0],
 						color: "var(--tw-prose-links)",
 						fontWeight: theme("fontWeight.semibold"),
 						textDecoration: "underline",
@@ -144,13 +146,14 @@ const config = {
 						textDecorationColor: "var(--tw-prose-underline-hover)"
 					},
 					strong: {
+						fontSize: theme("fontSize.lg")[0],
 						color: "var(--tw-prose-bold)",
 						fontWeight: theme("fontWeight.semibold")
 					},
 					code: {
 						display: "inline-block",
 						color: "var(--tw-prose-code)",
-						fontSize: theme("fontSize.sm")[0],
+						fontSize: theme("fontSize.lg")[0],
 						fontWeight: theme("fontWeight.semibold"),
 						backgroundColor: "var(--tw-prose-code-bg)",
 						borderRadius: theme("borderRadius.lg"),
@@ -194,6 +197,7 @@ const config = {
 						paddingLeft: theme("spacing.6")
 					},
 					li: {
+						fontSize: theme("fontSize.lg")[0],
 						marginTop: theme("spacing.6"),
 						marginBottom: theme("spacing.6"),
 						paddingLeft: theme("spacing[3.5]")
@@ -220,10 +224,10 @@ const config = {
 					// Code blocks
 					pre: {
 						color: "var(--tw-prose-pre-code)",
-						fontSize: theme("fontSize.sm")[0],
+						fontSize: theme("fontSize.lg")[0],
 						fontWeight: theme("fontWeight.medium"),
 						backgroundColor: "var(--tw-prose-pre-bg)",
-						borderRadius: theme("borderRadius.3xl"),
+						borderRadius: theme("borderRadius.xl"),
 						padding: theme("spacing.8"),
 						overflowX: "auto",
 						border: "1px solid",
