@@ -1,25 +1,45 @@
+import dayjs from "dayjs";
+import Image from "next/image";
 import Link from "next/link";
 import { type ReactNode } from "react";
 
 export function Footer(): ReactNode {
 	return (
-		<footer className="p-12 md:p-24 md:h-[450px] max-w-7xl mx-auto flex justify-normal">
-			<ul className="flex flex-col gap-4 md:flex-row md:items-end justify-between w-full mx-auto">
-				<div className="flex gap-8">
+		<footer className="p-12 lg:p-24 lg:h-[450px]  mx-auto flex justify-end">
+			<ul className="grid grid-cols-1 gap-12 lg:grid-cols-4 items-end justify-around w-full">
+				<div className="flex flex-col gap-4">
+					<Image alt="logo Lasercats" src={"/assets/images/svg/logo-green.svg"} width={100} height={100}/>
+					<p>©{dayjs().format("YYYY")} - Lasercats</p>
+				</div>
+				<div className="flex gap-8 relative">
 					<li className="flex flex-col gap-y-4">
-						<h3 className="">Bureaux</h3>
+						<h3 className="text-lg">Bureaux</h3>
 						<span>2 avenue Jean Janvier <br /> 35000 RENNES</span>
 					</li>
+					{/* <hr className="hidden lg:block h-[2px] w-[4rem] bg-white transform rotate-90"/> */}
 					<li className="flex flex-col gap-y-4">
-						<h3 className="">Contact</h3>
-						<span>+330234567890 <br /> contact@lasercats.fr</span>
+						<h3 className="text-lg">Contact</h3>
+						<div>
+							<span>+330234567890</span>
+							<br />
+							<a href="mailto:contact@lasercats.fr">contact@lasercats.fr</a>
+						</div>
 					</li>
 				</div>
-				<li className="flex">
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-4 justify-center relative">
+					<hr className="lg:block absolute -top-6 left-0 lg:-left-28 lg:top-10 h-[1px] w-full lg:h-[1px] lg:w-[8rem] bg-white lg:transform lg:rotate-90"/>
+
+					<li><Link href={"/"}>Lasercats.Fr</Link></li>
+					<li><Link href={"/blog"}>Blog</Link></li>
+					<li><Link href={"/expertise"}>Expertise</Link></li>
+					<li><Link href={"/methode"}>Notre méthode</Link></li>
+					<li><Link href={"/projets"}>Nos projets</Link></li>
+				</div>
+				<li className="flex lg:justify-end">
 					<p className="hidden">Réseaux sociaux</p>
 					<div className="flex gap-4 rounded-md items-end">
 						{/* Linkedin Link */}
-						<Link href="#">
+						<Link href="https://www.linkedin.com/company/lasercats/about/" target="_blank">
 							<svg
 								className="h-10 w-10 fill-primary"
 								xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +49,7 @@ export function Footer(): ReactNode {
 							</svg>
 						</Link>
 						{/* Twitter Link */}
-						<Link href="#">
+						<Link href="https://twitter.com/LasercatsDev/" target="_blank">
 							<svg
 								className="h-10 w-10 fill-primary"
 								xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +59,7 @@ export function Footer(): ReactNode {
 							</svg>
 						</Link>
 						{/* Github link */}
-						<Link href="#">
+						<Link href="https://github.com/orgs/lasercatspro/" target="_blank">
 							<svg
 								className="h-10 w-10 fill-primary"
 								xmlns="http://www.w3.org/2000/svg"
