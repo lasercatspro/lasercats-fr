@@ -1,0 +1,50 @@
+import Image from 'next/image'
+
+export const meta = {
+  author: 'Lasercats',
+  type: "client",
+  date: '2022-12-13',
+  title: "Citesia",
+  description:
+    "Le crowdfunding immobilier est une forme d’investissement dans la pierre rendue possible par le financement participatif. Contributeurs professionnels et particuliers se réunissent afin de donner vie aux projets de construction ou rénovation de promoteurs et marchands de biens. En échange de leur participation au lancement de l’opération immobilière, les investisseurs reçoivent une rémunération annuelle entre 7 à 11% bruts avant fiscalité en fonction des projets.",
+  technos: ['Ruby on Rails', 'NextJs', 'Tailwind Css', 'Cypress'],
+  image: '/assets/images/jpg/ui-citesia.jpg',
+}
+
+export default (props) => <div {...props} />
+
+## Faire changer d'échelle un projet
+
+Une première version de [Citesia](https://citesia.fr) avait été codée pour un développeur seul. Citesia avaient besoin d’une équipe pour passer à la vitesse supérieure. Sur la base du travail déjà réalisé, nous avons refondu entièrement l'app, son dashboard et sa base de données.L'API de MongoPay assure la gestion des portefeuilles, les rétributions et virements finaux.
+
+### Notre dev
+Voici ce que nous avons pu mettre en place sur la pateforme :
+- Amélioration de la vitesse du site avec NextJS. L'app sert des pages statiques comme des pages dynamiques,
+
+- Travail sur un nouveau parcours client : UI/UX pour un parcours d'inscription long, justifié par les sommes en jeu,
+
+- Refonte complète du dashboard pour la collecte des documents clients et coller aux exigences de sécurisation des données,
+
+- Prélèvement SEPA et payout des sommes investies + bénéfices,
+
+- Migration vers une infrastructure d'hébergement professionnelle (Octopus),
+
+- Mise en place et écriture de tests end-to-end avec le framework Cypress,
+
+- Mise en place des bonnes pratiques de SEO.
+
+Suite à la refonte, nous pouvons aujourd'hui accompagner Citesia dans sa croissance en ajoutant de nouvelles fonctionnalités, coté investisseur comme contributeur :
+
+- mise en place du parrainage (rétribué) de nouveau investisseurs (toujours avec Mangopay),
+
+- création d’un blog interne par projet pour un suivi fin de chaque avancé.
+
+<img src="/assets/images/jpg/ui-citesia.jpg" width={1200} height={800} alt="interface citesia" />
+
+### SEO
+
+Si chaque projet demande un soin spécifique pour un bon référencement, l'équipe de Citesia nous a challengés. En faisant auditer notre travail par une société spécialisée dans le SEO, ce n'est pas de bonnes pratiques dont il a été question, mais d'excellence et d'intransigeance.
+
+### Tests unitaires
+
+Pour s'assurer d'un code propre et de ne pas laisser des erreurs susceptibles de créer des failles de sécurité, nous avons réalisé pour chaque fonctionnalité des tests automatisés avec Cypress. On se félicite encore du temps pris à réaliser ces tests !

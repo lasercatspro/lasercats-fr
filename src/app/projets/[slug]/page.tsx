@@ -2,16 +2,16 @@ import { PostLayout } from "@/app/_components/postLayout";
 import Container from "@/app/_components/container";
 import { getItemBySlug } from "@/lib/api";
 import { notFound } from "next/navigation";
-import { Client, type Post } from "@/types/items";
+import { Client } from "@/types/items";
 
-const fetchPost: (postSlug: string) => Promise<Post | Client | undefined> = async (
-	postSlug
+const fetchPost: (clientSlug: string) => Promise<Client | undefined> = async (
+	clientSlug
 ) => {
-	const post = await getItemBySlug("post", postSlug);
-	if (!post) {
+	const client = await getItemBySlug("client", clientSlug) as Client | undefined;
+	if (client === undefined) {
 		return undefined;
 	} else {
-		return post;
+		return client;
 	}
 };
 
@@ -20,11 +20,11 @@ interface Props {
 }
 
 export const generateMetadata = async ({ params: { slug } }: Props) => {
-	const post = await getItemBySlug("post", slug);
+	const client = await getItemBySlug("client", slug);
 	return {
-		title: `Lasercats Blog - ${post?.title}`,
-		description: post?.description,
-		author: post?.author,
+		title: `Lasercats Blog - ${client?.title}`,
+		description: client?.description,
+		author: client?.author,
 	};
 };
 
@@ -33,13 +33,13 @@ const ArticlePage = async ({
 }: {
   params: { slug: string };
 }): Promise<JSX.Element> => {
-	const article = await fetchPost(params.slug);
-	if (article === undefined) {
+	const client = await fetchPost(params.slug);
+	if (client === undefined) {
 		notFound();
 	}
 	return (
 		<Container classes="max-w-7xl mx-auto mt-64">
-			<PostLayout article={article} />
+			<PostLayout article={client} />
 		</Container>
 	);
 };

@@ -60,13 +60,13 @@ export default function RootLayout({
 					rel="stylesheet"
 				/>
 			</head>
-			<body className="gradient w-full">
+			<body className="gradient w-full mx-auto">
 				<Navbar />
-				<div className="mx-auto">
-					<Suspense fallback={null}>
+				<Suspense fallback={null}>
+					<main className="">
 						{children}
-					</Suspense>
-				</div>
+					</main>
+				</Suspense>
 				<Footer />
 			</body>
 		</html>
