@@ -116,7 +116,7 @@ const config = {
 						marginBottom: theme("spacing.4")
 					},
 					h3: {
-						fontSize: theme("fontSize.base")[0],
+						fontSize: theme("fontSize.2xl")[0],
 						lineHeight: theme("lineHeight.7"),
 						marginTop: theme("spacing.16"),
 						marginBottom: theme("spacing.4")
@@ -127,7 +127,7 @@ const config = {
 
 					// Images
 					img: {
-						borderRadius: theme("borderRadius.3xl")
+						borderRadius: theme("borderRadius.sm")
 					},
 
 					// Inline elements

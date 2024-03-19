@@ -34,7 +34,7 @@ export const Navbar = (): ReactNode => {
 		>
 			{({ open }) => (
 				<>
-					<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+					<div className="mx-auto max-w-7xl">
 						<div className="flex h-16 justify-between relative">
 							<div className="flex w-full justify-between items-center gap-4">
 								<Link className="flex flex-shrink-0 items-center" href={"/"}>
@@ -45,7 +45,7 @@ export const Navbar = (): ReactNode => {
 									/>
 								</Link>
 								<Link href={"#contact"} className="md:hidden primary h-6 rounded-sm !text-white hover:no-underline">
-													Nous contacter
+									Nous contacter
 								</Link>
 								<div className="-ml-2 mr-2 flex items-center md:hidden">
 									{/* Mobile menu button */}

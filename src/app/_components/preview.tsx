@@ -2,18 +2,19 @@ import Link from "next/link";
 import Avatar from "./avatar";
 import CoverImage from "./coverImage";
 import DateFormatter from "./dateFormatter";
-import { type Post } from "@/types/post";
+import { Client, type Post } from "@/types/items";
 import { type ReactNode } from "react";
 
 interface Props {
-  article: Post | undefined;
+  article: Post | Client | undefined;
+	type: "client" | "post"
 }
 
-export function PostPreview({ article }: Props): ReactNode {
+export function Preview({ article, type }: Props): ReactNode {
 	return (
 		<Link
-			as={`/blog/${article?.slug}`}
-			href="/blog/[slug]"
+			as={`/${type === "post" ? "blog" : "projets"}/${article?.slug}`}
+			href={`/${type === "post" ? "blog" : "projets"}/[slug]`}
 			className="lg:p-8 hover:no-underline lg:border-2 lg:border-zinc-50 lg:border-opacity-20 hover:bg-zinc-50 hover:bg-opacity-10"
 		>
 			<div className="mb-5">
@@ -21,6 +22,7 @@ export function PostPreview({ article }: Props): ReactNode {
 					<CoverImage
 						slug={article?.slug}
 						title={article?.title}
+						type={article?.type}
 						src={
 							"https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 						}

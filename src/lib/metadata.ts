@@ -1,4 +1,4 @@
-import { type Post } from "@/types/post";
+import { type Post } from "@/types/items";
 
 export const getMetaFromArticle: (article: Post) => { title: string, description: string } = (article) => {
 	return {
