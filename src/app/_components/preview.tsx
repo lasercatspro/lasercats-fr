@@ -15,7 +15,7 @@ export function Preview({ article, type }: Props): ReactNode {
 		<Link
 			as={`/${type === "post" ? "blog" : "projets"}/${article?.slug}`}
 			href={`/${type === "post" ? "blog" : "projets"}/[slug]`}
-			className="lg:p-8 hover:no-underline lg:border-2 lg:border-zinc-50 lg:border-opacity-20 hover:bg-zinc-50 hover:bg-opacity-10"
+			className="lg:p-8 hover:no-underline lg:border-2 lg:border-primary lg:border-opacity-20 hover:bg-primary hover:bg-opacity-10"
 		>
 			<div className="mb-5">
 				{article != null && (

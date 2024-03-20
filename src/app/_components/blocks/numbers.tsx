@@ -1,7 +1,7 @@
 const Numbers = () => {
 	return ( 
-		<div className="py-16 bg-black">
-			<div className="flex justify-between flex-col mx-2 md:grid md:grid-cols-3 !text-zinc-50 md:px-8 bg-black">
+		<div className="py-16">
+			<div className="flex justify-between flex-col mx-2 md:grid md:grid-cols-3 !text-zinc-50 md:px-8">
 				<div className="flex flex-col lg:max-w-[30vw] text-center">
 					<p className="text-[5rem] lg:!text-[15rem]">50M</p>
 					<p className="!text-lg">Nous avons construit une <strong>plate-forme de crowdfunding</strong> qui a fait 50M d’euros de transactions en 3 ans.</p>

@@ -18,12 +18,18 @@ export function Hero({ article, type }: Props): ReactNode {
 				as={`/${type === "post" ? "blog" : "projets"}/${article?.slug}`}
 				href={`/${type === "post" ? "blog" : "projets"}/[slug]`}
 				aria-label={article?.title}
-				className="lg:p-8 flex flex-col lg:gap-8 lg:border-2 lg:border-zinc-50 lg:border-opacity-20 hover:no-underline hover:bg-zinc-50 hover:bg-opacity-10"
+				className="flex flex-col lg:gap-8 border-2 border-primary border-opacity-20 hover:no-underline hover:bg-primary hover:bg-opacity-10"
 			>
-				<div className="flex gap-8">
-					<div className="w-1/2">
-						<h3 className="mb-4 leading-tight">{article?.title}</h3>
-						<p className="text-lg leading-10">{article?.description}</p>
+				<div className="flex flex-col lg:flex-row gap-8">
+					<div className="flex flex-col justify-between lg:w-2/3 p-4 lg:p-8">
+						<h3 className="mb-4 leading-tight font-extrabold text-2xl">{article?.title}</h3>
+						<p className="text-lg leading-10 line-clamp-6">{article?.description}</p>
+						<div className="lg:text-inherit lg:flex items-start flex-col justify-between col-span-9">
+							<div className="flex justify-between items-center w-full !text-sm md:text-inherit">
+								<Avatar name={article.author}/>
+								<DateFormatter dateString={article.date} />
+							</div>
+						</div>
 					</div>
 					<Image
 						src={ article.type === "client" && article?.image ? article.image :
@@ -32,18 +38,12 @@ export function Hero({ article, type }: Props): ReactNode {
 						alt={"Cover Image"}
 						width={1200}
 						height={800}
-						className={cn("shadow-sm w-1/2", {
+						className={cn("shadow-sm lg:w-1/3", {
 							"hover:shadow-lg transition-shadow duration-200 object-cover": article.slug,
 						})}
 					/>
 				</div>
-				<div className="lg:text-inherit lg:flex items-start flex-col justify-between col-span-9">
-					
-					<div className="flex justify-between items-center w-full !text-sm md:text-inherit">
-						<Avatar name={article.author}/>
-						<DateFormatter dateString={article.date} />
-					</div>
-				</div>
+				
 			</Link>
 		</section>
 	);

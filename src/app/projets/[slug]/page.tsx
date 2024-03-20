@@ -38,7 +38,7 @@ const ArticlePage = async ({
 		notFound();
 	}
 	return (
-		<Container classes="max-w-7xl mx-auto mt-64">
+		<Container classes="max-w-7xl mx-auto mt-20 lg:mt-64">
 			<PostLayout article={client} />
 		</Container>
 	);

@@ -38,7 +38,7 @@ const ArticlePage = async ({
 		notFound();
 	}
 	return (
-		<Container classes="max-w-7xl mx-auto mt-64">
+		<Container classes="max-w-7xl mx-auto lg:mt-64 py-8">
 			<PostLayout article={article} />
 		</Container>
 	);

@@ -50,7 +50,7 @@ const Contact = () => {
 	};
 
 	return (
-		<div id="contact" className="bg-primary px-4 md:px-40 py-24">
+		<div id="contact" className="px-4 md:px-40 py-24">
 			<h2 className="md:text-5xl md:mt-[200px] mb-40 text-center !text-custom-dark">
 				{
 					"Votre succès est notre mission, et nous transformons chaque projet en une expérience digitale mémorable, reflétant l'excellence et l'innovation."
