@@ -17,7 +17,6 @@ export const Navbar = (): ReactNode => {
 	const navigation = [
 		{ name: "Expertise", href: "/expertise", current: false },
 		{ name: "Projets", href: "/projets", current: false },
-		{ name: "Méthodologie", href: "/methode", current: false },
 		{ name: "Blog", href: "/blog", current: false },
 	];
 	const [actualNav, setActualNav] = useState<any>(null);
@@ -30,11 +29,11 @@ export const Navbar = (): ReactNode => {
 	return (
 		<Disclosure
 			as="nav"
-			className="fixed left-0 top-0 z-50 w-full bg-custom-dark border-b-2"
+			className="fixed left-0 top-0 z-50 w-full bg-custom-dark"
 		>
 			{({ open }) => (
 				<>
-					<div className="mx-auto max-w-7xl">
+					<div className="mx-6 lg:mx-auto max-w-7xl">
 						<div className="flex h-16 justify-between relative">
 							<div className="flex w-full justify-between items-center gap-4">
 								<Link className="flex flex-shrink-0 items-center" href={"/"}>
@@ -66,16 +65,16 @@ export const Navbar = (): ReactNode => {
 											href={item.href}
 											className={`${
 												actualNav === item.name
-													? "bg-zinc-800 !text-primary "
-													: "text-white hover:text-primary hover:bg-zinc-800"
+													? " !text-primary !font-extrabold"
+													: "text-zinc-50 hover:text-primary "
 											} 
-                          font-bold' rounded-sm px-3 py-2 hover:no-underline`}
+                          font-bold px-3 py-2 hover:no-underline `}
 										>
 											{item.name}
 										</Link>
 									))}
 									<div className="flex gap-4">
-										<Link href={"#contact"} className="primary h-6 rounded-sm !text-white hover:no-underline">
+										<Link href={"/#contact"} className="primary h-6 rounded-sm !text-custom-dark hover:no-underline hover:!text-primary">
 											Nous contacter
 										</Link>
 									</div>

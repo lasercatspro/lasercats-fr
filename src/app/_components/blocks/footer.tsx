@@ -5,9 +5,9 @@ import { type ReactNode } from "react";
 
 export function Footer(): ReactNode {
 	return (
-		<footer className="p-12 lg:p-24 lg:h-[450px]  mx-auto flex justify-end">
-			<ul className="grid grid-cols-1 gap-12 lg:grid-cols-4 items-end justify-around w-full">
-				<div className="flex flex-col gap-4">
+		<footer className="p-12 lg:p-24 lg:h-[450px] mx-auto flex justify-end bg-transparent">
+			<ul className="grid grid-cols-1 gap-12 lg:grid-cols-4 place-content-center w-full relative">
+				<div className="absolute -bottom-1 -right-4 lg:relative flex flex-col justify-end items-end lg:items-start gap-4">
 					<Image alt="logo Lasercats" src={"/assets/images/svg/logo-green.svg"} width={100} height={100}/>
 					<p>©{dayjs().format("YYYY")} - Lasercats</p>
 				</div>
@@ -16,7 +16,6 @@ export function Footer(): ReactNode {
 						<h3 className="text-lg">Bureaux</h3>
 						<span>2 avenue Jean Janvier <br /> 35000 RENNES</span>
 					</li>
-					{/* <hr className="hidden lg:block h-[2px] w-[4rem] bg-white transform rotate-90"/> */}
 					<li className="flex flex-col gap-y-4">
 						<h3 className="text-lg">Contact</h3>
 						<div>
@@ -26,14 +25,24 @@ export function Footer(): ReactNode {
 						</div>
 					</li>
 				</div>
-				<div className="grid grid-cols-1 lg:grid-cols-2 gap-4 justify-center relative">
-					<hr className="lg:block absolute -top-6 left-0 lg:-left-28 lg:top-10 h-[1px] w-full lg:h-[1px] lg:w-[8rem] bg-white lg:transform lg:rotate-90"/>
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-2 place-content-stretch relative">
+					{/* <hr className="absolute -top-6 left-0 lg:-left-28 lg:block lg:top-10 h-[1px] w-full lg:h-[1px] lg:w-[8rem] lg:transform lg:rotate-90"/> */}
 
-					<li><Link href={"/"}>Lasercats.Fr</Link></li>
-					<li><Link href={"/blog"}>Blog</Link></li>
-					<li><Link href={"/expertise"}>Expertise</Link></li>
-					<li><Link href={"/methode"}>Notre méthode</Link></li>
-					<li><Link href={"/projets"}>Nos projets</Link></li>
+					<li>
+						<Link href={"/"} className="hover:!no-underline hover:text-primary">Lasercats.fr</Link>
+					</li>
+					<li>
+						<Link href={"/blog"} className="hover:!no-underline hover:text-primary">Blog</Link>
+					</li>
+					<li>
+						<Link href={"/expertise"} className="hover:!no-underline hover:text-primary">Expertise</Link>
+					</li>
+					<li>
+						<Link href={"/methode"} className="hover:!no-underline hover:text-primary">Notre méthode
+						</Link></li>
+					<li>
+						<Link href={"/projets"} className="hover:!no-underline hover:text-primary">Nos projets</Link>
+					</li>
 				</div>
 				<li className="flex lg:justify-end">
 					<p className="hidden">Réseaux sociaux</p>
