@@ -20,3 +20,8 @@ export interface Client {
   image: string
   component: () => MDXContent
 }
+
+export interface Member {
+  name: string,
+  role: string
+} 

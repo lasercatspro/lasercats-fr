@@ -6,12 +6,12 @@ import { type ReactNode } from "react";
 export function Footer(): ReactNode {
 	return (
 		<footer className="p-12 lg:p-24 mx-auto flex justify-end bg-transparent">
-			<ul className="grid grid-cols-1 gap-12 lg:grid-cols-4 place-content-center w-full relative">
+			<ul className="grid grid-cols-1 gap-12 lg:grid-cols-4 w-full relative">
 				<div className="absolute -bottom-1 -right-4 lg:relative flex flex-col justify-end items-end lg:items-start gap-4">
 					<Image alt="logo Lasercats" src={"/assets/images/svg/logo-green.svg"} width={100} height={100}/>
 					<p>©{dayjs().format("YYYY")} - Lasercats</p>
 				</div>
-				<div className="flex gap-8 relative">
+				<div className="flex gap-8 relative w-full lg:items-end">
 					<li className="flex flex-col gap-y-4">
 						<h3 className="text-lg">Bureaux</h3>
 						<span>2 avenue Jean Janvier <br /> 35000 RENNES</span>
@@ -25,7 +25,7 @@ export function Footer(): ReactNode {
 						</div>
 					</li>
 				</div>
-				<div className="grid grid-cols-1 lg:grid-cols-2 gap-2 place-content-stretch relative">
+				<div className="flex flex-col lg:ml-8 gap-2 relative place-content-stretch lg:items-start">
 					{/* <hr className="absolute -top-6 left-0 lg:-left-28 lg:block lg:top-10 h-[1px] w-full lg:h-[1px] lg:w-[8rem] lg:transform lg:rotate-90"/> */}
 
 					<li>
@@ -37,9 +37,6 @@ export function Footer(): ReactNode {
 					<li>
 						<Link href={"/expertise"} className="hover:!no-underline hover:text-primary">Expertise</Link>
 					</li>
-					<li>
-						<Link href={"/methode"} className="hover:!no-underline hover:text-primary">Notre méthode
-						</Link></li>
 					<li>
 						<Link href={"/projets"} className="hover:!no-underline hover:text-primary">Nos projets</Link>
 					</li>

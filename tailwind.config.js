@@ -18,6 +18,9 @@ const config = {
 				secondary: "#06038d",
 				"custom-blue": "#040267",
 				"custom-dark": "#06050b"
+			},
+			lineClamp: {
+				10: "10"
 			}
 		},
 		fontFamily: {
