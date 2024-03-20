@@ -9,7 +9,7 @@ interface Props {
 
 export function MoreStories ({ items, type }: Props): ReactNode {
 	return (
-		<section className="mx-8 md:mx-0">
+		<section>
 			<h2 className="mb-8 text-5xl md:text-7xl font-bold tracking-tighter leading-tight">
 				{"Nos autres articles"}
 			</h2>

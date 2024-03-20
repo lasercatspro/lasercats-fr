@@ -5,7 +5,7 @@ import { type ReactNode } from "react";
 
 export function Footer(): ReactNode {
 	return (
-		<footer className="p-12 lg:p-24 lg:h-[450px] mx-auto flex justify-end bg-transparent">
+		<footer className="p-12 lg:p-24 mx-auto flex justify-end bg-transparent">
 			<ul className="grid grid-cols-1 gap-12 lg:grid-cols-4 place-content-center w-full relative">
 				<div className="absolute -bottom-1 -right-4 lg:relative flex flex-col justify-end items-end lg:items-start gap-4">
 					<Image alt="logo Lasercats" src={"/assets/images/svg/logo-green.svg"} width={100} height={100}/>
