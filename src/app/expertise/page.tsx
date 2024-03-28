@@ -1,9 +1,14 @@
+import React from "react";
 import Container from "../_components/container";
 
-const ExpertisePage = () => {
-	return <Container classes="max-w-7xl mx-auto">
-		<h1>Notre expertise</h1>
-	</Container>;
+const Expertise = () => {
+	return (
+		<div className="py-8 max-w-xl lg:max-w-7xl mx-8 md:mx-auto">
+			<Container>
+				<h1 className="text-primary">Expertise</h1>
+			</Container>
+		</div>
+	);
 };
 
-export default ExpertisePage;
+export default Expertise;
