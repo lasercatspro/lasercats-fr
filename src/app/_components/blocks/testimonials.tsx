@@ -1,7 +1,3 @@
-"use client";
-
-import { useEffect } from "react";
-import Container from "../container";
 import Quote from "../quote";
 
 export interface QuoteI {
@@ -33,17 +29,18 @@ const quotes: QuoteI[] = [
 ];
 
 const Testimonials = () => {
-	useEffect(() => {
-	}, []);
 	return (
-		<Container classes="max-w-7xl mx-auto">
-			<h2 className="text-primary">Témoignages</h2>
-			<div className="py-16 space-x-8 flex overflow-scroll mx-auto">
-				{quotes.map(quote => (
-					<Quote key={quote.author} quote={quote} />
-				))}
-			</div> 
-		</Container>
+		<div className="bg-custom-dark">
+			<div className="mx-auto w-[80vw] py-16">
+				<h2 className="text-primary hidden">Témoignages</h2>
+				<p className="text-5xl !text-zinc-50 leading-snug">Ils nous font confiance. <br /> Merci à eux !</p>
+				<div className="py-16 space-x-8 flex overflow-scroll mx-auto">
+					{quotes.map(quote => (
+						<Quote key={quote.author} quote={quote} />
+					))}
+				</div> 
+			</div>
+		</div>
 	);
 };
 

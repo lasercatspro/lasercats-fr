@@ -45,7 +45,7 @@ function randomMembers(array: any[]) {
 
 const Team = () => {
 	return (
-		<div className="py-40">
+		<div className="">
 			<div className="bg-custom-dark mb-32">
 				<div className="py-80 max-w-7xl mx-auto">
 					<h2 className="md:text-5xl text-center !text-zinc-50">
