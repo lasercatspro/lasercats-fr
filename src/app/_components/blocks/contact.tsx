@@ -101,7 +101,7 @@ const Contact = () => {
 							onChange={(e) => handleTextChange(e)}
 						/>
 					</div>
-					<Button title="Envoyer" role="alter-black" type="submit" />
+					<Button title="Envoyer" role="ternary" type="submit" />
 				</form>
 			</div>
 		</div>

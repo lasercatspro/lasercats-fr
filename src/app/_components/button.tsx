@@ -2,7 +2,7 @@ import classNames from "classnames";
 
 interface Props {
 	type?: JSX.IntrinsicElements["button"]["type"];
-  role: "primary" | "secondary" | "alter-black";
+  role: "primary" | "secondary" | "ternary";
   title: string;
 }
 

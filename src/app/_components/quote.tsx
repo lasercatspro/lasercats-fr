@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { QuoteI } from "./blocks/testimonials";
+import { QuoteI } from "@/lib/testimonials";
 import Link from "next/link";
 
 const Quote = ({ quote }: { quote: QuoteI }) => {

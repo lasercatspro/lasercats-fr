@@ -14,7 +14,6 @@ const fetchPosts: () => Promise<Post[] | []> = async () => {
 
 export default async function Index(): Promise<JSX.Element> {
 	const allPosts = await fetchPosts();
-	console.log(allPosts);
 	
 	if (allPosts?.length === 0) {
 		notFound();
