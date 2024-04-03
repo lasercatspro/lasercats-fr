@@ -60,12 +60,11 @@ export default function RootLayout({
 					rel="stylesheet"
 				/>
 			</head>
+			{/*  */}
 			<body className="gradient w-full min-h-[100vh] mx-auto bg-cover bg-center bg-[url('/assets/images/jpg/bg.jpg')] flex flex-col justify-between">
 				<Navbar />
 				<Suspense fallback={null}>
-					<main className="min-h-[67vh]">
-						{children}
-					</main>
+					<main className="min-h-[67vh]">{children}</main>
 				</Suspense>
 				<Footer />
 			</body>

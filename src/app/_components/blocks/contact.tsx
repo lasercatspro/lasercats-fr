@@ -50,13 +50,12 @@ const Contact = () => {
 	};
 
 	return (
-		<div id="contact" className="px-4 md:px-40 py-24">
-			<h2 className="md:text-5xl md:mt-[200px] mb-40 text-center !text-custom-dark">
-				{
-					"Votre succès est notre mission, et nous transformons chaque projet en une expérience digitale mémorable, reflétant l'excellence et l'innovation."
-				}
-			</h2>
+		<div id="contact" className="px-4 md:px-40 py-40">
 			<div className="lg:w-2/3 max-w-7xl mx-auto">
+				<div className="text-center text-6xl py-12">
+					<p>Besoin ponctuel ?</p>
+					<p>Nouveau projet ?</p>
+				</div>
 				<form
 					id="form"
 					action="#"
@@ -102,7 +101,7 @@ const Contact = () => {
 							onChange={(e) => handleTextChange(e)}
 						/>
 					</div>
-					<Button title="Envoyer" role="alter-black" type="submit" />
+					<Button title="Envoyer" role="ternary" type="submit" />
 				</form>
 			</div>
 		</div>
