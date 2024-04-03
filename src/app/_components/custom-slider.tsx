@@ -50,7 +50,6 @@ const CustomSlider = ({
 	}, [carouselContext, currentSlide]);
 
 	useEffect(() => {
-		console.log(currentSlide, currentSlide % 2 === 0);
 		if (setBgColor) setBgColor(currentSlide % 2 === 0 ? "blue" : "green");
 	}, [currentSlide]);
 

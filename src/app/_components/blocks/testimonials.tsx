@@ -21,7 +21,7 @@ const Testimonials = () => {
 						naturalSlideWidth={300}
 						naturalSlideHeight={100}
 						totalSlides={3}
-						visibleSlides={isMobile ? 1 : 2}
+						visibleSlides={isMobile ? 1 : 2.2}
 						isIntrinsicHeight
 					>
 						<CustomSlider items={quotes} type="quote" />
