@@ -33,8 +33,8 @@ export const Navbar = (): ReactNode => {
 		>
 			{({ open }) => (
 				<>
-					<div className="mx-6 lg:mx-auto max-w-7xl">
-						<div className="flex h-16 justify-between relative">
+					<div className="mx-6 lg:mx-16">
+						<div className="flex h-28 justify-between relative">
 							<div className="flex w-full justify-between items-center gap-4">
 								<Link className="flex flex-shrink-0 items-center" href={"/"}>
 									<img

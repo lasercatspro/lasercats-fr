@@ -20,7 +20,8 @@ const config = {
 				"custom-dark": "#06050b"
 			},
 			lineClamp: {
-				10: "10"
+				10: "10",
+				13: "13"
 			}
 		},
 		fontFamily: {

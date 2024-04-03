@@ -28,12 +28,12 @@ const Grid = ({ children, type }: Props) => {
 	const rows = 5;
 	const cols = 10;
 	return (
-		<div className="sticky bg-transparent top-0 left-0 h-screen">
+		<div className="sticky bg-transparent top-0 left-0 h-screen overflow-x-hidden">
 			<div className="absolute top-0 left-0 w-full mx-auto h-screen flex justify-center items-center">
 				{children}
 			</div>
 			{/* Grid Structure */}
-			<div style={{zIndex: -100}} className="absolute top-0 left-0 bg-transparent w-[120vw] -ml-12 overflow-x-hidden grid grid-cols-10 h-[100vh]">
+			<div style={{zIndex: -100}} className="absolute top-0 left-0 bg-transparent w-[120vw] -ml-12 grid grid-cols-10 h-[100vh]">
 				{Array.from(Array(rows)).map((_row, rowIndex) =>
 					Array.from(Array(cols).keys()).map((col, colIndex) => (
 						<div
