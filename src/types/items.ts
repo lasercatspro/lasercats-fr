@@ -7,7 +7,7 @@ export interface Post {
   title: string
   type: "post"
   description: string
-  component: () => MDXContent
+  component?: () => MDXContent
 }
 export interface Client {
   slug: string
@@ -18,7 +18,7 @@ export interface Client {
   technos: string[]
   type: "client"
   image: string
-  component: () => MDXContent
+  component?: () => MDXContent
 }
 
 export interface Member {

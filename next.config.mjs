@@ -8,7 +8,7 @@ const nextConfig = {
 	// Optionally, add any other Next.js config below
 	images: {
 		domains: ["images.unsplash.com"]
-	}
+	},
 };
 
 /** @type {import('rehype-pretty-code').Options} */

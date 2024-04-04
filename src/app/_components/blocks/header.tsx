@@ -9,7 +9,7 @@ const ThreeLasercats = dynamic(() => import("./three-lasercats"), {
 
 const Header = (): ReactNode => {
 	return (
-		<div className="h-[100vh] flex flex-col justify-center relative bg-black">
+		<div className="h-[100vh] flex flex-col justify-center relative bg-custom-dark">
 			<ThreeLasercats />
 			<div className="mx-4 md:mx-16 font-extrabold !leading-snug absolute z-20 mt-[25vh]">
 				<h1 className='text-primary text-xl md:text-6xl'>

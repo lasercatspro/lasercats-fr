@@ -29,13 +29,13 @@ export const Navbar = (): ReactNode => {
 	return (
 		<Disclosure
 			as="nav"
-			className="fixed left-0 top-0 z-50 w-full bg-custom-dark"
+			className="fixed left-0 top-0 z-50 w-full bg-custom-dark bg-opacity-100 backdrop-blur border-b border-b-custom-dark"
 		>
 			{({ open }) => (
 				<>
-					<div className="mx-6 lg:mx-16">
-						<div className="flex h-28 justify-between relative">
-							<div className="flex w-full justify-between items-center gap-4">
+					<div className="mx-4 lg:mx-16">
+						<div className="flex h-16 justify-between relative">
+							<div className="flex w-full justify-between items-center">
 								<Link className="flex flex-shrink-0 items-center" href={"/"}>
 									<img
 										className="h-8 w-auto"
