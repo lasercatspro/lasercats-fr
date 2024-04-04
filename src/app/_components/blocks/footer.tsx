@@ -6,14 +6,14 @@ import { type ReactNode } from "react";
 export function Footer(): ReactNode {
 	return (
 		<footer className="flex flex-col justify-center gap-8 bg-custom-dark px-4 lg:px-12 pt-24 border-t-2 border-primary relative">
-			<ul className="flex gap-8 justify-center items-center">
+			<ul className="flex flex-col md:flex-row gap-8 justify-center items-center">
 				<li className="flex flex-col gap-1">
 					<span className="text-xl  text-zinc-50">2 avenue Jean Janvier</span>
 					<span className="text-xl  text-zinc-50">35000 RENNES</span>
 				</li>
 				<Image
 					alt="logo Lasercats"
-					src={"/assets/images/svg/logo-green.svg"}
+					src={"/assets/images/svg/logo-simple.svg"}
 					width={200}
 					height={200}
 				/>

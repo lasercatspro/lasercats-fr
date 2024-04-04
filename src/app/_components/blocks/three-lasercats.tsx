@@ -76,7 +76,7 @@ const ThreeLasercats = () => {
 	return (
 		<Canvas
 			style={{ opacity: `${loading ? 0 : 1}`, zIndex: 20 }}
-			camera={{ position: [15, -2, 2], fov: 70 }}
+			camera={{ position: [15, -2, 4], fov: 70 }}
 		>
 			<Lasercat />
 			{/* <Environment files="/assets/textures/star.hdr" background /> */}
