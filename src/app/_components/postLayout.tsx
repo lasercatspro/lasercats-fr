@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Skeleton } from "@mui/material";
 
 export function PostLayout({ article }: { article: Post | Client }): ReactNode {
-	const mdx: any = article.component();
+	const mdx: any = article?.component ? article?.component() : (() => <></>);
 	return (
 		<main>
 			<div className="xl:relative">

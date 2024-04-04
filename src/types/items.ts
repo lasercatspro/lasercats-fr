@@ -7,7 +7,7 @@ export interface Post {
   title: string
   type: "post"
   description: string
-  component: () => MDXContent
+  component?: () => MDXContent
 }
 export interface Client {
   slug: string

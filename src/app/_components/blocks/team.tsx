@@ -49,8 +49,8 @@ function randomMembers(array: any[]) {
 const Team = () => {
 	const thisTimeMembers = useMemo(() => randomMembers(members), []);
 	return ( 
-		<div className="relative max-w-7xl mx-auto space-y-12 leading-10">
-			<div className="flex justify-between gap-8">
+		<div className="relative px-4 md:px-16 space-y-12 leading-10">
+			<div className="flex justify-between">
 				<h2 className="w-1/2">
             Nous sommes une équipe soudée, réactive et toujours présente
 				</h2>
@@ -63,7 +63,7 @@ const Team = () => {
             pour être toujours disponible.
 				</p>
 			</div>
-			<div className="flex gap-1 justify-center max-w-7xl mx-auto w-full overflow-x-scroll">
+			<div className="flex gap-1 justify-center w-full overflow-x-scroll">
 				{thisTimeMembers.map((member) => (
 					<div
 						key={member.name}

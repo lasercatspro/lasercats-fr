@@ -13,7 +13,7 @@ const Project = ({ project }: Props) => {
 	const isMobile = useIsMobile({forIpad: true});
 	
 	return ( 
-		<div  className="flex flex-col lg:flex-row justify-between gap-8 mx-12">
+		<div  className="flex flex-col lg:flex-row justify-between gap-8">
 			<div className="flex flex-col justify-end mb-10 gap-8 items-start lg:w-1/2">
 				<h3 className="text-[2rem] lg:text-[8rem] leading-snug text-zinc-50">
 					{capitalize(project.title)}
