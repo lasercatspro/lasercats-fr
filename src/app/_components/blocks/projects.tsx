@@ -1,20 +1,23 @@
 "use client";
 
-import { projects } from "@/lib/projets";
 import GrayLink from "../gray-link";
 import { CarouselProvider, ButtonNext } from "pure-react-carousel";
 import CustomSlider from "../custom-slider";
 import { useState } from "react";
+import { Client } from "@/types/items";
 
-const Projects = () => {
+type Props = {
+	projects: Client[]
+}
+
+const Projects = ({ projects }: Props) => {
 	const [bgColor, setBgColor] = useState<"blue" | "green">("blue");
-	console.log(bgColor);
 	return (
-		<div className={`p-12 bg-gradient-to-br from-custom-dark ${bgColor === "blue"? "via-custom-blue" : "via-primary"}  to-custom-dark transition-colors duration-500`}>
+		<div className={`p-12 bg-cover ${bgColor === "blue"? "bg-[url('/assets/images/jpg/bg-blue.jpg')]" : "bg-[url('/assets/images/jpg/bg-green.jpg')]"} transition-colors duration-500`}>
 			<CarouselProvider
 				naturalSlideWidth={300}
 				naturalSlideHeight={100}
-				totalSlides={projects.length}
+				totalSlides={projects?.length}
 				visibleSlides={1}
 				isIntrinsicHeight
 			>

@@ -4,11 +4,11 @@
 import React, { ReactNode } from "react";
 
 type Props = {
-  type: "exp" | "skill"
+  type: "exp" | "skill" | "challenges" | "vite"
   children: ReactNode;
 };
 
-const Grid = ({ children, type }: Props) => {
+const WhiteGrid = ({ children, type }: Props) => {
 	
 	const tills = [
 		// Bottom Left "bl"
@@ -50,7 +50,7 @@ const Grid = ({ children, type }: Props) => {
                     tills.filter(i => i.coord === `${rowIndex},${colIndex}`)?.at(0)?.place === "tr" &&"45deg"
                 		}, rgba(255,255,255,0) 0%, rgba(0,198,94,0.02) 62%, rgba(0,198,94,0.3351541300113795) 100%)` 
                 		:
-                	(type === "skill" &&  
+                	(type === "skill" || type === "vite" &&  
                   tills.filter(i => i.coord === `${rowIndex},${colIndex}`)?.at(0)?.color === "blue") ? 
                 		`linear-gradient(${
                   	tills.filter(i => i.coord === `${rowIndex},${colIndex}`)?.at(0)?.place === "bl" &&"220deg" || 
@@ -71,4 +71,4 @@ const Grid = ({ children, type }: Props) => {
 	);
 };
 
-export default Grid;
+export default WhiteGrid;

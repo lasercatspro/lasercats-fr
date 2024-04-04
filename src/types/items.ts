@@ -18,7 +18,7 @@ export interface Client {
   technos: string[]
   type: "client"
   image: string
-  component: () => MDXContent
+  component?: () => MDXContent
 }
 
 export interface Member {

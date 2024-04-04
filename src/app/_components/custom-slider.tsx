@@ -13,11 +13,11 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 import { Dispatch, SetStateAction, useContext, useEffect, useMemo, useState } from "react";
 import Quote from "./quote";
 import { QuoteI } from "@/lib/testimonials";
-import { ProjectI } from "@/lib/projets";
 import Project from "./project";
+import { Client } from "@/types/items";
 
 type Props = {
-  items: QuoteI[] | ProjectI[];
+  items: QuoteI[] | Client[];
   type: "quote" | "projects";
   backBtn?: boolean;
   nextBtn?: boolean;
@@ -63,14 +63,14 @@ const CustomSlider = ({
 	
 	return (
 		<>
-			<Slider className="relative">
+			<Slider className="relative mb-8">
 				{type === "quote" && (items as QuoteI[]).map((quote, index) => (
-					<Slide key={quote.author} index={index}>
+					<Slide key={quote?.author} index={index}>
 						<Quote quote={quote} />
 					</Slide>
 				))}
-				{type === "projects" && (items as ProjectI[]).map((project, index) => (
-					<Slide key={project.name} index={index}>
+				{type === "projects" && (items as Client[]).map((project, index) => (
+					<Slide key={project?.title} index={index}>
 						<Project project={project} />
 					</Slide>
 				))}
