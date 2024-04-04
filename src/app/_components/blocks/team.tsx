@@ -50,11 +50,11 @@ const Team = () => {
 	const thisTimeMembers = useMemo(() => randomMembers(members), []);
 	return ( 
 		<div className="relative px-4 md:px-16 space-y-12 leading-10">
-			<div className="flex justify-between">
-				<h2 className="w-1/2">
+			<div className="flex flex-col lg:flex-row gap-4 justify-between">
+				<h2 className="lg:w-1/2">
             Nous sommes une équipe soudée, réactive et toujours présente
 				</h2>
-				<p className="w-1/2">
+				<p className="lg:w-1/2">
             Nous sommes une équipe qui travaille dans un cadre coopératif où
             nous nous sentons bien. Nous travaillons sur les projets qui nous
             donne envie et si nous décidons de travailler avec vous, c’est toute
