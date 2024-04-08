@@ -18,7 +18,7 @@ const GridTransition = () => {
 			squares = Array.from(s);
 		}
 		const thisGsap = gsap.timeline({repeat: 1});
-		console.log(element, squares);
+
 		if (element && squares.length > 0) {
 			squares.forEach((square) => {
 				thisGsap.to(square, {
@@ -30,8 +30,8 @@ const GridTransition = () => {
 					},
 					scrollTrigger: {
 						trigger: gridRef.current,
-						start: "top 40%", 
-						end: "bottom 50%",
+						start: "top 60%", 
+						end: "bottom 60%",
 						scrub: true,
 						// markers: true
 					}
@@ -52,7 +52,7 @@ const GridTransition = () => {
 			<div className="mb-32 overflow-x-hidden relative !bg-opacity-10">
 				<div className=" relative">
 					<div
-						className="flex justify-center items-center h-[60vh] lg:h-[80vh]"
+						className="flex justify-center items-center h-[44vh] lg:h-screen"
 					>
 						<p className="md:text-5xl text-center !text-zinc-50 mix-blend-difference px-2 lg:px-8">
 							{
@@ -62,11 +62,11 @@ const GridTransition = () => {
 						<div
 							ref={gridRef}
 							style={{ zIndex: -1 }}
-							className="absolute top-0 -left-12 w-[120vw] grid grid-cols-10 h-auto"
+							className="absolute top-0 -left-12 w-[120vw] grid grid-cols-10 h-fit"
 						>
 							
 							{Array.from(Array(isMobile ? rowsMobile : rows)).map((_row, rowIndex) =>
-								Array.from(Array(isMobile ? colsMobile : cols).keys()).map((col, colIndex) => (
+								Array.from(Array(isMobile ? colsMobile : cols).keys()).map((_col, colIndex) => (
 									<div
 										key={`${colIndex}-${rowIndex}`}
 										className={"aspect-square squares bg-custom-dark"}

@@ -63,7 +63,7 @@ const WhiteGrid = ({ children, type }: Props) => {
                     tills.filter(i => i?.coord === `${rowIndex},${colIndex}`)?.at(0)?.place === "br" &&"135deg" ||
                     tills.filter(i => i?.coord === `${rowIndex},${colIndex}`)?.at(0)?.place === "tl" &&"315deg" ||
                     tills.filter(i => i?.coord === `${rowIndex},${colIndex}`)?.at(0)?.place === "tr" &&"45deg"
-                		}, rgba(255,255,255,0) 0%, rgba(4,2,103,0.02) 62%, rgba(4,2,103,0.3351541300113795) 100%)`
+                		}, rgba(255,255,255,0) 0%, rgba(6,3,141,0.015) 62%, rgba(6,3,141,0.3351541300113795) 100%)`
                 		: ""
                 )
 							}}

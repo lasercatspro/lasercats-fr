@@ -38,7 +38,7 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 	return (
 		<div ref={gridRef} className="relative h-[175vh]">
 			<WhiteGrid type={type}>
-				<div   style={{background: "radial-gradient(closest-side, rgba(250,249,247,1) 50%, rgba(0,0,0,0) 100%)"}} className="mx-auto max-w-7xl py-24 px-12 lg:py-64 lg:px-32">
+				<div style={{background: "radial-gradient(closest-side, rgba(250,249,247,1) 50%, rgba(0,0,0,0) 100%)"}} className="mx-auto max-w-7xl py-24 px-12 lg:py-64 lg:px-32">
 					<Transition
 						show={type === "exp"}
 						enter="transition duration-700 ease-out"
@@ -64,7 +64,7 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 						leaveTo="opacity-0"
 					>
 						{!isLikeContent && type === "skill" && <div className="flex flex-col gap-8 lg:text-center max-w-5xl mx-auto">
-							<h2 className="!text-3xl md:!text-5xl">Nous avons <br /><strong className="!text-3xl md:!text-5xl !text-blue-700">{"les compétences"}</strong></h2>
+							<h2 className="!text-3xl md:!text-5xl">Nous avons <br /><strong className="!text-3xl md:!text-5xl !text-custom-blue">{"les compétences"}</strong></h2>
 							<p className="text-xs lg:text-xl">Nous maîtrisons tout ce qu’il faut pour construire n’importe quelle application web ou mobile. Nous avons toutes les compétences essentielles en interne et pouvons compter sur notre galaxie de partenaires fantastiques quand il faut pousser dans une direction : conseil en scalabilité, SEO, devops, dataviz, produit, sécurité, hardware, performance, accessibilité, écologie numérique, recherche UX…</p>
 							<p className="font-extrabold text-sm lg:text-xl">Nous pouvons couvrir 100% de vos besoins pour votre projet</p>
 						</div>}
@@ -97,7 +97,7 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 						leaveTo="opacity-0"
 					>
 						{isLikeContent && type === "vite" && <div className="flex flex-col gap-8 lg:text-center max-w-5xl mx-auto">
-							<h2 className="!text-3xl md:!text-5xl">Nous aimons <br /><strong className="!text-3xl md:!text-5xl !text-blue-700">{"aller vite"}</strong></h2>
+							<h2 className="!text-3xl md:!text-5xl">Nous aimons <br /><strong className="!text-3xl md:!text-5xl !text-custom-blue">{"aller vite"}</strong></h2>
 							<p className="text-xs lg:text-xl">
 								Nous savons aller vite pour tester un produit ou une intuition en version beta et lui faire rencontrer son marché, puis travailler plus lentement quand il commence à avoir de la traction et qu’il a besoin d’une plus grande stabilité.Pour sommes expert de 3 frameworks que nous connaissons par coeur et qui n’ont rien à prouver:
 							</p>

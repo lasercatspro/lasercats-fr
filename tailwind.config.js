@@ -16,7 +16,7 @@ const config = {
 			colors: {
 				primary: "#00c65e",
 				secondary: "#06038d",
-				"custom-blue": "#040267",
+				"custom-blue": "#06038D",
 				"custom-dark": "#06050b"
 			},
 			lineClamp: {

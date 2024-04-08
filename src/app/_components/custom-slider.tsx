@@ -22,7 +22,7 @@ type Props = {
   backBtn?: boolean;
   nextBtn?: boolean;
   dotsType?: "range" | "bullets";
-	setBgColor?: Dispatch<SetStateAction<"blue" | "green">>
+	setBgColor?: Dispatch<SetStateAction<"#06038D" | "#00C65E" | "transition">>
 };
 
 const CustomSlider = ({
@@ -50,7 +50,10 @@ const CustomSlider = ({
 	}, [carouselContext, currentSlide]);
 
 	useEffect(() => {
-		if (setBgColor) setBgColor(currentSlide % 2 === 0 ? "blue" : "green");
+		if (setBgColor) {
+			setBgColor("transition");
+			setTimeout(() => setBgColor(currentSlide % 2 === 0 ? "#06038D" : "#00C65E"), 100);
+		}
 	}, [currentSlide]);
 
 	useEffect(() => {
