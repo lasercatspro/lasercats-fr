@@ -48,10 +48,10 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 						leaveFrom="opacity-100"
 						leaveTo="opacity-0"
 					>
-						{!isLikeContent && type === "exp" && <div className="flex flex-col gap-8 text-center max-w-5xl mx-auto">
-							<h2>Nous avons <strong className="text-2xl md:text-5xl">{"l'expérience métier"}</strong></h2>
+						{!isLikeContent && type === "exp" && <div className="flex flex-col gap-8 lg:text-center max-w-5xl mx-auto">
+							<h2 className="!text-3xl md:!text-5xl">Nous avons <br /><strong className="!text-3xl md:!text-5xl">{"l'expérience métier"}</strong></h2>
 							<p className="text-xs lg:text-xl">Nous sommes d’anciens CTO et artisans du web depuis loooongtemps : dans les secteurs de l’édition, des startups, des marketplaces, de l’automation, de la protection des donnés, de l’open source. Nous connaissons probablement vos problématiques et saurons trouver comment construire ou améliorer votre produit.</p>
-							<p className="font-extrabold text-xs lg:text-xl">Nous pourrons vous conseiller sur votre stratégie produit et développement logiciel global</p>
+							<p className="font-extrabold text-sm lg:text-xl">Nous pourrons vous conseiller sur votre stratégie produit et développement logiciel global</p>
 						</div>}
 					</Transition>
 					<Transition
@@ -63,10 +63,10 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 						leaveFrom="opacity-100"
 						leaveTo="opacity-0"
 					>
-						{!isLikeContent && type === "skill" && <div className="flex flex-col gap-8 text-center max-w-5xl mx-auto">
-							<h2>Nous avons <strong className="text-2xl md:text-5xl !text-blue-700">{"les compétences"}</strong></h2>
+						{!isLikeContent && type === "skill" && <div className="flex flex-col gap-8 lg:text-center max-w-5xl mx-auto">
+							<h2 className="!text-3xl md:!text-5xl">Nous avons <br /><strong className="!text-3xl md:!text-5xl !text-blue-700">{"les compétences"}</strong></h2>
 							<p className="text-xs lg:text-xl">Nous maîtrisons tout ce qu’il faut pour construire n’importe quelle application web ou mobile. Nous avons toutes les compétences essentielles en interne et pouvons compter sur notre galaxie de partenaires fantastiques quand il faut pousser dans une direction : conseil en scalabilité, SEO, devops, dataviz, produit, sécurité, hardware, performance, accessibilité, écologie numérique, recherche UX…</p>
-							<p className="font-extrabold text-xs lg:text-xl">Nous pouvons couvrir 100% de vos besoins pour votre projet</p>
+							<p className="font-extrabold text-sm lg:text-xl">Nous pouvons couvrir 100% de vos besoins pour votre projet</p>
 						</div>}
 					</Transition>
 					{/* We Like */}
@@ -79,10 +79,10 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 						leaveFrom="opacity-100"
 						leaveTo="opacity-0"
 					>
-						{isLikeContent && type === "challenges" && <div className="flex flex-col gap-8 text-center max-w-5xl mx-auto">
-							<h2>Nous aimons <strong className="text-2xl md:text-5xl">{"les challenges"}</strong></h2>
+						{isLikeContent && type === "challenges" && <div className="flex flex-col gap-8 lg:text-center max-w-5xl mx-auto">
+							<h2 className="!text-3xl md:!text-5xl">Nous aimons <br /><strong className="!text-3xl md:!text-5xl">{"les challenges"}</strong></h2>
 							<p className="text-xs lg:text-xl">Nous adorons la stabilité des framework simples, mais aimons aussi quand les challenges sont fous et débordent du web : hardware, musique, blockchain, IA, sécurité et vie privée. Si vous projets ont besoin d’une tech inédite, c’est fort probable qu’on ait envie de faire un bout de chemin avec vous.</p>
-							<p className="font-extrabold text-xs lg:text-xl">
+							<p className="font-extrabold text-sm lg:text-xl">
 							Nous pourrons réaliser votre produit, qu’elle qu’en soit, aussi fou soit-il son niveau de folie.
 							</p>
 						</div>}
@@ -96,12 +96,12 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 						leaveFrom="opacity-100"
 						leaveTo="opacity-0"
 					>
-						{isLikeContent && type === "vite" && <div className="flex flex-col gap-8 text-center max-w-5xl mx-auto">
-							<h2>Nous aimons <strong className="text-2xl md:text-5xl !text-blue-700">{"aller vite"}</strong></h2>
+						{isLikeContent && type === "vite" && <div className="flex flex-col gap-8 lg:text-center max-w-5xl mx-auto">
+							<h2 className="!text-3xl md:!text-5xl">Nous aimons <br /><strong className="!text-3xl md:!text-5xl !text-blue-700">{"aller vite"}</strong></h2>
 							<p className="text-xs lg:text-xl">
 								Nous savons aller vite pour tester un produit ou une intuition en version beta et lui faire rencontrer son marché, puis travailler plus lentement quand il commence à avoir de la traction et qu’il a besoin d’une plus grande stabilité.Pour sommes expert de 3 frameworks que nous connaissons par coeur et qui n’ont rien à prouver:
 							</p>
-							<p className="font-extrabold text-xs lg:text-xl">
+							<p className="font-extrabold text-sm lg:text-xl">
 								Votre produit pourra être rapidement mis sur le marché
 							</p>
 						</div>}
