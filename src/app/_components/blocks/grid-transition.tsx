@@ -27,8 +27,8 @@ const GridTransition = () => {
 
 	const rows = 4;
 	const cols = 10;
-	const rowsMobile = 4;
-	const colsMobile = 4;
+	const rowsMobile = 9;
+	const colsMobile = 10;
 	
 	const targetsCoord = useMemo(
 		() => [
@@ -54,7 +54,26 @@ const GridTransition = () => {
 			{col: Math.floor(Math.random() * colsMobile), row: Math.floor(Math.random() * rowsMobile)},
 			{col: Math.floor(Math.random() * colsMobile), row: Math.floor(Math.random() * rowsMobile)},
 			{col: Math.floor(Math.random() * colsMobile), row: Math.floor(Math.random() * rowsMobile)},
-			{col: Math.floor(Math.random() * colsMobile), row: Math.floor(Math.random() * rowsMobile)},
+			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -6},
+			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -6},
+			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -5},
+			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -5},
+			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -5},
+			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -4},
+			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -4},
+			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -4},
+			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -4},
+			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -3},
+			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -3},
+			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -3},
+			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -2},
+			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -2},
+			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -2},
+			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -2},
+			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -1},
+			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -1},
+			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -1},
+			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -1},
 			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -1},
 			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -1},
 			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -1},
@@ -80,14 +99,14 @@ const GridTransition = () => {
 						<div
 							ref={gridRef}
 							style={{ zIndex: -1 }}
-							className="absolute top-0 -left-12 w-[120vw] grid grid-cols-4 lg:grid-cols-10 h-[60vh] lg:h-auto"
+							className="absolute top-0 -left-12 w-[120vw] grid grid-cols-10 h-auto"
 						>
 							
 							{Array.from(Array(isMobile ? rowsMobile : rows)).map((_row, rowIndex) =>
 								Array.from(Array(isMobile ? colsMobile : cols).keys()).map((col, colIndex) => (
 									<div
 										key={`${colIndex}-${rowIndex}`}
-										className={"lg:aspect-square"}
+										className={"aspect-square"}
 										style={{
 											background:
                           ((gridPosition?.bottom as number) < (gridPosition?.height as number) + (isMobile ? 70 : 60) * (isMobile ? (rowsMobile - rowIndex) : (rows - rowIndex))) &&
