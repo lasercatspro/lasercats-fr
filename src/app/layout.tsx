@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./_components/blocks/navbar";
 import { Suspense, type ReactNode } from "react";
+import SmoothScrolling from "./_components/smootScroll";
 
 export const metadata: Metadata = {
 	title: "Lasercats - Agence de développeurs pour des solutions web",
@@ -64,7 +65,11 @@ export default function RootLayout({
 			<body className="gradient w-full min-h-[100vh] mx-auto bg-cover bg-center bg-[url('/assets/images/jpg/bg.jpg')] flex flex-col justify-between">
 				<Navbar />
 				<Suspense fallback={null}>
-					<main className="min-h-[67vh]">{children}</main>
+					<SmoothScrolling>
+						<main className="min-h-[67vh]">
+							{children}
+						</main>
+					</SmoothScrolling>
 				</Suspense>
 				<Footer />
 			</body>
