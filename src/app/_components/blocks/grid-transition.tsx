@@ -67,12 +67,12 @@ const GridTransition = () => {
 	return (
 		<div>
 			<div className="mb-32 overflow-x-hidden relative !bg-opacity-10">
-				<div className="px-8 lg:px-24 relative">
+				<div className=" relative">
 					<div
 						// style={{ zIndex: 20 }}
-						className="flex justify-center items-center h-[55vh] lg:h-screen"
+						className="flex justify-center items-center h-[60vh] lg:h-[80vh]"
 					>
-						<p className="md:text-5xl text-center !text-zinc-50 mix-blend-difference">
+						<p className="md:text-5xl text-center !text-zinc-50 mix-blend-difference px-2 lg:px-8">
 							{
 								"Votre succès est notre mission, et nous transformons chaque projet en une expérience digitale mémorable, reflétant l'excellence et l'innovation."
 							}
@@ -80,7 +80,7 @@ const GridTransition = () => {
 						<div
 							ref={gridRef}
 							style={{ zIndex: -1 }}
-							className="absolute top-0 -left-12 w-[120vw] grid grid-cols-4 lg:grid-cols-10 h-[50vh] lg:h-[95vh]"
+							className="absolute top-0 -left-12 w-[120vw] grid grid-cols-4 lg:grid-cols-10 h-[60vh] lg:h-auto"
 						>
 							
 							{Array.from(Array(isMobile ? rowsMobile : rows)).map((_row, rowIndex) =>
@@ -90,7 +90,7 @@ const GridTransition = () => {
 										className={"lg:aspect-square"}
 										style={{
 											background:
-                          ((gridPosition?.bottom as number) < (gridPosition?.height as number) + (isMobile ? 70 : 40) * (isMobile ? (rowsMobile - rowIndex) : (rows - rowIndex))) &&
+                          ((gridPosition?.bottom as number) < (gridPosition?.height as number) + (isMobile ? 70 : 60) * (isMobile ? (rowsMobile - rowIndex) : (rows - rowIndex))) &&
 															(
 																// // On rend transparent les div pour chaque ligne
 																(isMobile ? targetsCoordMobile : targetsCoord).filter(obj => obj.col === colIndex && obj.row === rowIndex).length > 0 

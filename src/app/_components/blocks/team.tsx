@@ -63,13 +63,13 @@ const Team = () => {
             pour être toujours disponible.
 				</p>
 			</div>
-			<div className="flex gap-1 justify-center w-full overflow-x-scroll">
+			<div className="grid grid-cols-3 lg:flex gap-1 justify-center w-full overflow-x-scroll">
 				{thisTimeMembers.map((member) => (
 					<div
 						key={member.name}
 						className="flex flex-col items-center w-full justify-center"
 					>
-						<div className="h-[300px] w-full bg-gray-400" />
+						<div className="h-[200px] lg:h-[300px] w-full bg-gray-400" />
 						<div className="flex flex-col justify-center items-center p-8 gap-4">
 							<p className=" !text-custom-dark uppercase font-extrabold text-xl">
 								{member.name}

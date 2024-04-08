@@ -12,8 +12,9 @@ type Props = {
 
 const Projects = ({ projects }: Props) => {
 	const [bgColor, setBgColor] = useState<"blue" | "green">("blue");
+
 	return (
-		<div className={`px-4 py-16 md:px-16 bg-cover ${bgColor === "blue"? "bg-[url('/assets/images/jpg/bg-blue.jpg')]" : "bg-[url('/assets/images/jpg/bg-green.jpg')]"} transition-colors duration-500`}>
+		<div className={`px-4 py-16 md:px-16 bg-cover ${bgColor === "blue" ? "bg-blue" : "bg-green"}`}>
 			<CarouselProvider
 				naturalSlideWidth={300}
 				naturalSlideHeight={100}
