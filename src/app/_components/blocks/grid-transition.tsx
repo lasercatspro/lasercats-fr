@@ -1,86 +1,50 @@
 "use client";
 
 import useIsMobile from "@/app/hooks/useIsMobile";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const GridTransition = () => {
-	const [gridPosition, setGridPosition] = useState<DOMRect | null>(null);
 	const gridRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
-		const handleScroll = () => {
-			if (gridRef.current) {
-				const element = gridRef.current.getBoundingClientRect();
-				console.log(element);
-				setGridPosition(element);
-			}
-		};
-
-		// Ajouter un écouteur d'événements pour détecter le défilement
-		window.addEventListener("scroll", handleScroll, { passive: true });
-
-		// Nettoyer l'écouteur d'événements lors du démontage du composant
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, []); // exécuté une seule fois lors du montage
+		const element = gridRef?.current;
+		let squares: any[] = [];
+		if (window !== undefined) {
+			const s = window.document.querySelectorAll(".squares");
+			squares = Array.from(s);
+		}
+		const thisGsap = gsap.timeline({repeat: 1});
+		console.log(element, squares);
+		if (element && squares.length > 0) {
+			squares.forEach((square) => {
+				thisGsap.to(square, {
+					opacity: 0,
+					ease: "expo.inOut",
+					duration: 0.25,
+					stagger: function() {
+						return Math.random() * 0.9;
+					},
+					scrollTrigger: {
+						trigger: gridRef.current,
+						start: "top 40%", 
+						end: "bottom 50%",
+						scrub: true,
+						// markers: true
+					}
+				});
+			});
+		}
+	}, []);
 
 	const rows = 4;
 	const cols = 10;
 	const rowsMobile = 9;
 	const colsMobile = 10;
 	
-	const targetsCoord = useMemo(
-		() => [
-			{col: Math.floor(Math.random() * cols), row: Math.floor(Math.random() * rows)},
-			{col: Math.floor(Math.random() * cols), row: Math.floor(Math.random() * rows)},
-			{col: Math.floor(Math.random() * cols), row: Math.floor(Math.random() * rows)},
-			{col: Math.floor(Math.random() * cols), row: Math.floor(Math.random() * rows)},
-			{col: Math.floor(Math.random() * cols), row: Math.floor(Math.random() * rows)},
-			{col: Math.floor(Math.random() * cols), row: Math.floor(Math.random() * rows)},
-			{col: Math.floor(Math.random() * cols), row: Math.floor(Math.random() * rows)},
-			{col: Math.floor(Math.random() * cols), row: Math.floor(Math.random() * rows)},
-			{col: Math.floor(Math.random() * cols), row: Math.floor(Math.random() * rows)},
-			{col: Math.floor(Math.random() * cols), row: Math.floor(Math.random() * rows)},
-			{col: Math.floor(Math.random() * cols), row: rows - 1},
-			{col: Math.floor(Math.random() * cols), row: rows - 1},
-			{col: Math.floor(Math.random() * cols), row: rows - 1},
-		],
-		[]
-	);
-	const targetsCoordMobile = useMemo(
-		() => [
-			{col: Math.floor(Math.random() * colsMobile), row: Math.floor(Math.random() * rowsMobile)},
-			{col: Math.floor(Math.random() * colsMobile), row: Math.floor(Math.random() * rowsMobile)},
-			{col: Math.floor(Math.random() * colsMobile), row: Math.floor(Math.random() * rowsMobile)},
-			{col: Math.floor(Math.random() * colsMobile), row: Math.floor(Math.random() * rowsMobile)},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -6},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -6},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -5},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -5},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -5},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -4},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -4},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -4},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -4},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -3},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -3},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -3},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -2},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -2},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -2},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -2},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -1},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -1},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -1},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -1},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -1},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -1},
-			{col: Math.floor(Math.random() * colsMobile), row: rowsMobile -1},
-		],
-		[]
-	);
-
 	const isMobile = useIsMobile({ forIpad: true });
 	
 	return (
@@ -88,7 +52,6 @@ const GridTransition = () => {
 			<div className="mb-32 overflow-x-hidden relative !bg-opacity-10">
 				<div className=" relative">
 					<div
-						// style={{ zIndex: 20 }}
 						className="flex justify-center items-center h-[60vh] lg:h-[80vh]"
 					>
 						<p className="md:text-5xl text-center !text-zinc-50 mix-blend-difference px-2 lg:px-8">
@@ -106,15 +69,7 @@ const GridTransition = () => {
 								Array.from(Array(isMobile ? colsMobile : cols).keys()).map((col, colIndex) => (
 									<div
 										key={`${colIndex}-${rowIndex}`}
-										className={"aspect-square"}
-										style={{
-											background:
-                          ((gridPosition?.bottom as number) < (gridPosition?.height as number) + (isMobile ? 70 : 60) * (isMobile ? (rowsMobile - rowIndex) : (rows - rowIndex))) &&
-															(
-																// // On rend transparent les div pour chaque ligne
-																(isMobile ? targetsCoordMobile : targetsCoord).filter(obj => obj.col === colIndex && obj.row === rowIndex).length > 0 
-															) ? "transparent" : "black"
-										}}
+										className={"aspect-square squares bg-custom-dark"}
 									/>
 								))
 							)}
