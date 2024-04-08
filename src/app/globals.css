@@ -65,5 +65,12 @@ html {
     @apply border-b-2 bg-transparent focus:outline-none target:border-0 transition-none;
   }
 
+  .bg-blue {
+    @apply bg-[url('/assets/images/jpg/bg-mini-blue.jpg')];
+  }
+
+  .bg-green {
+    @apply bg-[url('/assets/images/jpg/bg-mini-green.jpg')];
+  }
 }
 

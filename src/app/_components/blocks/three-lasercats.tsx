@@ -16,11 +16,20 @@ import {
 import { ShaderMaterial } from "three";
 import { EffectComposer, DepthOfField, Bloom, Noise } from "@react-three/postprocessing";
 import { extend } from "react-three-fiber";
+import useIsMobile from "@/app/hooks/useIsMobile";
 
 extend({ ShaderMaterial });
 
 const Lasercat = () => {
 	const { scene } = useGLTF("/assets/textures/lasercats-without-eyes.gltf");
+	const isMobile = useIsMobile({ forIpad: true });
+	useEffect(() => {
+		if (!isMobile) {
+			scene.position.set(5, 0, -3);
+		} else {
+			scene.position.set(0, 0, 0);
+		}
+	}, [scene, isMobile]);
 	useMemo(() => {
 		if (!scene) return null;
 
@@ -49,8 +58,6 @@ const Lasercat = () => {
 				mesh.material = material;
 			}
 		});
-
-		scene.position.set(5, 0, -3);
 		return scene;
 	}, [scene]);
 	

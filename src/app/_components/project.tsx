@@ -25,7 +25,7 @@ const Project = ({ project }: Props) => {
 					src={project.image}
 					className="rounded-md w-full"
 				/>}
-				<div className="grid grid-cols-2 lg:flex w-full gap-4">
+				<div className="grid grid-cols-2 lg:flex w-full gap-4 text-center">
 					{project?.technos.map((tech) => (
 						<p
 							key={tech}

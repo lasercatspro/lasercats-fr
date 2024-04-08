@@ -1,5 +1,4 @@
 import Container from "@/app/_components/container";
-import { type ReactNode } from "react";
 import Header from "./_components/blocks/header";
 import Contact from "./_components/blocks/contact";
 import Numbers from "./_components/blocks/numbers";
@@ -12,7 +11,7 @@ import GridTransition from "./_components/blocks/grid-transition";
 import Team from "./_components/blocks/team";
 import LaserGame from "./_components/game/lasergame";
 
-export default async function Index (): Promise<ReactNode> {
+export default async function Index () {
 	const projects = (await getAllItems("client")).map(c => {
 		if (c?.component) delete c?.component;
 		return c;
