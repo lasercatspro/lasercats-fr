@@ -1,7 +1,7 @@
 "use client"; // Error components must be Client Components
 
 import { useEffect } from "react";
-import Container from "./_components/container";
+import Container from "../_components/container";
 
 export default function Error ({
 	error,

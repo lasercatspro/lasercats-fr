@@ -29,7 +29,7 @@ export const Navbar = (): ReactNode => {
 	return (
 		<Disclosure
 			as="nav"
-			className="fixed left-0 top-0 z-50 w-full bg-custom-dark bg-opacity-100 backdrop-blur border-b border-b-custom-dark"
+			className="fixed left-0 top-0 z-50 w-full bg-custom-dark bg-opacity-90 backdrop-blur-sm border-b border-b-custom-dark"
 		>
 			{({ open }) => (
 				<>
@@ -43,7 +43,7 @@ export const Navbar = (): ReactNode => {
 										alt="Your Company"
 									/>
 								</Link>
-								<Link href={"#contact"} className="md:hidden primary h-6 rounded-sm !text-white hover:no-underline">
+								<Link href={"#contact"} className="md:hidden primary h-6 rounded-sm hover:no-underline">
 									Nous contacter
 								</Link>
 								<div className="-ml-2 mr-2 flex items-center md:hidden">

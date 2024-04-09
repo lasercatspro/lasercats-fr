@@ -1,4 +1,4 @@
-import Container from "@/app/_components/container";
+import Container from "@/_components/container";
 import cn from "classnames";
 import { type ReactNode } from "react";
 

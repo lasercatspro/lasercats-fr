@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import { Client, type Post } from "../../types/items";
+import { Client, type Post } from "../types/items";
 import { Preview } from "./preview";
 
 interface Props {

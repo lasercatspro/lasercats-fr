@@ -1,8 +1,8 @@
-import { PostLayout } from "@/app/_components/postLayout";
-import Container from "@/app/_components/container";
-import { getItemBySlug } from "@/lib/api";
+import { PostLayout } from "@/_components/postLayout";
+import Container from "@/_components/container";
+import { getItemBySlug } from "../../../lib/api";
 import { notFound } from "next/navigation";
-import { Client } from "@/types/items";
+import { Client } from "../../../types/items";
 
 const fetchPost: (clientSlug: string) => Promise<Client | undefined> = async (
 	clientSlug
@@ -38,9 +38,11 @@ const ArticlePage = async ({
 		notFound();
 	}
 	return (
-		<Container classes="max-w-7xl mx-auto mt-20 lg:mt-64">
-			<PostLayout article={client} />
-		</Container>
+		<main>
+			<Container classes="max-w-7xl mx-auto mt-20 lg:mt-64">
+				<PostLayout article={client} />
+			</Container>
+		</main>
 	);
 };
 

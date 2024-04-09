@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { type ReactNode } from "react";
-import Container from "./_components/container";
+import Container from "../_components/container";
 
 export default function NotFound (): ReactNode {
 	return (

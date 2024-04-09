@@ -7,10 +7,6 @@
   src: url("../../public/assets/fonts/SuisseIntl-Regular.ttf");
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 @layer base {
   * {
     @apply transition-all duration-200;

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Avatar from "./avatar";
 import CoverImage from "./coverImage";
 import DateFormatter from "./dateFormatter";
-import { Client, type Post } from "@/types/items";
+import { Client, type Post } from "../types/items";
 import { type ReactNode } from "react";
 
 interface Props {

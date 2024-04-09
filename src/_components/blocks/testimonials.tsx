@@ -3,7 +3,7 @@
 import { CarouselProvider } from "pure-react-carousel";
 import CustomSlider from "../custom-slider";
 import useIsMobile from "@/app/hooks/useIsMobile";
-import { quotes } from "@/lib/testimonials";
+import { quotes } from "../../lib/testimonials";
 
 const Testimonials = () => {
 	const isMobile = useIsMobile({ forIpad: true });
