@@ -2,6 +2,7 @@
 
 import { Member } from "../../types/items";
 import { useMemo } from "react";
+import Container from "../container";
 
 const members: Member[] = [
 	{
@@ -48,41 +49,43 @@ function randomMembers(array: any[]) {
 
 const Team = () => {
 	const thisTimeMembers = useMemo(() => randomMembers(members), []);
-	return ( 
-		<div className="relative px-4 md:px-16 space-y-12 leading-10">
-			<div className="flex flex-col lg:flex-row gap-4 justify-between">
-				<h2 className="lg:w-1/2">
+	return (
+		<Container>
+			<div className="relative px-4 md:px-16 space-y-12 leading-10">
+				<div className="flex flex-col lg:flex-row gap-4 justify-between">
+					<h2 className="lg:w-1/2">
             Nous sommes une équipe soudée, réactive et toujours présente
-				</h2>
-				<p className="lg:w-1/2">
+					</h2>
+					<p className="lg:w-1/2">
             Nous sommes une équipe qui travaille dans un cadre coopératif où
             nous nous sentons bien. Nous travaillons sur les projets qui nous
             donne envie et si nous décidons de travailler avec vous, c’est toute
             l’équipe qui sera engagée pour réaliser votre projet. Nous avons des
             outils directs pour échanger avec vous et nous nous sommes organisés
             pour être toujours disponible.
-				</p>
-			</div>
-			<div className="grid grid-cols-3 lg:flex gap-1 justify-center w-full overflow-x-scroll">
-				{thisTimeMembers.map((member) => (
-					<div
-						key={member.name}
-						className="flex flex-col items-center w-full justify-center"
-					>
-						<div className="h-[200px] lg:h-[300px] w-full bg-gray-400" />
-						<div className="flex flex-col justify-center items-center p-8 gap-4">
-							<p className=" !text-custom-dark uppercase font-extrabold text-xl">
-								{member.name}
-							</p>
-							<p className=" !text-custom-dark text-opacity-70 px-4 py-1 rounded-md text-xs">
-								{member.role}
-							</p>
+					</p>
+				</div>
+				<div className="grid grid-cols-3 lg:flex gap-1 justify-center w-full overflow-x-hidden">
+					{thisTimeMembers.map((member) => (
+						<div
+							key={member.name}
+							className="flex flex-col items-center w-full justify-center"
+						>
+							<div className="h-[200px] lg:h-[300px] w-full bg-gray-400" />
+							<div className="flex flex-col justify-center items-center p-8 gap-4">
+								<p className=" !text-custom-dark uppercase font-extrabold text-base md:text-xl">
+									{member.name}
+								</p>
+								<p className=" !text-custom-dark text-opacity-70 px-4 py-1 rounded-md text-xs">
+									{member.role}
+								</p>
+							</div>
 						</div>
-					</div>
-				))}
+					))}
+				</div>
 			</div>
-		</div>
+		</Container>
 	);
 };
- 
+
 export default Team;

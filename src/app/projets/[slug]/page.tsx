@@ -39,7 +39,7 @@ const ArticlePage = async ({
 	}
 	return (
 		<main>
-			<Container classes="mx-auto mt-4 lg:mt-8">
+			<Container classes="flex flex-col gap-10 pt-32">
 				<PostLayout article={client} />
 			</Container>
 		</main>

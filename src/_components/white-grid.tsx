@@ -3,6 +3,7 @@
 
 import React, { ReactNode } from "react";
 import useIsMobile from "../hooks/useIsMobile";
+import Container from "./container";
 
 type Props = {
   type: "exp" | "skill" | "challenges" | "vite"
@@ -35,8 +36,10 @@ const WhiteGrid = ({ children, type }: Props) => {
 	const cols = 10;
 	return (
 		<div className="sticky bg-transparent top-0 left-0 h-screen overflow-x-hidden">
-			<div className="absolute top-0 left-0 w-full mx-auto h-screen flex justify-center items-center">
-				{children}
+			<div className="absolute top-0 left-0 w-full mx-auto h-screen flex justify-center items-center ">
+				<Container>
+					{children}
+				</Container>
 			</div>
 			{/* Grid Structure */}
 			<div style={{zIndex: -100}} className="absolute top-0 -left-4 lg:-left-10 bg-transparent w-[120vw] grid grid-cols-10 h-screen">

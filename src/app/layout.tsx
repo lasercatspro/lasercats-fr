@@ -1,7 +1,6 @@
 import Footer from "@/_components/blocks/footer";
 import { HOME_OG_IMAGE_URL } from "../lib/constants";
 import type { Metadata } from "next";
-
 import "./globals.css";
 import Navbar from "../_components/blocks/navbar";
 import { Suspense, type ReactNode } from "react";
@@ -62,7 +61,7 @@ export default function RootLayout({
 				/>
 			</head>
 			{/*  */}
-			<body className="w-full min-h-[100vh] mx-auto bg-cover bg-center bg-[url('/assets/images/backgrounds/bg-2.jpg')] flex flex-col justify-between">
+			<body className="min-h-[100vh] bg-cover bg-center bg-[url('/assets/images/backgrounds/bg.jpg')]">
 				<Navbar />
 				<Suspense fallback={null}>
 					<SmoothScrolling>

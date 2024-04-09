@@ -8,6 +8,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Container from "../container";
 
 function classNames(...classes: string[]): string {
 	return classes.filter(Boolean).join(" ");
@@ -33,7 +34,7 @@ export const Navbar = (): ReactNode => {
 		>
 			{({ open }) => (
 				<>
-					<div className="mx-4 lg:mx-16">
+					<Container>
 						<div className="flex h-16 justify-between relative">
 							<div className="flex w-full justify-between items-center">
 								<Link className="flex flex-shrink-0 items-center" href={"/"}>
@@ -81,7 +82,7 @@ export const Navbar = (): ReactNode => {
 								</div>
 							</div>
 						</div>
-					</div>
+					</Container>
 
 					<Disclosure.Panel className="md:hidden relative">
 						<div className="space-y-1 px-2 pb-3 pt-2 sm:px-3 w-2/3">

@@ -23,7 +23,7 @@ export default async function Index(): Promise<JSX.Element> {
 	const morePosts = allPosts?.slice(1);
 
 	return (
-		<Container classes="flex flex-col gap-10">
+		<Container classes="flex flex-col gap-10 pt-32">
 			<h1 className="text-primary uppercase w-full">Blog</h1>
 			{heroPost != null && morePosts != null && (
 				<>
