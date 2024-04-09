@@ -2,7 +2,7 @@
 "use client";
 
 import React, { ReactNode } from "react";
-import useIsMobile from "../app/hooks/useIsMobile";
+import useIsMobile from "../hooks/useIsMobile";
 
 type Props = {
   type: "exp" | "skill" | "challenges" | "vite"
@@ -69,7 +69,7 @@ const WhiteGrid = ({ children, type }: Props) => {
 							}}
 							className={"border border-gray-200 border-opacity-50"}
 							// aspect-square if you want perfect squares
-						 />
+						/>
 					))
 				)}
 			</div>

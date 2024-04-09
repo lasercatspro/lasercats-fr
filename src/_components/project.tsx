@@ -2,7 +2,7 @@ import { capitalize } from "../lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 import GrayLink from "./gray-link";
-import useIsMobile from "../app/hooks/useIsMobile";
+import useIsMobile from "../hooks/useIsMobile";
 import { Client } from "../types/items";
 
 type Props = {
