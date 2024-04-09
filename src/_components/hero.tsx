@@ -1,7 +1,7 @@
-import Avatar from "@/app/_components/avatar";
+import Avatar from "@/_components/avatar";
 import Link from "next/link";
 import DateFormatter from "./dateFormatter";
-import { Client, type Post } from "@/types/items";
+import { Client, type Post } from "../types/items";
 import { type ReactNode } from "react";
 import Image from "next/image";
 import cn from "classnames";

@@ -12,9 +12,9 @@ import {
 import "pure-react-carousel/dist/react-carousel.es.css";
 import { Dispatch, SetStateAction, useContext, useEffect, useMemo, useState } from "react";
 import Quote from "./quote";
-import { QuoteI } from "@/lib/testimonials";
+import { QuoteI } from "../lib/testimonials";
 import Project from "./project";
-import { Client } from "@/types/items";
+import { Client } from "../types/items";
 
 type Props = {
   items: QuoteI[] | Client[];
@@ -52,7 +52,7 @@ const CustomSlider = ({
 	useEffect(() => {
 		if (setBgColor) {
 			setBgColor("transition");
-			setTimeout(() => setBgColor(currentSlide % 2 === 0 ? "#06038D" : "#00C65E"), 100);
+			setTimeout(() => setBgColor(currentSlide % 2 === 0 ? "#06038D" : "#00C65E"), 500);
 		}
 	}, [currentSlide]);
 

@@ -1,11 +1,11 @@
-import Footer from "@/app/_components/blocks/footer";
-import { HOME_OG_IMAGE_URL } from "@/lib/constants";
+import Footer from "@/_components/blocks/footer";
+import { HOME_OG_IMAGE_URL } from "../lib/constants";
 import type { Metadata } from "next";
 
 import "./globals.css";
-import Navbar from "./_components/blocks/navbar";
+import Navbar from "../_components/blocks/navbar";
 import { Suspense, type ReactNode } from "react";
-import SmoothScrolling from "./_components/smootScroll";
+import SmoothScrolling from "../_components/smootScroll";
 
 export const metadata: Metadata = {
 	title: "Lasercats - Agence de développeurs pour des solutions web",
@@ -62,7 +62,7 @@ export default function RootLayout({
 				/>
 			</head>
 			{/*  */}
-			<body className="gradient w-full min-h-[100vh] mx-auto bg-cover bg-center bg-[url('/assets/images/jpg/bg.jpg')] flex flex-col justify-between">
+			<body className="w-full min-h-[100vh] mx-auto bg-cover bg-center bg-[url('/assets/images/jpg/bg-2.jpg')] flex flex-col justify-between">
 				<Navbar />
 				<Suspense fallback={null}>
 					<SmoothScrolling>

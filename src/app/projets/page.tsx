@@ -1,8 +1,8 @@
-import Container from "@/app/_components/container";
-import { Hero } from "@/app/_components/hero";
-import { MoreStories } from "@/app/_components/moreStories";
+import Container from "@/_components/container";
+import { Hero } from "@/_components/hero";
+import { MoreStories } from "@/_components/moreStories";
 import { getAllItems } from "../../lib/api";
-import { Client, Post } from "@/types/items";
+import { Client, Post } from "../../types/items";
 import { notFound } from "next/navigation";
 
 const fetchClients: () => Promise<(Client | undefined)[]> = async () => {

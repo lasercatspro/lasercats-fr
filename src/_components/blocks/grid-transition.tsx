@@ -1,7 +1,7 @@
 "use client";
 
 import useIsMobile from "@/app/hooks/useIsMobile";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -9,34 +9,35 @@ gsap.registerPlugin(ScrollTrigger);
 
 const GridTransition = () => {
 	const gridRef = useRef<HTMLDivElement | null>(null);
+	const thisGsap = useMemo(() => gsap.timeline({repeat: 1}), []);
+
+	const animeSquares = useCallback((squares: any) => {
+		squares?.forEach((square: any) => {
+			thisGsap.to(square, {
+				opacity: 0,
+				ease: "expo.inOut",
+				duration: 0.25,
+				stagger: function() {
+					return Math.random() * 0.9;
+				},
+				scrollTrigger: {
+					trigger: gridRef.current,
+					start: "top 60%", 
+					end: "bottom 60%",
+					scrub: true,
+					// markers: true
+				}
+			});
+		});
+	}, []);
 
 	useEffect(() => {
-		const element = gridRef?.current;
-		let squares: any[] = [];
 		if (window !== undefined) {
-			const s = window.document.querySelectorAll(".squares");
-			squares = Array.from(s);
-		}
-		const thisGsap = gsap.timeline({repeat: 1});
-
-		if (element && squares.length > 0) {
-			squares.forEach((square) => {
-				thisGsap.to(square, {
-					opacity: 0,
-					ease: "expo.inOut",
-					duration: 0.25,
-					stagger: function() {
-						return Math.random() * 0.9;
-					},
-					scrollTrigger: {
-						trigger: gridRef.current,
-						start: "top 60%", 
-						end: "bottom 60%",
-						scrub: true,
-						// markers: true
-					}
-				});
-			});
+			const element = gridRef?.current;
+			const squares = Array.from(window.document.querySelectorAll(".squares"));
+			if (element && squares?.length > 0) {
+				animeSquares(squares);
+			}
 		}
 	}, []);
 

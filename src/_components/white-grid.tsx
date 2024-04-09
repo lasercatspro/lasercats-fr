@@ -2,7 +2,7 @@
 "use client";
 
 import React, { ReactNode } from "react";
-import useIsMobile from "../hooks/useIsMobile";
+import useIsMobile from "../app/hooks/useIsMobile";
 
 type Props = {
   type: "exp" | "skill" | "challenges" | "vite"

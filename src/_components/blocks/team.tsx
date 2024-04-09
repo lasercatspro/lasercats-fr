@@ -1,6 +1,6 @@
 "use client";
 
-import { Member } from "@/types/items";
+import { Member } from "../../types/items";
 import { useMemo } from "react";
 
 const members: Member[] = [

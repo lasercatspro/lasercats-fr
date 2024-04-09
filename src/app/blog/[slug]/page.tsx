@@ -1,8 +1,8 @@
-import { PostLayout } from "@/app/_components/postLayout";
-import Container from "@/app/_components/container";
-import { getItemBySlug } from "@/lib/api";
+import { PostLayout } from "@/_components/postLayout";
+import Container from "@/_components/container";
+import { getItemBySlug } from "../../../lib/api";
 import { notFound } from "next/navigation";
-import { Client, type Post } from "@/types/items";
+import { Client, type Post } from "../../../types/items";
 
 const fetchPost: (postSlug: string) => Promise<Post | Client | undefined> = async (
 	postSlug

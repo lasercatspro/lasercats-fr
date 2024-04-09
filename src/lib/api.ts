@@ -1,4 +1,4 @@
-import { Client, type Post } from "@/types/items";
+import { Client, type Post } from "../src/types/items";
 import fs from "fs";
 import { join } from "path";
 

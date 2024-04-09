@@ -1,4 +1,4 @@
-import { Client, type Post } from "@/types/items";
+import { Client, type Post } from "../types/items";
 import { Prose } from "./prose";
 import { Suspense, type ReactNode } from "react";
 import Avatar from "./avatar";
