@@ -19,7 +19,7 @@ import {
 	Noise,
 } from "@react-three/postprocessing";
 import { extend } from "react-three-fiber";
-import useIsMobile from "@/app/hooks/useIsMobile";
+import useIsMobile from "@/hooks/useIsMobile";
 import throttle from "lodash.throttle";
 
 extend({ ShaderMaterial });

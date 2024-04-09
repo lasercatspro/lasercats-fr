@@ -2,7 +2,7 @@
 
 import { CarouselProvider } from "pure-react-carousel";
 import CustomSlider from "../custom-slider";
-import useIsMobile from "@/app/hooks/useIsMobile";
+import useIsMobile from "@/hooks/useIsMobile";
 import { quotes } from "../../lib/testimonials";
 
 const Testimonials = () => {

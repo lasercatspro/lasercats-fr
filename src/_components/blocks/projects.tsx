@@ -4,7 +4,7 @@
 import { CarouselProvider, ButtonNext, ButtonBack } from "pure-react-carousel";
 import CustomSlider from "../custom-slider";
 import { useState } from "react";
-import { Client } from "../../types/items";
+import { Client } from "@/types/items";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 type Props = {
@@ -33,20 +33,23 @@ const Projects = ({ projects }: Props) => {
 						<img src="/assets/images/svg/svg-blue.svg" className="w-screen"/>
 					)}
 				</div>
-				<h2 className="text-zinc-50 pb-12">Nos Projets</h2>
-				<div className="flex justify-end items-start px-8 gap-8">
-					<ButtonBack>
-						<div className="flex items-center justify-center border border-zinc-400 p-2 rounded-full">
-							<ChevronLeftIcon className="h-4 w-4 lg:h-6 lg:w-6 text-zinc-400" />
-						</div>
-					</ButtonBack>
-					<ButtonNext>
-						<div className="flex items-center justify-center border border-zinc-400 p-2 rounded-full">
-							<ChevronRightIcon className="h-4 w-4 lg:h-6 lg:w-6 text-zinc-400" />
-						</div>
-					</ButtonNext>
+				<div className="flex justify-between items-center">
+					<h2 className="text-zinc-50">Nos Projets</h2>
+					<div className="flex justify-end items-start px-8 gap-8">
+						<ButtonBack>
+							<div className="flex items-center justify-center border border-zinc-400 p-2 rounded-full">
+								<ChevronLeftIcon className="h-4 w-4 lg:h-6 lg:w-6 text-zinc-400" />
+							</div>
+						</ButtonBack>
+						<ButtonNext>
+							<div className="flex items-center justify-center border border-zinc-400 p-2 rounded-full">
+								<ChevronRightIcon className="h-4 w-4 lg:h-6 lg:w-6 text-zinc-400" />
+							</div>
+						</ButtonNext>
+					</div>
+
 				</div>
-				<div className="my-8">
+				<div className="mt-24">
 					<CustomSlider
 						items={projects}
 						type="projects"
