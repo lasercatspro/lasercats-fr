@@ -39,7 +39,7 @@ export const Navbar = (): ReactNode => {
 								<Link className="flex flex-shrink-0 items-center" href={"/"}>
 									<img
 										className="h-8 w-auto"
-										src="/assets/images/svg/logo-green.svg"
+										src="/assets/images/logos/laser-green.svg"
 										alt="Your Company"
 									/>
 								</Link>

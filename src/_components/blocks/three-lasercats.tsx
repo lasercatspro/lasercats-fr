@@ -75,7 +75,6 @@ const Lasercat = ({isPlaying}: {isPlaying: boolean}) => {
 			scene.rotation.y = 0.43 * clock.elapsedTime;
 		}
 	});
-	console.log(isPlaying);
 
 	// eslint-disable-next-line react/no-unknown-property
 	return scene && isPlaying ? <primitive object={scene} ref={ref} /> : null;

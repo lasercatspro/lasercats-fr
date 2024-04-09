@@ -26,11 +26,11 @@ const Projects = ({ projects }: Props) => {
 			>
 				<div className="absolute -z-10 left-0 w-screen h-auto">
 					{bgColor === "#00C65E" && (
-						<img src="/assets/images/svg/svg-green.svg" className="w-screen"/>
+						<img src="/assets/images/backgrounds/svg-green.svg" className="w-screen"/>
 					)}
 
 					{bgColor === "#06038D" && (
-						<img src="/assets/images/svg/svg-blue.svg" className="w-screen"/>
+						<img src="/assets/images/backgrounds/svg-blue.svg" className="w-screen"/>
 					)}
 				</div>
 				<div className="flex justify-between items-center">

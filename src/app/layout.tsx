@@ -62,7 +62,7 @@ export default function RootLayout({
 				/>
 			</head>
 			{/*  */}
-			<body className="w-full min-h-[100vh] mx-auto bg-cover bg-center bg-[url('/assets/images/jpg/bg-2.jpg')] flex flex-col justify-between">
+			<body className="w-full min-h-[100vh] mx-auto bg-cover bg-center bg-[url('/assets/images/backgrounds/bg-2.jpg')] flex flex-col justify-between">
 				<Navbar />
 				<Suspense fallback={null}>
 					<SmoothScrolling>

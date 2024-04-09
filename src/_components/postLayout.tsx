@@ -24,7 +24,7 @@ export function PostLayout({ article }: { article: Post | Client }): ReactNode {
 								{article.type === "client" && article.image && (
 									<Image
 										alt={`logo ${article.slug}`}
-										src={`/assets/images/png/${article.slug}.png`}
+										src={article.image}
 										width={800}
 										height={243}
 										className={`${article.slug === "citesia" && "flex justify-centers mx-auto w-full p-4"}`}
