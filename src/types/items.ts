@@ -17,7 +17,8 @@ export interface Client {
   description: string
   technos: string[]
   type: "client"
-  image: string
+  imagePreview: string
+  logo: string
   component?: () => MDXContent
 }
 

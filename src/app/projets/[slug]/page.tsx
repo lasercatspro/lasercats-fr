@@ -39,7 +39,7 @@ const ArticlePage = async ({
 	}
 	return (
 		<main>
-			<Container classes="max-w-7xl mx-auto mt-20 lg:mt-64">
+			<Container classes="mx-auto mt-4 lg:mt-8">
 				<PostLayout article={client} />
 			</Container>
 		</main>

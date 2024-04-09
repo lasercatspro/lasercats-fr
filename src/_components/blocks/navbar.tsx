@@ -39,11 +39,11 @@ export const Navbar = (): ReactNode => {
 								<Link className="flex flex-shrink-0 items-center" href={"/"}>
 									<img
 										className="h-8 w-auto"
-										src="/assets/images/svg/logo-green.svg"
+										src="/assets/images/logos/laser-green.svg"
 										alt="Your Company"
 									/>
 								</Link>
-								<Link href={"#contact"} className="md:hidden primary h-6 rounded-sm hover:no-underline">
+								<Link href={"/contact"} className="md:hidden primary h-6 rounded-sm hover:no-underline">
 									Nous contacter
 								</Link>
 								<div className="-ml-2 mr-2 flex items-center md:hidden">
@@ -74,7 +74,7 @@ export const Navbar = (): ReactNode => {
 										</Link>
 									))}
 									<div className="flex gap-4">
-										<Link href={"/#contact"} className="primary h-6 rounded-sm !text-custom-dark hover:no-underline hover:!text-primary">
+										<Link href={"/contact"} className="primary h-6 rounded-sm !text-custom-dark hover:no-underline hover:!text-primary">
 											Nous contacter
 										</Link>
 									</div>

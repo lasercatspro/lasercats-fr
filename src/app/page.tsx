@@ -1,5 +1,4 @@
 import Header from "../_components/blocks/header";
-import Contact from "../_components/blocks/contact";
 import Numbers from "../_components/blocks/numbers";
 import Testimonials from "../_components/blocks/testimonials";
 import WeHave from "../_components/blocks/we-have";
@@ -27,7 +26,6 @@ export default async function Index () {
 			<Team />
 			<LaserGame />
 			<WeHave isLikeContent />
-			<Contact />
 		</main>
 	);
 }

@@ -11,7 +11,7 @@ export function PostLayout({ article }: { article: Post | Client }): ReactNode {
 	return (
 		<main>
 			<div className="xl:relative">
-				<div className="mx-8 lg:mx-auto max-w-7xl">
+				<div className="mx-8 lg:mx-auto max-w-4xl ">
 					<article>
 						<header className="flex flex-col gap-8">
 							<Suspense fallback={<Skeleton
@@ -21,13 +21,13 @@ export function PostLayout({ article }: { article: Post | Client }): ReactNode {
 								height={243}
 							/>}
 							>
-								{article.type === "client" && article.image && (
+								{article.type === "client" && article?.imagePreview && (
 									<Image
 										alt={`logo ${article.slug}`}
-										src={`/assets/images/png/${article.slug}.png`}
+										src={article.imagePreview}
 										width={800}
 										height={243}
-										className={`${article.slug === "citesia" && "flex justify-centers mx-auto w-full p-4"}`}
+										className={"w-full max-h-[300px] object-cover"}
 									/>
 								)}
 							</Suspense>
