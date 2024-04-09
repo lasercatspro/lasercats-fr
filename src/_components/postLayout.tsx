@@ -11,7 +11,7 @@ export function PostLayout({ article }: { article: Post | Client }): ReactNode {
 	return (
 		<main>
 			<div className="xl:relative">
-				<div className="mx-8 lg:mx-auto max-w-4xl ">
+				<div className="mx-8 lg:mx-auto max-w-4xl">
 					<article>
 						<header className="flex flex-col gap-8">
 							<Suspense fallback={<Skeleton

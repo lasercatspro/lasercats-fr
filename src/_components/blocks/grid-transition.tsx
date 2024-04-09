@@ -4,6 +4,7 @@ import useIsMobile from "@/hooks/useIsMobile";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Container from "../container";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,7 +24,7 @@ const GridTransition = () => {
 				scrollTrigger: {
 					trigger: gridRef.current,
 					start: "top 60%", 
-					end: "bottom 60%",
+					end: "bottom 50%",
 					scrub: true,
 					// markers: true
 				}
@@ -49,37 +50,34 @@ const GridTransition = () => {
 	const isMobile = useIsMobile({ forIpad: true });
 	
 	return (
-		<div>
-			<div className="mb-32 overflow-x-hidden relative !bg-opacity-10">
-				<div className=" relative">
-					<div
-						className="flex justify-center items-center h-[44vh] lg:h-screen"
-					>
+		<div className="mb-16 overflow-x-hidden relative !bg-opacity-10">
+			<div className="relative">
+				<div className="flex justify-center items-center h-[49vh] lg:h-[100vh]">
+					<Container>
 						<p className="md:text-5xl text-center !text-zinc-50 mix-blend-difference px-2 lg:px-8">
 							{
 								"Votre succès est notre mission, et nous transformons chaque projet en une expérience digitale mémorable, reflétant l'excellence et l'innovation."
 							}
 						</p>
-						<div
-							ref={gridRef}
-							style={{ zIndex: -1 }}
-							className="absolute top-0 -left-12 w-[120vw] grid grid-cols-10 h-fit"
-						>
-							
-							{Array.from(Array(isMobile ? rowsMobile : rows)).map((_row, rowIndex) =>
-								Array.from(Array(isMobile ? colsMobile : cols).keys()).map((_col, colIndex) => (
-									<div
-										key={`${colIndex}-${rowIndex}`}
-										className={"aspect-square squares bg-custom-dark"}
-									/>
-								))
-							)}
-						</div>
+					</Container>
+					<div
+						ref={gridRef}
+						style={{ zIndex: -1 }}
+						className="absolute top-0 -left-12 w-[120vw] grid grid-cols-10 h-[33vh] lg:h-fit"
+					>
+						{Array.from(Array(isMobile ? rowsMobile : rows)).map((_row, rowIndex) =>
+							Array.from(Array(isMobile ? colsMobile : cols).keys()).map((_col, colIndex) => (
+								<div
+									key={`${colIndex}-${rowIndex}`}
+									className={"aspect-square squares bg-custom-dark"}
+								/>
+							))
+						)}
 					</div>
 				</div>
 			</div>
-			
 		</div>
+			
 	);
 };
 

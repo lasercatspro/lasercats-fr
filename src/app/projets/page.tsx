@@ -24,7 +24,7 @@ export default async function Index(): Promise<JSX.Element> {
 	const moreClients = clients?.slice(1);
 
 	return (
-		<Container classes="flex flex-col gap-10 py-8 max-w-xl lg:max-w-7xl mx-8 md:mx-auto">
+		<Container classes="flex flex-col gap-10 pt-32">
 			<h1 className="text-primary uppercase w-full">Nos Projets</h1>
 			<>
 				{heroClient && <Hero type={"client"} article={heroClient} />}

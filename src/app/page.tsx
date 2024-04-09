@@ -8,6 +8,7 @@ import { Client } from "../types/items";
 import GridTransition from "../_components/blocks/grid-transition";
 import Team from "../_components/blocks/team";
 import LaserGame from "../_components/game/lasergame";
+import Hey from "@/_components/blocks/hey";
 
 export default async function Index () {
 	const projects = (await getAllItems("client")).map(c => {
@@ -26,6 +27,7 @@ export default async function Index () {
 			<Team />
 			<LaserGame />
 			<WeHave isLikeContent />
+			<Hey />
 		</main>
 	);
 }
