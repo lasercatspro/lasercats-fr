@@ -1,6 +1,8 @@
 "use client";
 import { ChangeEvent, FormEvent, useReducer } from "react";
 import Button from "../button";
+import useIsMobile from "@/hooks/useIsMobile";
+import Link from "next/link";
 
 interface Action {
   type: "handle_text";
@@ -9,7 +11,6 @@ interface Action {
 }
 interface State {
   nom: string;
-  prenom: string;
   email: string;
   message: string;
 }
@@ -17,7 +18,6 @@ interface State {
 const Contact = () => {
 	const initialState = {
 		nom: "",
-		prenom: "",
 		email: "",
 		message: "",
 	};
@@ -33,7 +33,9 @@ const Contact = () => {
 		}
 	}
 
-	const handleTextChange = (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
+	const handleTextChange = (
+		event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+	) => {
 		dispatch({
 			type: "handle_text",
 			field: event.target.name as Action["field"],
@@ -42,67 +44,96 @@ const Contact = () => {
 	};
 
 	const [state, dispatch] = useReducer(reducer, initialState);
-	const inputs = ["Nom", "Prénom", "Email", "Message"];
+	const inputs = ["Email", "Nom", "Message"];
 
 	const submitFn = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		return console.log(state);
 	};
+	const isMobile = useIsMobile({ forIpad: true });
 
 	return (
-		<div id="contact" className="px-4 md:px-40 py-40">
-			<div className="lg:w-2/3 max-w-7xl mx-auto">
-				<div className="text-center text-6xl py-12">
-					<p>Besoin ponctuel ?</p>
-					<p>Nouveau projet ?</p>
-				</div>
-				<form
-					id="form"
-					action="#"
-					onSubmit={(e) => submitFn(e)}
-					className="flex flex-col gap-8 my-8 lg:w-9/12 mx-auto"
-				>
-					<div className="flex flex-col md:flex-row gap-4">
-						<div className="flex flex-col w-full gap-2 ">
-							<label htmlFor={inputs[0]}>{inputs[0]}</label>
-							<input
-								type="text"
-								name={inputs[0]}
-								className="custom-input"
-								onChange={(e) => handleTextChange(e)}
-							/>
+		<div id="contact" className=" !text-zinc-50 pt-16 relative bg-custom-dark ">
+			<div className="bg-cover bg-[url(/assets/images/backgrounds/svg-blue.svg)]">
+				<div className="grid grid-col-1 gap-8 lg:grid-rows-2 lg:grid-cols-2 max-w-[1400px] mx-8 lg:mx-auto py-12 lg:py-24">
+					<h1 className="!text-zinc-50 !text-5xl lg:!text-[8rem]">
+            Nous contacter
+					</h1>
+					<form
+						id="form"
+						action="#"
+						onSubmit={(e) => submitFn(e)}
+						className="
+						lg:row-span-2
+						flex flex-col gap-8 border border-zinc-400 
+						rounded-lg p-8 backdrop-blur-sm bg-zinc-50 
+						bg-opacity-10
+					"
+					>
+						<div className="flex gap-4 items-center">
+							<div className="h-2 w-2 bg-primary rounded-full" />
+							<p className="!text-zinc-50">Démarrer un échange</p>
 						</div>
 						<div className="flex flex-col w-full gap-2">
-							<label htmlFor={inputs[1]}>{inputs[1]}</label>
-							<input
-								type="text"
-								name={inputs[1]}
-								className="custom-input"
+							<label className="sr-only" htmlFor={inputs.at(-1)}>
+								{inputs.at(-1)}
+							</label>
+							<textarea
+								name={inputs[3]}
+								cols={10}
+								rows={isMobile ? 7 : 12}
+								className="custom-input !border-none rounded-sm text-3xl"
 								onChange={(e) => handleTextChange(e)}
+								placeholder="Laissez nous un petit mot"
 							/>
 						</div>
-					</div>
-					<div className="flex flex-col w-full gap-2">
-						<label htmlFor={inputs[2]}>{inputs[2]}</label>
-						<input
-							type="email"
-							name={inputs[2]}
-							className="custom-input"
-							onChange={(e) => handleTextChange(e)}
-						/>
-					</div>
-					<div className="flex flex-col w-full gap-2">
-						<label htmlFor={inputs[3]}>{inputs[3]}</label>
-						<textarea
-							name={inputs[3]}
-							cols={10}
-							rows={10}
-							className="custom-input !border-2 rounded-sm"
-							onChange={(e) => handleTextChange(e)}
-						/>
-					</div>
-					<Button title="Envoyer" role="ternary" type="submit" />
-				</form>
+						<div className="flex flex-col md:flex-row gap-4">
+							{inputs.map(
+								(input) =>
+									input !== inputs.at(-1) && (
+										<div key={input} className="flex flex-col w-full gap-2 ">
+											<label className="sr-only" htmlFor={input}>
+												{input}
+											</label>
+											<input
+												type="text"
+												name={input}
+												className="custom-input"
+												onChange={(e) => handleTextChange(e)}
+												placeholder={`Votre ${input.toLowerCase()}`}
+											/>
+										</div>
+									)
+							)}
+						</div>
+						<Button title="Envoyer" role="primary" type="submit" />
+					</form>
+					<ul className="hidden md:flex items-end justify-between w-2/3">
+						<li className="flex flex-col justify-between gap-8">
+							<p className="text-2xl text-zinc-50">Bureaux</p>
+							<div className="flex flex-col">
+								<span className="text-xl text-zinc-50">
+                  2 avenue Jean Janvier
+								</span>
+								<span className="text-xl text-zinc-50">35000 RENNES</span>
+							</div>
+						</li>
+						<li className="flex flex-col justify-between gap-8">
+							<p className="text-2xl text-zinc-50">Contact</p>
+							<div className="">
+								<span className="text-xl text-zinc-50">+330234567890</span>
+								<br />
+								<Link
+									className="text-xl text-zinc-50"
+									href="mailto:contact@lasercats.fr"
+								>
+                contact@lasercats.fr
+								</Link>
+
+							</div>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	);

@@ -18,7 +18,7 @@ const Header = (): ReactNode => {
 				<span className='pt-12 text-xl md:text-6xl text-zinc-50'>Nous fabriquons des applications Web <br /> et mobile aux petits oignons.</span>
 				<div className="mt-24">
 					<p className="mb-8 text-zinc-50">Besoin ponctuel ou projet de long terme ?</p>
-					<Link className="primary w-[200px] hover:!no-underline" href={"#contact"}>Nous contacter</Link>
+					<Link className="primary w-[200px] hover:!no-underline" href={"/contact"}>Nous contacter</Link>
 				</div>
 			</div>
 			

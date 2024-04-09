@@ -22,7 +22,7 @@ const Project = ({ project }: Props) => {
 					width={800}
 					height={600}
 					alt={project.title}
-					src={project.image}
+					src={project.imagePreview}
 					className="rounded-md w-full"
 				/>}
 				<div className="grid grid-cols-2 lg:flex w-full gap-4 text-center">
@@ -37,7 +37,7 @@ const Project = ({ project }: Props) => {
 				</div>
 				<p className="text-zinc-50">{project.description}</p>
 				<Link
-					href={`/projets/${project.title}`}
+					href={`/projets/${project.title.toLowerCase()}`}
 					className=" no-underline hover:no-underline"
 				>
 					<GrayLink title="Découvrir le projet" isWhite/>
@@ -47,7 +47,7 @@ const Project = ({ project }: Props) => {
 				width={1000}
 				height={800}
 				alt={project.title}
-				src={project.image}
+				src={project.imagePreview}
 				className="rounded-md w-1/2"
 			/>}
 		</div>

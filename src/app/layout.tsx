@@ -66,7 +66,7 @@ export default function RootLayout({
 				<Navbar />
 				<Suspense fallback={null}>
 					<SmoothScrolling>
-						<main className="min-h-[67vh]">
+						<main>
 							{children}
 						</main>
 					</SmoothScrolling>
