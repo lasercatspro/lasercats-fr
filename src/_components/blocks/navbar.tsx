@@ -16,7 +16,6 @@ function classNames(...classes: string[]): string {
 
 export const Navbar = (): ReactNode => {
 	const navigation = [
-		{ name: "Expertise", href: "/expertise", current: false },
 		{ name: "Projets", href: "/projets", current: false },
 		{ name: "Blog", href: "/blog", current: false },
 	];

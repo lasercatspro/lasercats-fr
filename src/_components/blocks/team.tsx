@@ -1,40 +1,49 @@
 "use client";
 
 import { Member } from "../../types/items";
-import { useMemo } from "react";
 import Container from "../container";
+import Image from "next/image";
+import useIsMobile from "@/hooks/useIsMobile";
 
 const members: Member[] = [
 	{
 		name: "Nico",
-		role: "Dev",
+		role: "Co-gérant & Dev",
+		imageSrc: "/assets/images/portraits/nicolas.jpg",
 	},
 	{
 		name: "Thierry",
-		role: "Dev",
+		role: "Lead Dev",
+		imageSrc: "/assets/images/portraits/thierry.png",
 	},
 	{
 		name: "Louis",
-		role: "Dev",
+		role: "Co-gérant & Dev",
+		imageSrc: "/assets/images/portraits/louis.png",
 	},
 	{
 		name: "François",
-		role: "Dev",
+		role: "Lead Dev",
+		imageSrc: "/assets/images/portraits/francois.png",
 	},
 	{
 		name: "Antoine",
 		role: "Dev",
+		imageSrc: "/assets/images/portraits/antoine.png",
 	},
 	{
 		name: "Damien",
 		role: "Dev",
+		imageSrc: "/assets/images/portraits/damien.png",
 	},
 	{
 		name: "Anthonin",
 		role: "Dev",
+		imageSrc: "/assets/images/portraits/anthonin.png",
 	},
 ];
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function randomMembers(array: any[]) {
 	const randomArray: any[] = [];
 	const copiedArray = array.slice();
@@ -48,10 +57,10 @@ function randomMembers(array: any[]) {
 }
 
 const Team = () => {
-	const thisTimeMembers = useMemo(() => randomMembers(members), []);
+	const isMobile = useIsMobile({ forIpad: true });
 	return (
-		<Container>
-			<div className="relative px-4 md:px-16 space-y-12 leading-10">
+		<Container classes="z-0">
+			<div className="relative px-4 md:px-16 space-y-12 leading-10 overflow-visible">
 				<div className="flex flex-col lg:flex-row gap-4 justify-between">
 					<h2 className="lg:w-1/2">
             Nous sommes une équipe soudée, réactive et toujours présente
@@ -65,18 +74,46 @@ const Team = () => {
             pour être toujours disponible.
 					</p>
 				</div>
-				<div className="grid grid-cols-3 lg:flex gap-1 justify-center w-full overflow-x-hidden">
-					{thisTimeMembers.map((member) => (
+				<div className="grid grid-cols-3 lg:grid-cols-7 gap-y-4 gap-x-1 justify-center relative">
+					{!isMobile && <div className="flex relative col-span-7 gap-1 overflow-hidden">
+						<img
+							src="/assets/images/backgrounds/svg-blue.svg"
+							className="absolute z-10 -top-96 -left-10 opacity-50 w-[150vw] -rotate-12"
+						/>
+						<img
+							src="/assets/images/backgrounds/svg-green.svg"
+							className="absolute z-10 -bottom-72 -right-20 opacity-70 w-screen -rotate-12"
+						/>
+						{members.map((member: Member) => (
+							<Image
+								key={`img-${member.name}`}
+								alt={member.name}
+								src={member.imageSrc}
+								width={400}
+								height={400}
+								className="h-[200px] lg:h-[300px] w-full object-cover object-center"
+							/>
+						))}
+					</div>}
+					{members.map((member: Member) => (
 						<div
 							key={member.name}
-							className="flex flex-col items-center w-full justify-center"
+							className="flex flex-col items-center w-full gap-1 mb-4"
 						>
-							<div className="h-[200px] lg:h-[300px] w-full bg-gray-400" />
-							<div className="flex flex-col justify-center items-center p-8 gap-4">
+							{isMobile && (
+								<Image
+									alt={member.name}
+									src={member.imageSrc}
+									width={400}
+									height={400}
+									className="h-[200px] lg:h-[300px] w-full object-cover object-center"
+								/>
+							)}
+							<div className="flex flex-col text-center gap-2">
 								<p className=" !text-custom-dark uppercase font-extrabold text-base md:text-xl">
 									{member.name}
 								</p>
-								<p className=" !text-custom-dark text-opacity-70 px-4 py-1 rounded-md text-xs">
+								<p className=" !text-custom-dark text-opacity-70 text-xs">
 									{member.role}
 								</p>
 							</div>
