@@ -53,7 +53,7 @@ const Contact = () => {
 	const isMobile = useIsMobile({ forIpad: true });
 
 	return (
-		<div id="contact" className=" !text-zinc-50 pt-16 relative bg-custom-dark ">
+		<div id="contact" className=" !text-zinc-50 pt-16 relative bg-custom-dark">
 			<div className="bg-cover bg-[url(/assets/images/backgrounds/svg-blue.svg)]">
 				<div className="grid grid-col-1 gap-8 lg:grid-rows-2 lg:grid-cols-2 max-w-[1400px] mx-8 lg:mx-auto py-12 lg:py-24">
 					<h1 className="!text-zinc-50 !text-5xl lg:!text-[8rem]">
