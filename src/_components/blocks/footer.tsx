@@ -16,6 +16,7 @@ export function Footer(): ReactNode {
 					<div className="flex flex-col gap-8 justify-center items-center w-[80vw] lg:w-full">
 						<Image
 							alt="logo Lasercats"
+							title="Lasercats"
 							src={"/assets/images/logos/laser-simple.svg"}
 							width={200}
 							height={200}

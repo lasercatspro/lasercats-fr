@@ -8,7 +8,8 @@ const Quote = ({ quote }: { quote: QuoteI }) => {
 			<Link href={`/projets/${quote.name}`} className="!no-underline flex flex-col gap-4 items-start justify-between min-h-[380px]">
 				<div className="">
 					<Image
-						alt={quote.name}
+						alt={`Logo ${quote.name}`}
+						title={quote.name}
 						src={`/assets/images/logos/${quote.name}.svg`}
 						width={300}
 						height={100}

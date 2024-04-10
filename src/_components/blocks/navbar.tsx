@@ -9,6 +9,7 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Container from "../container";
+import Image from "next/image";
 
 function classNames(...classes: string[]): string {
 	return classes.filter(Boolean).join(" ");
@@ -37,10 +38,13 @@ export const Navbar = (): ReactNode => {
 						<div className="flex h-16 justify-between relative">
 							<div className="flex w-full justify-between items-center">
 								<Link className="flex flex-shrink-0 items-center" href={"/"}>
-									<img
+									<Image
+										alt="Lasercats Logo"
+										title="Lasercats"
 										className="h-8 w-auto"
 										src="/assets/images/logos/laser-green.svg"
-										alt="Your Company"
+										width={50}
+										height={50}
 									/>
 								</Link>
 								<Link href={"/contact"} className="md:hidden primary h-6 rounded-sm hover:no-underline">

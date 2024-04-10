@@ -24,6 +24,7 @@ export function PostLayout({ article }: { article: Post | Client }): ReactNode {
 								{article.type === "client" && article?.imagePreview && (
 									<Image
 										alt={`logo ${article.slug}`}
+										title={article.slug}
 										src={article.imagePreview}
 										width={800}
 										height={243}

@@ -22,7 +22,7 @@ interface Props {
 export const generateMetadata = async ({ params: { slug } }: Props) => {
 	const post = await getItemBySlug("post", slug);
 	return {
-		title: `Lasercats Blog - ${post?.title}`,
+		title: `Lasercats | ${post?.title}`,
 		description: post?.description,
 		author: post?.author,
 	};

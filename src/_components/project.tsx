@@ -21,7 +21,8 @@ const Project = ({ project }: Props) => {
 				{isMobile && <Image
 					width={800}
 					height={600}
-					alt={project.title}
+					alt={`Projet ${project.title}`}
+					title={project.title}
 					src={project.imagePreview}
 					className="rounded-md w-full"
 				/>}
@@ -44,9 +45,10 @@ const Project = ({ project }: Props) => {
 				</Link>
 			</div>
 			{!isMobile && <Image
+				alt={`Projet ${project.title}`}
+				title={project.title}
 				width={1000}
 				height={800}
-				alt={project.title}
 				src={project.imagePreview}
 				className="rounded-md w-1/2"
 			/>}

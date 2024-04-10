@@ -5,6 +5,12 @@ import { getAllItems } from "../../lib/api";
 import { type Post } from "../../types/items";
 import { notFound } from "next/navigation";
 
+export const generateMetadata = async () => {
+	return {
+		title: "Lasercats | Blog",
+	};
+};
+
 const fetchPosts: () => Promise<Post[] | []> = async () => {
 	const data = await getAllItems("post");
 	const filteredPosts = data?.filter((n: any) => n != null || n !== undefined);

@@ -10,7 +10,9 @@ export const metadata: Metadata = {
 	title: "Lasercats - Agence de développeurs pour des solutions web",
 	description:
     "Lasercats - Une agence rennaise de développeurs qui vous aide à fabriquer des applications web et mobiles.",
-
+	alternates: {
+		canonical: `${process.env.ROOT_URL}`,
+	},
 	openGraph: {
 		images: `${process.env.ROOT_URL}${HOME_OG_IMAGE_URL}`,
 	},

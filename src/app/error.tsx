@@ -23,12 +23,14 @@ export default function Error ({
 				Erreur 5 
 					<Image
 						alt="logo Lasercats"
+						title="Lasercats"
 						src={"/assets/images/logos/laser-simple.svg"}
 						width={35}
 						height={35}
 					/>
 					<Image
 						alt="logo Lasercats"
+						title="Lasercats"
 						src={"/assets/images/logos/laser-simple.svg"}
 						width={35}
 						height={35}
