@@ -16,21 +16,18 @@ export default function Error ({
 	}, [error]);
 
 	return (
-		<Container classes="max-w-7xl mx-auto content-center">
-			<div className="space-y-8">
-				<h2>Something went wrong!</h2>
-				<p>{error.message}</p>
-				<button
-					className='btn-primary'
-					onClick={
+		<Container classes="min-h-screen">
+			<h2>Something went wrong!</h2>
+			<p>{error.message}</p>
+			<button
+				className='btn-primary'
+				onClick={
 					// Attempt to recover by trying to re-render the segment
-						() => { reset(); }
-					}
-				>
+					() => { reset(); }
+				}
+			>
         Try again
-				</button>
-
-			</div>
+			</button>
 		</Container>
 	);
 }

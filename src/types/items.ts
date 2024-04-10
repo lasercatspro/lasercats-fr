@@ -24,5 +24,6 @@ export interface Client {
 
 export interface Member {
   name: string,
-  role: string
+  role: string,
+  imageSrc: string,
 } 

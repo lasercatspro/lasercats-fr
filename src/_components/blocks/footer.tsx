@@ -7,20 +7,20 @@ import Container from "../container";
 export function Footer(): ReactNode {
 	return (
 		<footer className="bg-custom-dark p-8 pb-16 border-t-2 border-primary">
-			<Container classes="flex flex-col gap-8 relative h-auto">
-				<ul className="flex flex-col md:flex-row gap-20 justify-center items-center">
-					<li className="flex flex-col gap-1">
-						<span className="text-xl  text-zinc-50">2 avenue Jean Janvier</span>
-						<span className="text-xl  text-zinc-50">35000 RENNES</span>
+			<Container classes="flex flex-col gap-8 relative">
+				<ul className="flex flex-col md:flex-row gap-8 lg:gap-20 justify-center items-center">
+					<li className="flex flex-col gap-1 w-full items-start lg:items-end">
+						<span className="lg:text-xl text-zinc-50">2 avenue Jean Janvier</span>
+						<span className="lg:text-xl text-zinc-50">35000 RENNES</span>
 					</li>
-					<div className="flex flex-col gap-8 justify-center items-center">
+					<div className="flex flex-col gap-8 justify-center items-center w-[80vw] lg:w-full">
 						<Image
 							alt="logo Lasercats"
 							src={"/assets/images/logos/laser-simple.svg"}
 							width={200}
 							height={200}
 						/>
-						<div className="flex justify-center items-center gap-4">
+						<div className="flex flex-col lg:flex-row justify-center items-center gap-4">
 							<p className="text-zinc-50 text-sm">©{dayjs().format("YYYY")} - By Lasercats</p>
 				
 							<div className="">
@@ -63,11 +63,11 @@ export function Footer(): ReactNode {
 							</div>
 						</div>
 					</div>
-					<li className="flex flex-col gap-1">
-						<span className="text-xl text-zinc-50">+330234567890</span>
+					<li className="flex flex-col gap-1 w-full items-end lg:items-start">
+						<span className="lg:text-xl text-zinc-50">+330234567890</span>
 						<br />
 						<Link
-							className="text-xl text-zinc-50"
+							className="lg:text-xl text-zinc-50"
 							href="mailto:contact@lasercats.fr"
 						>
             contact@lasercats.fr
