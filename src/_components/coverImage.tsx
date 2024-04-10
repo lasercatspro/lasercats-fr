@@ -15,6 +15,7 @@ const CoverImage = ({ title, src, slug, type }: Props): ReactNode => {
 		<Image
 			src={src}
 			alt={`Cover Image for ${title}`}
+			title={title}
 			className={cn("shadow-sm w-full", {
 				"": slug,
 			})}

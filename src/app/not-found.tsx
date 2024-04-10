@@ -12,6 +12,7 @@ export default function NotFound(): ReactNode {
 				<h1 className="flex gap-2">Erreur 4
 					<Image
 						alt="logo Lasercats"
+						title="Lasercats"
 						src={"/assets/images/logos/laser-simple.svg"}
 						width={50}
 						height={50}

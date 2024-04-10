@@ -5,6 +5,12 @@ import { getAllItems } from "../../lib/api";
 import { Client, Post } from "../../types/items";
 import { notFound } from "next/navigation";
 
+export const generateMetadata = async () => {
+	return {
+		title: "Lasercats | Nos clients",
+	};
+};
+
 const fetchClients: () => Promise<(Client | undefined)[]> = async () => {
 	const data = await getAllItems("client");
 	const filteredClients: [] | Client[] = data.filter(

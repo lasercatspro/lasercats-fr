@@ -26,18 +26,23 @@ const Team = () => {
 				</div>
 				<div className="grid grid-cols-3 lg:grid-cols-7 gap-y-4 gap-x-1 justify-center relative">
 					{!isMobile && <div className="flex relative col-span-7 gap-1 overflow-hidden">
-						<img
+						<Image
+							alt="blue background"
+							title="blue svg"
 							src="/assets/images/backgrounds/svg-blue.svg"
 							className="absolute z-10 -top-96 -left-10 opacity-50 w-[150vw] -rotate-12"
 						/>
-						<img
+						<Image
+							alt="green background"
+							title="green svg"
 							src="/assets/images/backgrounds/svg-green.svg"
 							className="absolute z-10 -bottom-72 -right-20 opacity-70 w-screen -rotate-12"
 						/>
 						{members.map((member: Member) => (
 							<Image
 								key={`img-${member.name}`}
-								alt={member.name}
+								alt={`portait of ${member.name}`}
+								title={member.name}
 								src={member.imageSrc}
 								width={400}
 								height={400}
@@ -52,7 +57,8 @@ const Team = () => {
 						>
 							{isMobile && (
 								<Image
-									alt={member.name}
+									alt={`portait of ${member.name}`}
+									title={member.name}
 									src={member.imageSrc}
 									width={400}
 									height={400}

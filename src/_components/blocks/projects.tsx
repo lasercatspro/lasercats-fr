@@ -8,6 +8,7 @@ import { Client } from "@/types/items";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import Container from "../container";
 import useIsMobile from "@/hooks/useIsMobile";
+import Image from "next/image";
 
 type Props = {
   projects: Client[];
@@ -30,11 +31,11 @@ const Projects = ({ projects }: Props) => {
 				>
 					<div className={`absolute -z-10 left-0 w-screen h-auto ${isMobile && "top-1/4"}`}>
 						{bgColor === "#00C65E" && (
-							<img src="/assets/images/backgrounds/svg-green.svg" className="w-screen"/>
+							<Image alt="Logo Lasercats" title="Lasercats" src="/assets/images/backgrounds/svg-green.svg" className="w-screen"/>
 						)}
 
 						{bgColor === "#06038D" && (
-							<img src="/assets/images/backgrounds/svg-blue.svg" className="w-screen"/>
+							<Image alt="Logo Lasercats" title="Lasercats" src="/assets/images/backgrounds/svg-blue.svg" className="w-screen"/>
 						)}
 					</div>
 					<div className="flex justify-between items-center">

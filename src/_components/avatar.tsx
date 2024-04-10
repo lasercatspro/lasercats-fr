@@ -1,15 +1,21 @@
+import Image from "next/image";
 import { type ReactNode } from "react";
 
 interface Props {
-  name?: string
-  picture?: string
+  name?: string;
+  picture?: string;
 }
 
 const Avatar = ({ name, picture }: Props): ReactNode => {
 	return (
 		<div className="flex items-center">
-			<img src={picture ?? "/assets/images/logos/laser-green.svg"} className="w-12 h-12 rounded-full mr-4" alt={name} />
-			<div className="text-sm font-bold">par {name ?? "Jane Doe"}</div>
+			<Image
+				alt={name ?? "Logo lasercats"}
+				title={name}
+				src={picture ?? "/assets/images/logos/laser-green.svg"}
+				className="w-12 h-12 rounded-full mr-4"
+			/>
+			<div className="text-sm font-bold">par {name ?? "Lasercats"}</div>
 		</div>
 	);
 };
