@@ -4,57 +4,7 @@ import { Member } from "../../types/items";
 import Container from "../container";
 import Image from "next/image";
 import useIsMobile from "@/hooks/useIsMobile";
-
-const members: Member[] = [
-	{
-		name: "Nico",
-		role: "Co-gérant & Dev",
-		imageSrc: "/assets/images/portraits/nicolas.jpg",
-	},
-	{
-		name: "Thierry",
-		role: "Lead Dev",
-		imageSrc: "/assets/images/portraits/thierry.png",
-	},
-	{
-		name: "Louis",
-		role: "Co-gérant & Dev",
-		imageSrc: "/assets/images/portraits/louis.png",
-	},
-	{
-		name: "François",
-		role: "Lead Dev",
-		imageSrc: "/assets/images/portraits/francois.png",
-	},
-	{
-		name: "Antoine",
-		role: "Dev",
-		imageSrc: "/assets/images/portraits/antoine.png",
-	},
-	{
-		name: "Damien",
-		role: "Dev",
-		imageSrc: "/assets/images/portraits/damien.png",
-	},
-	{
-		name: "Anthonin",
-		role: "Dev",
-		imageSrc: "/assets/images/portraits/anthonin.png",
-	},
-];
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function randomMembers(array: any[]) {
-	const randomArray: any[] = [];
-	const copiedArray = array.slice();
-
-	array.forEach(() => {
-		const randomIndex = Math.floor(Math.random() * copiedArray.length);
-		randomArray.push(copiedArray.at(randomIndex));
-		copiedArray.splice(randomIndex, 1);
-	});
-	return randomArray;
-}
+import { members } from "@/lib/members";
 
 const Team = () => {
 	const isMobile = useIsMobile({ forIpad: true });
