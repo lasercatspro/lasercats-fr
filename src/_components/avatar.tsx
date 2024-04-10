@@ -14,6 +14,8 @@ const Avatar = ({ name, picture }: Props): ReactNode => {
 				title={name}
 				src={picture ?? "/assets/images/logos/laser-green.svg"}
 				className="w-12 h-12 rounded-full mr-4"
+				width={100}
+				height={100}
 			/>
 			<div className="text-sm font-bold">par {name ?? "Lasercats"}</div>
 		</div>

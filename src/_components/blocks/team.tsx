@@ -31,12 +31,16 @@ const Team = () => {
 							title="blue svg"
 							src="/assets/images/backgrounds/svg-blue.svg"
 							className="absolute z-10 -top-96 -left-10 opacity-50 w-[150vw] -rotate-12"
+							width={1920}
+							height={800}
 						/>
 						<Image
 							alt="green background"
 							title="green svg"
 							src="/assets/images/backgrounds/svg-green.svg"
 							className="absolute z-10 -bottom-72 -right-20 opacity-70 w-screen -rotate-12"
+							width={1920}
+							height={800}
 						/>
 						{members.map((member: Member) => (
 							<Image

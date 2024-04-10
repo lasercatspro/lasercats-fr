@@ -43,6 +43,8 @@ export const Navbar = (): ReactNode => {
 										title="Lasercats"
 										className="h-8 w-auto"
 										src="/assets/images/logos/laser-green.svg"
+										width={50}
+										height={50}
 									/>
 								</Link>
 								<Link href={"/contact"} className="md:hidden primary h-6 rounded-sm hover:no-underline">

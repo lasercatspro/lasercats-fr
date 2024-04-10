@@ -31,11 +31,11 @@ const Projects = ({ projects }: Props) => {
 				>
 					<div className={`absolute -z-10 left-0 w-screen h-auto ${isMobile && "top-1/4"}`}>
 						{bgColor === "#00C65E" && (
-							<Image alt="Logo Lasercats" title="Lasercats" src="/assets/images/backgrounds/svg-green.svg" className="w-screen"/>
+							<Image alt="Logo Lasercats" title="Lasercats" src="/assets/images/backgrounds/svg-green.svg" className="w-screen" width={1920} height={800} />
 						)}
 
 						{bgColor === "#06038D" && (
-							<Image alt="Logo Lasercats" title="Lasercats" src="/assets/images/backgrounds/svg-blue.svg" className="w-screen"/>
+							<Image alt="Logo Lasercats" title="Lasercats" src="/assets/images/backgrounds/svg-blue.svg" className="w-screen" width={1920} height={800} />
 						)}
 					</div>
 					<div className="flex justify-between items-center">
