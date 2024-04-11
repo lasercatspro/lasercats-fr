@@ -1,16 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
-import React, {
-	MutableRefObject,
-	useEffect,
-	useMemo,
-	useRef,
-	useState,
-} from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment, useGLTF, useProgress } from "@react-three/drei";
-import { Mesh, MeshStandardMaterial, MeshPhongMaterial } from "three";
+import { Mesh, MeshStandardMaterial } from "three";
 import { ShaderMaterial } from "three";
 import {
 	EffectComposer,
@@ -24,7 +18,7 @@ import throttle from "lodash.throttle";
 
 extend({ ShaderMaterial });
 
-const Lasercat = ({isPlaying}: {isPlaying: boolean}) => {
+const Lasercat = ({ isPlaying }: { isPlaying: boolean }) => {
 	const { scene } = useGLTF("/assets/textures/lasercats-without-eyes.gltf");
 	const isMobile = useIsMobile({ forIpad: true });
 
@@ -37,41 +31,28 @@ const Lasercat = ({isPlaying}: {isPlaying: boolean}) => {
 	}, [scene, isMobile]);
 
 	useMemo(() => {
-		if (!scene) return null;
+		if (!scene || !isPlaying) return null;
 
 		scene.traverse((child) => {
 			let material;
 			const mesh = child as Mesh;
 			if (mesh.isMesh) {
-				/* 
-					This is code for eyes
-				 */
-				// if (mesh?.name === "mesh_2" || mesh?.name === "mesh_0") {
-				// 	material = new MeshPhongMaterial({
-				// 		color: "#fff", // green laser : #00c65e
-				// 		emissive: "#fff",
-				// 		emissiveIntensity: 2,
-				// 	});
-				// } else {
-				// Body and tail
 				material = new MeshStandardMaterial({
 					metalness: 1,
 					roughness: 0,
 					transparent: true,
 					opacity: 0.95,
 				});
-				// }
 				mesh.material = material;
 			}
 		});
 		return scene;
-	}, [scene]);
+	}, [scene, isPlaying]);
 
-	// Utilisation de useRef pour obtenir une référence à la scène
 	const ref = useRef();
 
 	useFrame(({ clock }) => {
-		if (scene) {
+		if (scene && isPlaying) {
 			scene.rotation.y = 0.43 * clock.elapsedTime;
 		}
 	});
@@ -110,16 +91,19 @@ const ThreeLasercats = () => {
 	return (
 		<Canvas
 			style={{ opacity: `${loading ? 0 : 1}`, zIndex: 20 }}
-			camera={{ position: [15, -2, 4], fov: 70 }}
+			camera={{ position: [0, -1, 15], fov: 60 }}
 			ref={ref}
 		>
-			<Lasercat isPlaying={isPlaying} />
-			{/* <Environment files="/assets/textures/star.hdr" background /> */}
-			<Environment files="/assets/textures/bg.hdr" background />
-			<EffectComposer>
-				<Bloom luminanceThreshold={0} luminanceSmoothing={0} height={300} />
-				<Noise opacity={0.01} />
-			</EffectComposer>
+			{isPlaying && (
+				<>
+					<Lasercat isPlaying={isPlaying} />
+					<Environment files="/assets/textures/mini-bg.hdr" background />
+					<EffectComposer>
+						<Bloom luminanceThreshold={0} luminanceSmoothing={0} height={300} />
+						<Noise opacity={0.01} />
+					</EffectComposer>
+				</>
+			)}
 		</Canvas>
 	);
 };
