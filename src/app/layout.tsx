@@ -64,15 +64,15 @@ export default function RootLayout({
 			</head>
 			{/*  */}
 			<body className="min-h-[100vh] bg-cover bg-center bg-[url('/assets/images/backgrounds/bg.jpg')]">
-				<Navbar />
-				<Suspense fallback={null}>
-					<SmoothScrolling>
+				<SmoothScrolling>
+					<Navbar />
+					<Suspense fallback={null}>
 						<main>
 							{children}
 						</main>
-					</SmoothScrolling>
-				</Suspense>
-				<Footer />
+					</Suspense>
+					<Footer />
+				</SmoothScrolling>
 			</body>
 		</html>
 	);
