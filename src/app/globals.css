@@ -36,10 +36,6 @@
     @apply border-custom-dark;
   }
 
-  a {
-    @apply no-underline !text-primary hover:underline;
-  }
-
   strong {
     @apply text-primary text-lg font-bold;
   }
