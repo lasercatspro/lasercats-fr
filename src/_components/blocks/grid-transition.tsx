@@ -52,7 +52,7 @@ const GridTransition = () => {
 	return (
 		<div className="mb-16 overflow-x-hidden relative !bg-opacity-10">
 			<div className="relative">
-				<div className="flex justify-center items-center h-[49vh] lg:h-[100vh]">
+				<div className="flex justify-center items-center h-[50vh] lg:h-[100vh]">
 					<Container>
 						<p className="md:text-5xl text-center !text-zinc-50 mix-blend-difference px-2 lg:px-8">
 							{
