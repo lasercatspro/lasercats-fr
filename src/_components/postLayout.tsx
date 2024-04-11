@@ -27,8 +27,8 @@ export function PostLayout({ article }: { article: Post | Client }): ReactNode {
 										title={article.slug}
 										src={article.imagePreview}
 										width={800}
-										height={243}
-										className={"w-full max-h-[300px] object-cover"}
+										height={550}
+										className={"w-full h-[550px] object-cover rounded-md"}
 									/>
 								)}
 							</Suspense>

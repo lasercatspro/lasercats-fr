@@ -7,7 +7,7 @@ import { type ReactNode } from "react";
 
 interface Props {
   article: Post | Client | undefined;
-	type: "client" | "post"
+  type: "client" | "post";
 }
 
 export function Preview({ article, type }: Props): ReactNode {
@@ -24,7 +24,9 @@ export function Preview({ article, type }: Props): ReactNode {
 						title={article?.title}
 						type={article?.type}
 						src={
-							"https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+							type === "client" && (article as Client)?.imagePreview
+								? (article as Client)?.imagePreview
+								: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 						}
 					/>
 				)}

@@ -16,7 +16,7 @@ const Numbers = () => {
 					</div>
 					<div className="flex flex-col text-center">
 						<p className="text-[6rem] lg:!text-[12rem] !text-zinc-100">11M</p>
-						<p className="!text-lg !text-zinc-100">Nous avons soutenu l’équipe technique d’un <Link href={"https://www.futura-sciences.com/"}>média scientifique national</Link> qui fait 11.4M de visites par mois (c’est 5x moins que le plus gros site de sport, mais c’est le plus gros pour la science :-) ).</p>
+						<p className="!text-lg !text-zinc-100">Nous avons soutenu l’équipe technique d’un <Link href={"https://www.futura-sciences.com/"}>média scientifique national</Link> qui fait 11.4M de visites par mois (c’est 5x moins que le plus gros site de sport, mais c’est le plus gros pour la science 🤓 ).</p>
 					</div>
 				</div>
 			</Container>

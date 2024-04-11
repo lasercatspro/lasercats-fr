@@ -7,6 +7,7 @@ import { Suspense, type ReactNode } from "react";
 import SmoothScrolling from "../_components/smootScroll";
 
 export const metadata: Metadata = {
+	metadataBase: new URL((process.env.ROOT_URL as string)),
 	title: "Lasercats - Agence de développeurs pour des solutions web",
 	description:
     "Lasercats - Une agence rennaise de développeurs qui vous aide à fabriquer des applications web et mobiles.",
