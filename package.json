@@ -19,6 +19,7 @@
     "@react-three/drei": "^9.101.0",
     "@react-three/postprocessing": "^2.16.2",
     "@studio-freight/react-lenis": "^0.0.46",
+    "@studio-freight/tempus": "^0.0.44",
     "@tailwindcss/typography": "^0.5.10",
     "@types/mdx": "^2.0.11",
     "classnames": "^2.5.1",
