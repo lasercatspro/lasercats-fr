@@ -9,7 +9,7 @@ export function Footer(): ReactNode {
 		<footer className="bg-custom-dark p-8 pb-16 border-t-2 border-primary">
 			<Container classes="flex flex-col gap-8 relative">
 				<ul className="flex flex-col md:flex-row gap-8 lg:gap-20 justify-center items-center">
-					<li className="flex flex-col gap-1 w-full items-start lg:items-end">
+					<li className="flex flex-col gap-1 w-full items-center lg:items-end">
 						<span className="lg:text-xl text-zinc-50">2 avenue Jean Janvier</span>
 						<span className="lg:text-xl text-zinc-50">35000 RENNES</span>
 					</li>
@@ -64,7 +64,7 @@ export function Footer(): ReactNode {
 							</div>
 						</div>
 					</div>
-					<li className="flex flex-col gap-1 w-full items-end lg:items-start">
+					<li className="flex flex-col gap-1 w-full items-center lg:items-start">
 						<span className="lg:text-xl text-zinc-50">+330234567890</span>
 						<br />
 						<Link

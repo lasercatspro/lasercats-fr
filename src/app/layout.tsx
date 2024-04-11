@@ -57,10 +57,6 @@ export default function RootLayout({
 				/>
 				<meta name="theme-color" content="#000" />
 				<link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-				<link
-					href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
-					rel="stylesheet"
-				/>
 			</head>
 			{/*  */}
 			<body className="min-h-[100vh] bg-cover bg-center bg-[url('/assets/images/backgrounds/bg.jpg')]">

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Header from "../_components/blocks/header";
 import Numbers from "../_components/blocks/numbers";
 import Testimonials from "../_components/blocks/testimonials";
@@ -25,7 +26,7 @@ export default async function Index () {
 			<Projects projects={projects as Client[]}/>
 			<GridTransition />
 			<Team />
-			<LaserGame />
+			{/* <LaserGame /> */}
 			<WeHave isLikeContent />
 			<Hey />
 		</main>
