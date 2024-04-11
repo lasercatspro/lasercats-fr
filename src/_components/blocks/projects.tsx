@@ -9,6 +9,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import Container from "../container";
 import useIsMobile from "@/hooks/useIsMobile";
 import Image from "next/image";
+import { customBlue, customGreen } from "@/lib/constants";
 
 type Props = {
   projects: Client[];
@@ -16,7 +17,7 @@ type Props = {
 
 const Projects = ({ projects }: Props) => {
 	const isMobile = useIsMobile({forIpad: true});
-	const [bgColor, setBgColor] = useState<"#06038D" | "#00C65E" | "transition">("#06038D");
+	const [bgColor, setBgColor] = useState<customBlue | customGreen | "transition">(customBlue);
 	return (
 		<div
 			className={"px-4 py-16 md:px-16 bg-cover relative bg-custom-dark z-10"}
@@ -30,11 +31,11 @@ const Projects = ({ projects }: Props) => {
 					isIntrinsicHeight
 				>
 					<div className={`absolute -z-10 left-0 w-screen h-auto ${isMobile && "top-1/4"}`}>
-						{bgColor === "#00C65E" && (
+						{bgColor === customGreen && (
 							<Image alt="Logo Lasercats" title="Lasercats" src="/assets/images/backgrounds/svg-green.svg" className="w-screen" width={1920} height={800} />
 						)}
 
-						{bgColor === "#06038D" && (
+						{bgColor === customBlue && (
 							<Image alt="Logo Lasercats" title="Lasercats" src="/assets/images/backgrounds/svg-blue.svg" className="w-screen" width={1920} height={800} />
 						)}
 					</div>

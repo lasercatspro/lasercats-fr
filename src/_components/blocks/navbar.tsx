@@ -70,7 +70,7 @@ export const Navbar = (): ReactNode => {
 											className={`${
 												actualNav === item.name
 													? " !text-primary !font-extrabold"
-													: "text-zinc-50 hover:text-primary "
+													: "!text-zinc-50 hover:!text-primary "
 											} 
                           font-bold px-3 py-2 hover:no-underline `}
 										>

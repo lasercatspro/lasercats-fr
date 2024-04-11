@@ -47,10 +47,10 @@ const Project = ({ project }: Props) => {
 			{!isMobile && <Image
 				alt={`Projet ${project.title}`}
 				title={project.title}
-				width={1000}
-				height={800}
+				width={800}
+				height={600}
 				src={project.imagePreview}
-				className="rounded-md w-1/2"
+				className="rounded-md w-1/2 object-cover"
 			/>}
 		</div>
 	);

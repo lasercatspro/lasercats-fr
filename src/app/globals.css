@@ -37,7 +37,7 @@
   }
 
   a {
-    @apply no-underline text-primary hover:underline;
+    @apply no-underline !text-primary hover:underline;
   }
 
   strong {

@@ -15,6 +15,7 @@ import Quote from "./quote";
 import { QuoteI } from "../lib/testimonials";
 import Project from "./project";
 import { Client } from "../types/items";
+import { customBlue, customGreen } from "@/lib/constants";
 
 type Props = {
   items: QuoteI[] | Client[];
@@ -22,7 +23,7 @@ type Props = {
   backBtn?: boolean;
   nextBtn?: boolean;
   dotsType?: "range" | "bullets";
-	setBgColor?: Dispatch<SetStateAction<"#06038D" | "#00C65E" | "transition">>
+	setBgColor?: Dispatch<SetStateAction<customBlue | customGreen | "transition">>
 };
 
 const CustomSlider = ({
@@ -52,7 +53,7 @@ const CustomSlider = ({
 	useEffect(() => {
 		if (setBgColor) {
 			setBgColor("transition");
-			setTimeout(() => setBgColor(currentSlide % 2 === 0 ? "#06038D" : "#00C65E"), 500);
+			setTimeout(() => setBgColor(currentSlide % 2 === 0 ? customBlue : customGreen), 500);
 		}
 	}, [currentSlide]);
 
