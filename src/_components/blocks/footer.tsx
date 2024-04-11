@@ -92,11 +92,11 @@ export function Footer(): ReactNode {
 						</div>
 					</div>
 					<Link
-						className="hidden lg:flex justify-start gap-4 text-zinc-50 group hover:no-underline"
+						className="hidden lg:flex justify-start gap-4 group text-zinc-50"
 						href="mailto:contact@lasercats.fr"
 					>
 						<EnvelopeIcon className="h-4 w-4 lg:h-8 lg:w-8 group-hover:text-primary" />
-						<li className="text-lg lg:text-xl text-zinc-50 group-hover:text-primary ">
+						<li className="text-lg lg:text-xl text-zinc-50 group-hover:text-primary">
               contact@lasercats.fr
 						</li>
 					</Link>
