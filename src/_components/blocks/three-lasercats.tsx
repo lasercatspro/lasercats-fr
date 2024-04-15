@@ -97,7 +97,7 @@ const ThreeLasercats = () => {
 			{isPlaying && (
 				<>
 					<Lasercat isPlaying={isPlaying} />
-					<Environment files="/assets/textures/mini-bg.hdr" background />
+					<Environment files="/assets/textures/mini-test.hdr" background />
 					<EffectComposer>
 						<Bloom luminanceThreshold={0} luminanceSmoothing={0} height={300} />
 						<Noise opacity={0.01} />

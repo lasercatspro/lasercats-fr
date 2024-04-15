@@ -60,7 +60,7 @@ export default function RootLayout({
 				<link rel="alternate" type="application/rss+xml" href="/feed.xml" />
 			</head>
 			{/*  */}
-			<body className="min-h-[100vh] bg-cover bg-center bg-[url('/assets/images/backgrounds/bg.jpg')]">
+			<body className="min-h-[100vh] bg-cover bg-center bg-[url('/assets/images/backgrounds/bg-3.jpg')]">
 				<SmoothScrolling>
 					<Navbar />
 					<Suspense fallback={null}>
