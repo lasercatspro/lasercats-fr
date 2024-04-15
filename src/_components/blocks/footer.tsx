@@ -13,7 +13,7 @@ export function Footer(): ReactNode {
 					<div className="flex flex-col gap-1 items-start lg:w-full">
 						<Link
 							href={
-								"https://www.openstreetmap.org/note/4193093#map=19/48.10910/-1.67387&layers=N"
+								"https://www.openstreetmap.org/search?query=2%20avenue%20jean%20janvier%2C%2035000%20rennes#map=19/48.10732/-1.67362"
 							}
 							className="flex justify-start items-center gap-4 group hover:no-underline"
 							target="_blank"

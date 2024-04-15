@@ -11,7 +11,6 @@ function SmoothScrolling({ children }: { children: ReactNode}) {
 		if (lenisRef?.current) {
 			Tempus.add((time: any) => {
 				lenisRef.current?.lenis?.raf(time);
-				console.log(time);
 			}, 1);
 		}
 	}, []);
