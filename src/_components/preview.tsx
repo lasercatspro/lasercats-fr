@@ -15,7 +15,7 @@ export function Preview({ article, type }: Props): ReactNode {
 		<Link
 			as={`/${type === "post" ? "blog" : "projets"}/${article?.slug}`}
 			href={`/${type === "post" ? "blog" : "projets"}/[slug]`}
-			className="lg:p-8 hover:no-underline lg:border-2 lg:border-primary lg:border-opacity-20 hover:bg-primary hover:bg-opacity-10"
+			className="flex flex-col justify-between lg:p-8 hover:no-underline lg:border-2 lg:border-primary lg:border-opacity-20 hover:bg-primary hover:bg-opacity-10"
 		>
 			<div className="mb-5">
 				{article != null && (
@@ -24,9 +24,8 @@ export function Preview({ article, type }: Props): ReactNode {
 						title={article?.title}
 						type={article?.type}
 						src={
-							type === "client" && (article as Client)?.imagePreview
-								? (article as Client)?.imagePreview
-								: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+							article?.imagePreview
+								?? "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 						}
 					/>
 				)}

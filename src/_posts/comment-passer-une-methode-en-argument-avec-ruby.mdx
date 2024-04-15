@@ -1,0 +1,68 @@
+export const meta = {
+  author: 'Louis Quenault',
+	type: 'post',
+  date: '2022-09-12',
+  title: 'Comment passer une méthode en argument avec Ruby ? (sans la jouer)',
+  description:
+    "En Ruby, appeler le nom d’une méthode l’exécute, mais l’appeler sous une forme de symbole ou d’une string permet d’y faire référence sans l’exécuter.",
+	imagePreview: "/assets/images/articles/exemple-1.png"
+}
+
+export default (props) => <article meta={meta} {...props} />
+
+En voulant créer une méthode Rails pour prendre en compte la pagination lors de requêtes à une API, j’ai eu besoin de passer une méthode en argument pour me permettre de vérifier la présence d’autres pages dans la réponse de ma requête. 
+
+Mon objectif était de pouvoir garder mes méthodes de requêtes déjà existantes, tout en appelant une logique de pagination si besoin.
+
+En m’inspirant [d’un article de Ross Kaffenberger](https://rossta.net/blog/paginated-resources-in-ruby.html), j’ai donc codé une méthode qui me permet de checker le nombre de page d’une requête et si besoin aller requêter les autres pages. 
+
+Ayant déjà mes méthodes de requête, je souhaitais, non pas écrire le endpoint de ma requête en argument comme Ross, mais **directement passer ma méthode en argument**. 
+
+```ruby
+def paginate_get(request, dig_options)
+	response = method(request).call
+	objects = response[dig_options]
+	number_of_pages = response.dig('meta', 'X-Total-Pages').to_i
+	return objects if number_of_pages == 1
+
+	actual_page = 2
+	while actual_page <= number_of_pages
+		objects += method(request).call(query: {page: actual_page}[dig_options]
+		actual_page += 1
+	end
+	Rails.logger.debug { "I dit it #{actual_page - 1} times"}
+	objects
+end
+```
+
+{/* <img src={"/assets/images/articles/exemple-1.png"} alt="passer une methode en argument - exemple 1" /> */}
+
+
+Beaucoup de lignes, mais en gros :
+
+Je récupère ma requête et des options de recherche, avec ça je peux lancer une première requête. J’enregistre les ressources présentes dans la première réponse de ma requête ; je check s’il y a plus d’une page ; si non je renvoie les ressources déjà présentes ; si oui je check les autres pages pour en ajouter de nouvelles.
+
+Après avoir codé cette solution, j’ai *naïvement* appelé ma méthode de pagination en passant en argument le nom de la requête que je souhaitais paginer. 
+
+Comme ça :
+
+<img src={"/assets/images/articles/exemple-2.png"} alt="passer une methode en argument - exemple 2" />
+
+
+Mal m’en a pris ! **Renseigner le nom d’une méthode, même en argument d’une méthode, joue la méthode en question** et renvoie une erreur.
+
+Ce que je souhaite, c’est que ma solution gère l’exécution de la requête, la mise en cache de la réponse, sa lecture et la solution à exécuter en fonction de s’il y a plusieurs pages ou non.
+
+La solution est fournie directement par les propriétés de Ruby qui nous permettent **d’utiliser des méthodes de méta-programmation coupler à une syntaxe** pour faire référence à d’autres méthodes. Ici grâce à la méthode `method()` (😅) et en passant le nom de ma méthode de requête en string ou en symbole me permet d’y faire référence. 
+
+Il nous reste plus qu’à nommer la méthode à passer en argument sous forme de symbole lorsque l’on appelle la méthode de pagination et le tour est joué. 
+
+<img src={"/assets/images/articles/exemple-3.png"} alt="passer une methode en argument - exemple 3" />
+
+Notons deux choses dans notre cas :
+
+En Ruby, **je peux référer à une méthode en la nommant via une string ou un symbole**, puis utiliser des méthodes de méta-programmation pour l’exécuter.
+
+Grâce à cela nous pouvons **alléger la communication avec des API**, par exemple dans le cas où on a besoin de paginer les réponses à une requête pour obtenir toutes les ressources souhaiter. Cette solution m’a permis de **réduire au minimum le nombre de requête** que j’ai à effectuer pour récupérer tous mes articles, je n’effectue qu’une seule requête de base. Requête qui me permet à la fois de stocker des ressources, vérifier le nombre de page et exécuter de nouvelles requêtes si besoin. 
+
+Retenons que, en Ruby, **appeler le nom d’une méthode l’exécute**, mais **l’appeler sous une forme de symbole ou d’une string permet d’y faire référence sans l’exécuter.**

@@ -1,0 +1,51 @@
+export const meta = {
+  author: 'Lasercats',
+  date: '2022-10-19',
+  type: "post",
+  title: 'Trois outils indispensables pour développer avec PostgreSQL',
+  description:
+    "Dans cet article, on découvre 3 gestes simples pour s’amuser avec PostgreSQL : pgcli pour les opérations en ligne de commande, Explain et Analyse pour comprendre les requêtes et enfin pagila comme base de test disponible sur internet.",
+  imagePreview: "/assets/images/articles/pgcli.png"
+}
+
+export default (props) => <article meta={meta} {...props} />
+
+C’est souvent dur d’aimer le SQL. Pourtant c’est souvent nécessaire de savoir ce qui se passe sous le capot d’une app rails par exemple. Dans cet article, on découvre 3 gestes simples pour s’amuser avec PostgreSQL : **pgcli** pour les opérations en ligne de commande, **Explain et Analyse** pour comprendre les requêtes et enfin **pagila** comme base de test disponible sur internet.
+
+## **pgcli, et la couleur fut**
+
+Parfois on doit faire du “vrai” PostgreSQL, en ligne de commande j’entends. Il y a tout un tas de raisons pour ça. Ça peut commencer, par exemple, avec un utilisateur à qui il manque le droit de créer une table… Le premier réflexe est souvent d’utiliser **psql**, un utilitaire fonctionnel mais très austère, qui n’aide pas à se sentir à l’aise avec le langage. Et bien sachez qu’il existe **pgcli**, qui fait la même chose que **psql** mais avec de la couleur 🎨 et une [super autocomplétion](https://www.pgcli.com/completion) 🪶 qui propose non seulement les commandes et leurs options mais aussi les bases et les colonnes sur lesquelles vous pouvez agir. On a enfin l’impression de comprendre ce qu’on tape.
+
+[Plus d’informations sur leur site](https://www.pgcli.com/)
+
+<img src={'/assets/images/articles/pgcli.png'} alt="pgcli" />
+
+## **Explain / Analyse, tout comprendre aux requêtes**
+
+L’autre raison de toucher à postgres, c’est quand on s’attaque aux **performances**. À mesure que la base grossit, des requêtes qui avaient l’air tout à fait ok deviennent des gouffres à ressource, le plus souvent pour de mauvaises raisons. Sachez que vous pouvez préfixer n’importe quelle requête avec **EXPLAIN** (suivi de différentes options, dont **ANALYSE**) pour obtenir l’explication étape par étape de ce qui se passe quand la requête à lieu : parcours des données, temps de calcul, etc
+
+Mieux encore, vous pouvez aller faire déchiffrer ce résultat en anglais compréhensible sur le site de [explain.dalibo](https://explain.dalibo.com)
+
+<img src={'/assets/images/articles/dalibo.png'} alt="dalibo" />
+
+## **pagila, une base pour tous vos tests**
+
+Vous voulez tester tout ça sur une base bien lourde pour voir ce qui se passe à grande échelle, mais vous ne voulez pas déglinguer vos bases de prod ? Ça s’entend. Et bien là encore sachez qu’il existe des “bases de test” PostgreSQL sur internet, une des plus connues s’appelle **pagila**, la base de données d’un faux vidéoclub avec 600 clients et 1000 films.
+
+[Le github](https://github.com/devrimgunduz/pagila) manque d’une vraie doc, pour utiliser la base vous devrez :
+
+1. la créer `CREATE DATABASE pagila;`
+2. créer sa structure `psql -d pagila -f pagila-schema.sql`
+3. peupler ses données `psql -d pagila -f pagila-data.sql`
+    
+<img src={'/assets/images/articles/pagila.png'} alt="pagila" />
+
+## On récapitule
+
+Vous développez des bases de données **postgresql**, et vous avez l’impression de marcher les yeux bandés dans une grotte pleine d’aspérités. Retrouvez la vue avec ces trois outils :
+
+- **pgcli :** un client en ligne de commande avec la couleur et l’autocompletion
+- **Explain / Analyse (+ explain.dalibo)** : pour comprendre et analyser les requêtes
+- **pagila** : une base de donnés pour faire tous vos tests
+
+**SQL = FUN 💃**
