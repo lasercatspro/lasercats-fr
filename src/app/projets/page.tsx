@@ -1,6 +1,5 @@
 import Container from "@/_components/container";
-import { Hero } from "@/_components/hero";
-import { MoreStories } from "@/_components/moreStories";
+import { ItemsGrid } from "@/_components/items-grid";
 import { getAllItems } from "../../lib/api";
 import { Client, Post } from "../../types/items";
 import { notFound } from "next/navigation";
@@ -25,19 +24,12 @@ export default async function Index(): Promise<JSX.Element> {
 	if (clients?.length === 0) {
 		notFound();
 	}
-
-	const heroClient = clients?.at(0);
-	const moreClients = clients?.slice(1);
-
 	return (
-		<Container classes="flex flex-col gap-10 pt-32">
+		<Container classes="flex flex-col gap-10 py-32 !max-w-[800px] mx-auto">
 			<h1 className="text-primary uppercase w-full">Nos Projets</h1>
-			<>
-				{heroClient && <Hero type={"client"} article={heroClient} />}
-				{moreClients && moreClients?.length > 0 && (
-					<MoreStories type={"client"} items={moreClients} />
-				)}
-			</>
+			{clients !== null && (
+				<ItemsGrid type={"client"} items={clients} />
+			)}
 		</Container>
 	);
 }

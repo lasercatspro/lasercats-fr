@@ -7,10 +7,10 @@ interface Props {
 	type: "client" | "post"
 }
 
-export function MoreStories ({ items, type }: Props): ReactNode {
+export function ItemsGrid ({ items, type }: Props): ReactNode {
 	return (
 		<section className="my-12">
-			<div className="grid grid-cols-2 gap-16">
+			<div className="space-y-24">
 				{items?.map((item) => (
 					<Preview key={item?.slug} article={item} type={type} />
 				))}
