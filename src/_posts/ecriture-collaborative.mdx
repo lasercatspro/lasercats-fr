@@ -1,0 +1,94 @@
+export const meta = {
+  author: 'Lasercats',
+  type: "post",
+  date: '2022-10-07',
+  title: "Ecriture collaborative avec git: Comment gérer l'historique d'un texte ?",
+  description:
+    "Nous développons avec la maison dédition La Volte un outil décriture collaborative qui permet d’écrire des variations et des prolongements de récits à plusieurs mains. Cet outil reprend les mêmes principes (et une partie de la technologie) qu’un outil bien connu des développeurs : git. Voici un premier où nous explorons la gestion de l'historique dun texte.",
+  imagePreview: "/assets/images/articles/figma1.png"
+}
+
+export default (props) => <article meta={meta} {...props} />
+
+## R*e:volte, le git pour écrire à plusieurs*
+
+Les textes écrit avec `re:volte` (le nom de code de notre projet) seront forcément écrits à **plusieurs mains**. Petit à petit, différentes versions à partir d'un même texte seront écrites (des *variations* dans notre terminologie). On a envie de **faire sentir que le texte à été écrit à plusieurs dans le temps** et de rendre visible la **profondeur des évolutions du texte**. 
+
+`re:volte` ouvrira des possibles littéraires :  un **texte passe de mains en mains,** chaque **variation d’un texte** sera une porte ouverte vers de nouvelles divergences et collaborations. Et sans doute petit à petit une ou plusieurs de ces variations constituerons des univers plus autonomes.
+
+Pour suivre techniquement comment le texte sera écrit, par quelles variations il passera, nous avons besoin d’un outil technique. Cet outil existe déjà dans le monde du développement informatique : c’est GIT.
+
+S'ouvre à nous plusieurs questions :
+
+- comment rendre visible à l’écran l’écriture à plusieurs mains, et ses multiples ramifications ?
+- comment utiliser GIT dans la cadre d’une écriture qui ne soit pas du code ?
+
+## Deux outils qui nous inspirent
+
+### La surbrillance de framapad …
+
+Certain-e-s d’entre vous sont peut-être familiè·r·es de [etherpad](https://etherpad.org/), qui est largement utilisé en France chez [Framapad](https://framapad.org/abc/fr/). C’est un outil qu’on aime beaucoup, et qui nous sert d’inspiration (mais qui n’est pas adapté pour notre besoin de créer des variations multiples et claires d’un même texte).
+
+<img src={"/assets/images/articles/1.png"} alt="sreenShot git" />
+
+Avec Framapad, on peut savoir qui a écrit quoi en voyant **les couleurs de surbrillance** qui identifient les utilisateurs.
+
+Nous voulons **avoir ce comportement** (de manière optionnelle), mais aussi savoir **l’historique des changement d’une ligne ou d’un mot en particulier.**
+
+### … et plus ou moins l’historique de github.
+
+Pour ce qui est de l’historique, sur [github](github.com) (qui est un outil collaboratif qui utilise [git](https://git-scm.com/)) on peut voir l’historique d’un fichier, ou celle d’une ligne, mais **pas d’un mot** **en particulier**. Car, une “ligne”, dans le monde de l’informatique, ce n’est pas ce qu’il y a de bout à bout d’une ligne de texte. C’est tout ce qu’il y a avant un “retour à la ligne”. Du coup, dans le cadre d’un texte littéraire, une ligne c’est un paragraphe.
+
+Dans github, on voit uniquement la **précédente** modification, et on ne peux pas savoir combien de modifications il y a eu (il faut qu’on clique plusieurs fois dans la passé pour tout voir).
+*(Les exemples sont extraits du code source [Signal](https://signal.org/fr/) [hébergé sur github,](https://github.com/signalapp/Signal-Desktop/blame/0ba6a0926e45ca0e95661397557de10ba960c4e0/app/main.ts) une super application de messagerie chiffrée.)*
+
+<img src={"/assets/images/articles/2.gif"} alt="gif signal-desktop" />
+
+De plus, on peut uniquement savoir quand il a été fait, par qui et dans quel contexte, mais pas le contenu…à moins d’ouvrir le fichier à chacune des étapes de sa vie, ce qui est fastidieux.
+
+<img src={"/assets/images/articles/3.png"} alt="screenshot signal" />
+
+Ce qui nous intéresse ce ne sont pas uniquement les modifications de la ligne (parce qu’on a vu qu’une ligne, du point de vue de GIT, c’est un paragraphe) mais d’un **mot en particulier** : on veut voir que tel mot est d’un auteur, et tel autre mot d’un autre.
+
+## Résumé de nos problèmes et de nos envies
+
+Après cette première exploration il est temps de mettre à plat ce qu’il nous reste à penser et à faire.
+
+⚠️ **GIT permet de voir les modifications lignes par lignes, et non mot par mot.**
+
+- Est-ce que c’est possible d’avoir ce comportement avec GIT ?
+- Si ce n’est pas le cas, est-ce que c’est bloquant pour notre outil ?
+- Si c’est bloquant, est-ce qu’il faudrait utiliser une autre technologie que GIT pour la gestion des version du textes  ?
+- Comment font, sous le capot, d’autres outils comme wikipedia et framapad ?
+
+⚠️ **GIT permet de voir le dernier changement d’une ligne de texte, mais pas tout l’historique de cette ligne**
+
+- Est-ce qu’il y a une commande GIT qui permettrait de le faire ?
+- Est-ce qu’un librairie nous permettrait d’avoir ce résultat ?
+
+🎨 **Comment rendre visibles les différents participants d’un texte ?**
+
+- Est-ce que ce serait mieux d’avoir une couleur pour le texte, ou une couleur en surbrillance ?
+- Est-ce qu’il y a des librairies et un format connu pour afficher ces informations ?
+
+🎨 **Comment rendre visible l’historique d’une ligne de texte  ?**
+
+- Est-ce qu’on montre ce qu’il y a comme changement la version la plus ancienne à la plus récente, ou l’inverse, de la plus récente à la plus ancienne ?
+- Est-ce qu’on utilise les couleurs des auteurs, ou on garde deux couleurs (le vert et le rouge) pour signifier ce qui est ajouté ou supprimer d’une version à une autre ?
+
+## Avant de se quitter
+
+Voici quelques travaux exploratoires autour des sujets évoqués dans cet article. Ce sont des maquettes complètement provisoires, qui sont là pour nous aider à pousser des idées et à vivre avec. 
+
+La suite au prochain épisode !
+
+**Pour voir l’historique d’une ligne de texte**
+
+*Dans cet exemple, les changements sont indiqués de la version la plus ancienne à la version la plus récente. Au passage, on voit quelles modifications on été faites d’une version à une autre.*
+<img src={"/assets/images/articles/figma1.png"} alt="screenshot signal" />
+
+**Voir qui a écrit quoi dans une variation**
+
+*Dans cet exemple, chaque auteur à une couleur. Cette manière de voir le texte ne serait pas celle par défaut. Evidemment, cet exemple est fantaisiste, on se sait pas qui de Karl ou de Fred à écrit (enfin pas nous).*
+
+<img src={"/assets/images/articles/figma2.png"} alt="screenshot signal" />

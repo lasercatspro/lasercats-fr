@@ -3,7 +3,8 @@ const config = {
 		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/_components/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-		"./src/_posts/*.{js,ts,jsx,tsx,mdx}"
+		"./src/_posts/*.{js,ts,jsx,tsx,mdx}",
+		"./src/_clients/*.{mdx}"
 	],
 	theme: {
 		screens: {
@@ -131,7 +132,8 @@ const config = {
 
 					// Images
 					img: {
-						borderRadius: theme("borderRadius.sm")
+						borderRadius: theme("borderRadius.sm"),
+						margin: theme("margin.auto")
 					},
 
 					// Inline elements

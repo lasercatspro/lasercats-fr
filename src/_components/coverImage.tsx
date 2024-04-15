@@ -16,10 +16,10 @@ const CoverImage = ({ title, src, slug, type }: Props): ReactNode => {
 			src={src}
 			alt={`Cover Image for ${title}`}
 			title={title}
-			className={cn("shadow-sm w-full", {
+			className={cn("shadow-sm w-full h-[400px] object-cover", {
 				"": slug,
 			})}
-			width={1300}
+			width={800}
 			height={630}
 		/>
 	);

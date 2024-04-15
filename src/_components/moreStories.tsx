@@ -9,13 +9,10 @@ interface Props {
 
 export function MoreStories ({ items, type }: Props): ReactNode {
 	return (
-		<section>
-			<h2 className="mb-8 mt-16 text-5xl md:text-7xl font-bold tracking-tighter leading-tight">
-				{`Nos autres ${type === "client" ? "projets" : "articles"}`}
-			</h2>
-			<div className="grid grid-cols-1 lg:grid-cols-3 md:gap-x-4 lg:gap-x-8 gap-y-20 lg:gap-y-32 mb-32">
+		<section className="my-12">
+			<div className="grid grid-cols-2 gap-16">
 				{items?.map((item) => (
-					<Preview article={item} key={item?.slug} type={type} />
+					<Preview key={item?.slug} article={item} type={type} />
 				))}
 			</div>
 		</section>

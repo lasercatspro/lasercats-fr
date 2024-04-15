@@ -7,6 +7,7 @@ export interface Post {
   title: string
   type: "post"
   description: string
+  imagePreview?: string
   component?: () => MDXContent
 }
 export interface Client {
