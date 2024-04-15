@@ -26,8 +26,6 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.mdx",
-    "./_clients/*.mdx",
-    "./_posts/*.mdx",
     ".next/types/**/*.ts",
     "next.config.mjs",
     "tailwind.config.js",

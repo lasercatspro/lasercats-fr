@@ -1,6 +1,5 @@
 import Container from "@/_components/container";
-import { Hero } from "@/_components/hero";
-import { MoreStories } from "@/_components/moreStories";
+import { ItemsGrid } from "@/_components/items-grid";
 import { getAllItems } from "../../lib/api";
 import { type Post } from "../../types/items";
 import { notFound } from "next/navigation";
@@ -25,17 +24,11 @@ export default async function Index(): Promise<JSX.Element> {
 		notFound();
 	}
 
-	const heroPost = allPosts?.at(0);
-	const morePosts = allPosts?.slice(1);
-
 	return (
-		<Container classes="flex flex-col gap-10 pt-32">
+		<Container classes="flex flex-col gap-10 py-32 !max-w-[800px] mx-auto">
 			<h1 className="text-primary uppercase w-full">Blog</h1>
-			{heroPost != null && morePosts != null && (
-				<>
-					<Hero article={heroPost} type="post" />
-					<MoreStories items={morePosts} type={"post"} />
-				</>
+			{allPosts != null  && (
+				<ItemsGrid items={allPosts} type={"post"} />
 			)}
 		</Container>
 	);
