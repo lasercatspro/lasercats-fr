@@ -22,6 +22,7 @@
     "@studio-freight/tempus": "^0.0.44",
     "@tailwindcss/typography": "^0.5.10",
     "@types/mdx": "^2.0.11",
+    "axios": "^1.6.8",
     "classnames": "^2.5.1",
     "clsx": "^2.1.0",
     "compression": "^1.7.4",
