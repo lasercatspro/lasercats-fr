@@ -29,12 +29,12 @@ export function Preview({ article, type }: Props): ReactNode {
 					}
 				/>
 			)}
-			<div className="">
+			<div className="flex justify-between">
 				<h3 className="text-3xl mb-3 leading-snug group-hover:text-primary font-bold">
 					{article?.title}
 				</h3>
 				{type === "client" && (
-					<div className="flex gap-4">
+					<div className="flex gap-4 h-10 items-center ">
 						{(article as Client)?.technos.map((tech) => (
 							<p
 								key={tech}
