@@ -1,32 +1,62 @@
 "use client";
-import { ChangeEvent, FormEvent, useReducer } from "react";
+import { ChangeEvent, FormEvent, useCallback, useReducer, useState } from "react";
 import Button from "../button";
 import useIsMobile from "@/hooks/useIsMobile";
 import Link from "next/link";
+import axios, { AxiosError } from "axios";
+import { Transition } from "@headlessui/react";
+import { CheckCircleIcon, XCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { emailRegex } from "@/lib/utils";
 
 interface Action {
   type: "handle_text";
-  field: "nom" | "prenom" | "email" | "message";
+  field: "name" | "email" | "message";
   payload: string;
 }
 interface State {
-  nom: string;
-  email: string;
-  message: string;
+	message: {
+		value: string;
+		error: boolean;
+	};
+  name: {
+		value: string;
+		error: boolean;
+	}
+  email: {
+		value: string;
+		error: boolean;
+	};
+}
+
+interface Notif {
+	isError: boolean; 
+	message: undefined | string;
 }
 
 const Contact = () => {
 	const initialState = {
-		nom: "",
-		email: "",
-		message: "",
+		message: {
+			value: "",
+			error: false,
+		},
+		name: {
+			value: "",
+			error: false,
+		},
+		email: {
+			value: "",
+			error: false,
+		},
 	};
 	function reducer(state: State, action: Action) {
 		switch (action.type) {
 		case "handle_text":
 			return {
 				...state,
-				[action.field]: action.payload,
+				[action.field]: {
+					value: action.payload,
+					error: false
+				}
 			};
 		default:
 			return state;
@@ -44,18 +74,55 @@ const Contact = () => {
 	};
 
 	const [state, dispatch] = useReducer(reducer, initialState);
-	const inputs = ["Email", "Nom", "Message"];
+	const [notif, setNotif] = useState<Notif>({isError: false, message: undefined});
 
-	const submitFn = (e: FormEvent<HTMLFormElement>) => {
+	const isValidated = useCallback(() => {
+		(Object.keys(state) as ("email" | "name" | "message")[]).forEach((input) => {
+			if (state[input]?.value === "") {
+				state[input].error = true;
+			}
+		});
+		if (Object.values(state).filter((v: State["email" | "message" |"name"]) => v.error).length > 0) {
+			setNotif({isError: true, message: "Veuillez remplir les champs"});
+			return false;
+		}
+		return true;
+	}, [state]);
+
+	const generateJSON = useCallback((someState: State) => {
+		const result: any = {};
+		for (const key in state) {
+			if (Object.hasOwnProperty.call(someState, key)) {
+				result[key] = someState[key as "email" | "name" | "message"]?.value;
+			}
+		}
+		return result;
+	}, []);
+
+	const submitFn = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		return console.log(state);
+		if (!isValidated()) return;
+		const jsonData = generateJSON(state);
+
+		try {
+			const response = await axios.post("api/send-email",{
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(jsonData)
+			});
+			setNotif({...notif, message: response.data});
+		} catch (error) {
+			setNotif({isError: true, message: (error as AxiosError)?.message});
+		}
 	};
 	const isMobile = useIsMobile({ forIpad: true });
 
 	return (
-		<div id="contact" className=" !text-zinc-50 pt-16 relative bg-custom-dark">
+		<div id="contact" className=" !text-zinc-50 pt-16 relative bg-custom-dark min-h-screen">
 			<div className="bg-cover bg-[url(/assets/images/backgrounds/svg-blue.svg)]">
 				<div className="grid grid-col-1 gap-8 lg:grid-rows-2 lg:grid-cols-2 max-w-[1400px] mx-8 lg:mx-auto py-12 lg:py-24">
+					
 					<h1 className="!text-zinc-50 !text-5xl lg:!text-[8rem]">
             Nous contacter
 					</h1>
@@ -67,43 +134,64 @@ const Contact = () => {
 						lg:row-span-2
 						flex flex-col gap-8 border border-zinc-400 
 						rounded-lg p-8 backdrop-blur-sm bg-zinc-50 
-						bg-opacity-10
+						bg-opacity-10 relative
 					"
 					>
+						<Transition
+							show={notif.message !== undefined}
+							enter="transition-all duration-150"
+							enterFrom="translate-x-10 opacity-0"
+							enterTo="translate-x-0 opacity-100"
+							leave="transition-all duration-75"
+							leaveFrom="translate-x-0 opacity-100"
+							leaveTo="translate-x-10 opacity-0"
+							className={"absolute -top-28 lg:-top-12 right-0 lg:right-8 z-30 bg-zinc-50 rounded-sm text-custom-dark w-full lg:w-[91%]"}
+						>
+							<div className="flex gap-2 relative px-12 py-6 ">
+								{notif.isError ?
+									<XCircleIcon className="h-6 w-6 text-red-600" />
+									:
+									<CheckCircleIcon className="h-6 w-6 text-primary" />
+								}
+								{notif.message}
+								<span className="absolute top-2 right-2 hover:cursor-pointer" onClick={() => setNotif({isError: false, message: undefined})}>
+									<XMarkIcon className="h-[1.45rem] w-[1.45rem] rounded-md border border-gray-500 p-1" />
+								</span>
+							</div>
+						</Transition>
 						<div className="flex gap-4 items-center">
 							<div className="h-2 w-2 bg-primary rounded-full" />
 							<p className="!text-zinc-50">Démarrer un échange</p>
 						</div>
-						<div className="flex flex-col w-full gap-2">
-							<label className="sr-only" htmlFor={inputs.at(-1)}>
-								{inputs.at(-1)}
-							</label>
-							<textarea
-								name={inputs[3]}
-								cols={10}
-								rows={isMobile ? 7 : 12}
-								className="custom-input !border-none rounded-sm text-3xl"
-								onChange={(e) => handleTextChange(e)}
-								placeholder="Laissez nous un petit mot"
-							/>
-						</div>
-						<div className="flex flex-col md:flex-row gap-4">
-							{inputs.map(
+						<div className="grid grid-cols-2 gap-4">
+							{Object.keys(initialState).map(
 								(input) =>
-									input !== inputs.at(-1) && (
-										<div key={input} className="flex flex-col w-full gap-2 ">
-											<label className="sr-only" htmlFor={input}>
-												{input}
-											</label>
+									<div key={input} className={`flex flex-col w-full gap-2 ${input === "message" ? "col-span-2" : "col-span-2 lg:col-span-1"}`}>
+										<label className="sr-only" htmlFor={input}>
+											{input}
+										</label>
+										{input !== "message" ? 
 											<input
-												type="text"
+												type={input === "email" ? "email" : "text"}
 												name={input}
-												className="custom-input"
+												className={`custom-input ${state[input as "email" | "name"]?.error  ? "!border-red-500" : ""}`}
 												onChange={(e) => handleTextChange(e)}
 												placeholder={`Votre ${input.toLowerCase()}`}
+												// required
+												pattern={input === "email" ? `${emailRegex}` : "^.*"}
 											/>
-										</div>
-									)
+											:
+											<textarea
+												name={input}
+												cols={10}
+												rows={isMobile ? 7 : 12}
+												className={`custom-input rounded-sm text-xl min-h-[40vh] lg:min-h-[50vh] ${state.message.error ? "!border-red-500" : "border-none"}`}
+												onChange={(e) => handleTextChange(e)}
+												placeholder="Laissez nous un petit mot"
+												// required
+											/>
+										}
+									</div>
 							)}
 						</div>
 						<Button title="Envoyer" role="primary" type="submit" />
