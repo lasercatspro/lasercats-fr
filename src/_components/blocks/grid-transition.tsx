@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 const GridTransition = () => {
 	const gridRef = useRef<HTMLDivElement | null>(null);
 	const thisGsap = useMemo(() => gsap.timeline({repeat: 1}), []);
+	const isMobile = useIsMobile({ forIpad: true });
 
 	const animeSquares = useCallback((squares: any) => {
 		squares?.forEach((square: any) => {
@@ -23,8 +24,8 @@ const GridTransition = () => {
 				},
 				scrollTrigger: {
 					trigger: gridRef.current,
-					start: "top 60%", 
-					end: "bottom 50%",
+					start: isMobile ? "top 60%" : "top 20%", 
+					end: isMobile ?  "bottom 50%" : "bottom 80%",
 					scrub: true,
 					// markers: true
 				}
@@ -47,12 +48,10 @@ const GridTransition = () => {
 	const rowsMobile = 9;
 	const colsMobile = 10;
 	
-	const isMobile = useIsMobile({ forIpad: true });
-	
 	return (
 		<div className="mb-16 overflow-x-hidden relative !bg-opacity-10">
 			<div className="relative">
-				<div className="flex justify-center items-center h-[50vh] lg:h-[100vh]">
+				<div className="flex justify-center items-center h-[56vh] lg:h-[100vh]">
 					<Container>
 						<p className="md:text-5xl text-center !text-zinc-50 mix-blend-difference px-2 lg:px-8">
 							{
@@ -63,7 +62,7 @@ const GridTransition = () => {
 					<div
 						ref={gridRef}
 						style={{ zIndex: -1 }}
-						className="absolute top-0 -left-12 w-[120vw] grid grid-cols-10 h-[33vh] lg:h-fit"
+						className="absolute top-0 -left-12 w-[120vw] grid grid-cols-10 h-[45vh] lg:h-fit"
 					>
 						{Array.from(Array(isMobile ? rowsMobile : rows)).map((_row, rowIndex) =>
 							Array.from(Array(isMobile ? colsMobile : cols).keys()).map((_col, colIndex) => (
