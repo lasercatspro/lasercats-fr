@@ -4,8 +4,8 @@ import Link from "next/link";
 
 const Quote = ({ quote }: { quote: QuoteI }) => {
 	return (
-		<div className="p-8 xl:p-12 mx-8 !border !border-primary !border-opacity-20 rounded-md bg-[url('/assets/images/backgrounds/bg-mini-blue.jpg')] hover:!border-opacity-60">
-			<Link href={`/projets/${quote.name}`} className="!no-underline flex flex-col gap-4 items-start justify-between min-h-[380px]">
+		<div className="p-8 xl:p-12 mx-2 !border !border-primary !border-opacity-20 rounded-md bg-gradient-to-t from-custom-dark to-[#141124] to-60% hover:!border-opacity-60">
+			<Link href={`/projets/${quote.name}`} className="!no-underline flex flex-col gap-4 items-start justify-between min-h-[410px]">
 				<div className="">
 					<Image
 						alt={`Logo ${quote.name}`}
@@ -15,7 +15,7 @@ const Quote = ({ quote }: { quote: QuoteI }) => {
 						height={100}
 						className="mb-6 h-[4rem] w-[8rem]"
 					/>
-					<p className="text-xs lg:text-sm leading-4 line-clamp-10 lg:line-clamp-none xl:leading-6 !text-zinc-50">
+					<p className="text-xs lg:text-sm leading-4 lg:line-clamp-none xl:leading-6 !text-zinc-50">
 						{quote.content}
 					</p>
 				</div>
