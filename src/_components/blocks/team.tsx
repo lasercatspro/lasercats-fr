@@ -10,12 +10,12 @@ const Team = () => {
 	const isMobile = useIsMobile({ forIpad: true });
 	return (
 		<Container classes="mb-[50px] lg:mb-[150px]">
-			<div className="relative px-4 md:px-16 space-y-12 leading-10 overflow-visible">
-				<div className="flex flex-col lg:flex-row gap-4 justify-between">
+			<div className="relative px-4 md:px-16 space-y-12 overflow-visible">
+				<div className="flex flex-col lg:flex-row gap-4 justify-between !tracking-wide !leading-8">
 					<h2 className="lg:w-1/2">
             Nous sommes une équipe soudée, réactive et toujours présente
 					</h2>
-					<p className="lg:w-1/2">
+					<p className="lg:w-1/2 ">
             Nous sommes une équipe qui travaille dans un cadre coopératif où
             nous nous sentons bien. Nous travaillons sur les projets qui nous
             donne envie et si nous décidons de travailler avec vous, c’est toute

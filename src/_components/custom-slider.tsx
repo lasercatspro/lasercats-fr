@@ -96,7 +96,7 @@ const CustomSlider = ({
 			)}
 
 			{dotsType === "range" && (
-				<div className="bg-gray-500 flex justify-start mt-6 w-[95%] lg:w-[96%] mx-auto h-1 rounded-lg">
+				<div className="bg-zinc-800 flex justify-start mt-6 w-[95%] lg:w-[96%] mx-auto h-1 rounded-lg">
 					<Dot
 						slide={currentSlide}
 						className={
@@ -113,7 +113,7 @@ const CustomSlider = ({
 							key={`index-${index}`}
 							slide={index}
 							className={
-								`h-4 w-4 rounded-full ${currentSlide === index ? "bg-primary" : "bg-zinc-600"}`
+								`h-4 w-4 rounded-full ${currentSlide === index ? "bg-primary" : "bg-zinc-800"}`
 							}
 						/>
 					))}

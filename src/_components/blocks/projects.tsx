@@ -20,7 +20,7 @@ const Projects = ({ projects }: Props) => {
 	const [bgColor, setBgColor] = useState<customBlue | customGreen | "transition">(customBlue);
 	return (
 		<div
-			className={"px-4 py-16 md:px-16 bg-cover relative bg-custom-dark z-10"}
+			className={"px-4 py-16 md:px-16 relative bg-custom-dark z-10"}
 		>
 			<Container>
 				<CarouselProvider
@@ -55,7 +55,7 @@ const Projects = ({ projects }: Props) => {
 						</div>
 
 					</div>
-					<div className="mt-24">
+					<div className="mt-8 lg:mt-24">
 						<CustomSlider
 							items={projects}
 							type="projects"
