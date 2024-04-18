@@ -67,8 +67,10 @@ const CustomSlider = ({
 	}, [carouselContext]);
 	
 	return (
-		<>
-			<Slider className="relative mb-8">
+		<div className="relative">
+			{type === "quote" && <div className={"hidden lg:block absolute top-0 -right-32 z-10 h-full w-32  bg-gradient-to-r from-transparent to-custom-dark to-50%"} />}
+			{type === "quote" && <div className={"hidden lg:block absolute top-0 -left-32 z-10 h-full w-32  bg-gradient-to-l from-transparent to-custom-dark to-50%"} />}
+			<Slider className="relative mb-8" style={{overflow: type === "quote" ? "visible" : ""}}>
 				{type === "quote" && (items as QuoteI[]).map((quote, index) => (
 					<Slide key={quote?.author} index={index}>
 						<Quote quote={quote} />
@@ -81,12 +83,12 @@ const CustomSlider = ({
 				))}
 			</Slider>
 			{currentSlide > 0 && backBtn && (
-				<ButtonBack className="hidden lg:block absolute top-1/2 -left-5 border border-white border-opacity-25 rounded-full p-4 bg-custom-dark">
+				<ButtonBack className="hidden lg:block absolute z-10 top-1/2 -left-16 border border-zinc-50 border-opacity-10 hover:border-opacity-30 rounded-full p-4 bg-custom-dark">
 					<ArrowLeftIcon className={"h-8 w-8 text-primary"} />
 				</ButtonBack>
 			)}
 			{slideRatio < 1 && nextBtn && (
-				<ButtonNext className="hidden lg:block absolute top-1/2 -right-5 border border-white border-opacity-25 rounded-full p-4 bg-custom-dark">
+				<ButtonNext className="hidden lg:block absolute z-10 top-1/2 -right-16 border border-zinc-50 border-opacity-10 hover:border-opacity-30 rounded-full p-4 bg-custom-dark">
 					<ArrowRightIcon className={"h-8 w-8 text-primary"} />
 				</ButtonNext>
 			)}
@@ -115,7 +117,7 @@ const CustomSlider = ({
 					))}
 				</div>
 			)}
-		</>
+		</div>
 	);
 };
 
