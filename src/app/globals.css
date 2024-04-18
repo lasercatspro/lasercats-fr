@@ -43,6 +43,10 @@
   hr {
     @apply !bg-custom-dark h-[2px];
   }
+
+  time {
+    @apply text-xs md:text-inherit;
+  }
 }
 
 @layer components {

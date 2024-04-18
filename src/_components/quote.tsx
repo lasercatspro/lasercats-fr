@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Quote = ({ quote }: { quote: QuoteI }) => {
 	return (
-		<div className="p-8 xl:p-12 mx-2 !border !border-zinc-50 !border-opacity-20 rounded-md bg-gradient-to-t from-custom-dark to-[#141124] to-60% hover:!border-opacity-60">
+		<div className="p-8 xl:p-8 mx-2 !border !border-zinc-50 !border-opacity-20 rounded-md bg-gradient-to-t from-custom-dark to-[#141124] to-60% hover:!border-opacity-60">
 			<Link href={`/projets/${quote.name}`} className="!no-underline flex flex-col gap-4 items-start justify-between min-h-[410px]">
 				<div className="">
 					<Image

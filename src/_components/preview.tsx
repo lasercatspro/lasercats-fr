@@ -29,16 +29,16 @@ export function Preview({ article, type }: Props): ReactNode {
 					}
 				/>
 			)}
-			<div className="flex justify-between">
-				<h3 className="text-3xl mb-3 leading-snug group-hover:text-primary font-bold">
+			<div className="flex flex-col lg:flex-row justify-between">
+				<h3 className="text-xl md:text-3xl mb-3 leading-snug group-hover:text-primary font-bold">
 					{article?.title}
 				</h3>
 				{type === "client" && (
-					<div className="flex gap-4 h-10 items-center ">
+					<div className="flex gap-4 h-10 items-center">
 						{(article as Client)?.technos.map((tech) => (
 							<p
 								key={tech}
-								className="text-sm lg:text-inherit rounded-sm p-2 lg:px-4 lg:py-2 bg-primary bg-opacity-30  font-medium"
+								className="text-xs lg:text-inherit rounded-sm p-2 lg:px-4 lg:py-2 bg-primary bg-opacity-30  font-medium"
 							>
 								{tech}
 							</p>
@@ -46,11 +46,11 @@ export function Preview({ article, type }: Props): ReactNode {
 					</div>
 				)}
 			</div>
-			<p>{article?.description}</p>
+			<p className="text-sm md:text-inherit">{article?.description}</p>
 
 			<div className="flex items-center gap-4 justify-between">
 				<div className="flex items-center gap-1 between group/laser">
-					<p className="group-hover:text-primary font-bold px-2 py-1 rounded-sm border border-primary border-opacity-50">
+					<p className="group-hover:text-primary font-bold px-2 py-1 rounded-sm border border-primary border-opacity-50 !text-primary lg:text-inherit">
 						{type === "client" ? "Voir le projet" : "Lire la suite"}
 					</p>
 					<div className="opacity-0 duration-500 transition-all group-hover/laser:translate-x-3 group-hover/laser:text-primary h-4 group-hover/laser:opacity-100 flex justify-between gap-4">
@@ -64,9 +64,7 @@ export function Preview({ article, type }: Props): ReactNode {
 					</div>
 					<ArrowRightIcon className="h-4 ml-4 opacity-0 group-hover:opacity-100 group-hover:text-primary" />
 				</div>
-				<div className="text-sm">
-					<DateFormatter dateString={article?.date as string} color="grey" />
-				</div>
+				<DateFormatter dateString={article?.date as string} color="grey" />
 			</div>
 		</Link>
 	);
