@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import WhiteGrid from "../white-grid";
 import { Transition } from "@headlessui/react";
-import useIsMobile from "@/hooks/useIsMobile";
 
 type Props = {
   isLikeContent?: boolean;
@@ -14,7 +13,6 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 	const [type, setType] = useState<"exp" | "skill" | "challenges" | "vite">(
 		isLikeContent ? "challenges" : "exp"
 	);
-	const isMobile = useIsMobile({ forIpad: false });
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -53,7 +51,7 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 	return (
 		<div
 			ref={gridRef}
-			className={`relative h-[175vh] ${!isMobile && "text-center"}`}
+			className={"relative h-[175vh] md:text-center"}
 		>
 			<WhiteGrid type={type}>
 				<div

@@ -33,10 +33,7 @@ const WhiteGrid = ({ children, type }: Props) => {
 
 	const rows = isMobile ? 15 : 4;
 	const cols = 10;
-	// const [mounted, setMounted] = useState(false);
-	// useEffect(() => {
-	// 	setMounted(true);
-	// }, []);
+
 	return (
 		<div className="sticky bg-transparent top-0 left-0 h-screen overflow-x-hidden">
 			<div className="absolute top-0 left-0 w-full mx-auto h-screen flex justify-center items-center ">
@@ -74,10 +71,9 @@ const WhiteGrid = ({ children, type }: Props) => {
 											: "",
 								}}
 								className={`transition-opacity duration-500 ease-in
-									${!till?.color ? "border border-gray-200 border-opacity-20" : "border-red-300"}
-									${!till?.color && "opacity-100"} 
+									${till?.color ? "" : "border border-gray-200 border-opacity-20"}
 									${
-							isGreen
+							isGreen || !till?.color
 								? "opacity-100"
 								: (type === "skill" || type === "vite") && !isGreen
 									? "opacity-100"
