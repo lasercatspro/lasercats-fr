@@ -25,7 +25,7 @@ export default async function Index(): Promise<JSX.Element> {
 	}
 
 	return (
-		<Container classes="flex flex-col gap-10 py-32 !max-w-[800px] mx-auto">
+		<Container classes="flex flex-col gap-10 py-32 !max-w-[800px] lg:mx-auto mx-2">
 			<h1 className="text-primary uppercase w-full">Blog</h1>
 			{allPosts != null  && (
 				<ItemsGrid items={allPosts} type={"post"} />

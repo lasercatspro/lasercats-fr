@@ -7,6 +7,16 @@ export const members: Member[] = [
 		imageSrc: "/assets/images/portraits/nicolas.jpg",
 	},
 	{
+		name: "Anthonin",
+		role: "Dev",
+		imageSrc: "/assets/images/portraits/anthonin.png",
+	},
+	{
+		name: "Antoine",
+		role: "Dev",
+		imageSrc: "/assets/images/portraits/antoine.png",
+	},
+	{
 		name: "Thierry",
 		role: "Lead Dev",
 		imageSrc: "/assets/images/portraits/thierry.png",
@@ -25,16 +35,6 @@ export const members: Member[] = [
 		name: "Damien",
 		role: "Dev",
 		imageSrc: "/assets/images/portraits/damien.png",
-	},
-	{
-		name: "Anthonin",
-		role: "Dev",
-		imageSrc: "/assets/images/portraits/anthonin.png",
-	},
-	{
-		name: "Antoine",
-		role: "Dev",
-		imageSrc: "/assets/images/portraits/antoine.png",
 	},
 ];
 

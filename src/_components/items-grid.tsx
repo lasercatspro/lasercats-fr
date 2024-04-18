@@ -9,7 +9,7 @@ interface Props {
 
 export function ItemsGrid ({ items, type }: Props): ReactNode {
 	return (
-		<section className="my-12">
+		<section className="my-4 lg:my-12">
 			<div className="space-y-24">
 				{items?.map((item) => (
 					<Preview key={item?.slug} article={item} type={type} />

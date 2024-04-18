@@ -23,7 +23,8 @@ type Props = {
   backBtn?: boolean;
   nextBtn?: boolean;
   dotsType?: "range" | "bullets";
-	setBgColor?: Dispatch<SetStateAction<customBlue | customGreen | "transition">>
+	setBgColor?: Dispatch<SetStateAction<customBlue | customGreen | "transition">>;
+	isOverflowOpacity?: boolean;
 };
 
 const CustomSlider = ({
@@ -32,7 +33,8 @@ const CustomSlider = ({
 	backBtn = true,
 	nextBtn = true,
 	dotsType = "range",
-	setBgColor
+	setBgColor,
+	isOverflowOpacity = false
 }: Props) => {
 	const carouselContext = useContext(CarouselContext);
 	const [currentSlide, setCurrentSlide] = useState(
@@ -68,9 +70,9 @@ const CustomSlider = ({
 	
 	return (
 		<div className="relative">
-			{type === "quote" && <div className={"hidden lg:block absolute top-0 -right-32 z-10 h-full w-32  bg-gradient-to-r from-transparent to-custom-dark to-50%"} />}
-			{type === "quote" && <div className={"hidden lg:block absolute top-0 -left-32 z-10 h-full w-32  bg-gradient-to-l from-transparent to-custom-dark to-50%"} />}
-			<Slider className="relative mb-8" style={{overflow: type === "quote" ? "visible" : ""}}>
+			{isOverflowOpacity && <div className={"hidden lg:block absolute top-0 -right-32 z-10 h-full w-32  bg-gradient-to-r from-transparent to-custom-dark to-50%"} />}
+			{isOverflowOpacity && <div className={"hidden lg:block absolute top-0 -left-32 z-10 h-full w-32  bg-gradient-to-l from-transparent to-custom-dark to-50%"} />}
+			<Slider className="relative mb-8" style={{overflow: isOverflowOpacity ? "visible" : ""}}>
 				{type === "quote" && (items as QuoteI[]).map((quote, index) => (
 					<Slide key={quote?.author} index={index}>
 						<Quote quote={quote} />
@@ -94,7 +96,7 @@ const CustomSlider = ({
 			)}
 
 			{dotsType === "range" && (
-				<div className="bg-gray-500 flex justify-start mt-6 w-[95%] lg:w-[96%] mx-auto h-1 rounded-lg">
+				<div className="bg-zinc-800 flex justify-start mt-6 w-[95%] lg:w-[96%] mx-auto h-1 rounded-lg">
 					<Dot
 						slide={currentSlide}
 						className={
@@ -111,7 +113,7 @@ const CustomSlider = ({
 							key={`index-${index}`}
 							slide={index}
 							className={
-								`h-4 w-4 rounded-full ${currentSlide === index ? "bg-primary" : "bg-zinc-600"}`
+								`h-4 w-4 rounded-full ${currentSlide === index ? "bg-primary" : "bg-zinc-800"}`
 							}
 						/>
 					))}
