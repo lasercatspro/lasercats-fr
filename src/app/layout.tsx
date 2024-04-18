@@ -61,7 +61,7 @@ export default function RootLayout({
 				<script defer data-domain="staging.lasercats.fr" src="https://plausible.io/js/script.js" />
 			</head>
 			{/*  */}
-			<body className="min-h-[100vh] overflow-x-hidden bg-cover bg-center bg-[url('/assets/images/backgrounds/bg-3.jpg')]">
+			<body className="min-h-[100vh] overflow-x-hidden bg-cover bg-center bg-[url('/assets/images/backgrounds/bg-1.jpg')]">
 				<SmoothScrolling>
 					<Navbar />
 					<Suspense fallback={null}>

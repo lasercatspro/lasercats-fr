@@ -78,7 +78,7 @@ export const Navbar = (): ReactNode => {
 										</Link>
 									))}
 									<div className="flex gap-4">
-										<Link href={"/contact"} className="primary h-6 rounded-sm !text-custom-dark hover:no-underline hover:!text-primary">
+										<Link href={"/contact"} className="primary w-[180px] h-6 rounded-sm !text-custom-dark hover:no-underline hover:!text-primary">
 											Nous contacter
 										</Link>
 									</div>
