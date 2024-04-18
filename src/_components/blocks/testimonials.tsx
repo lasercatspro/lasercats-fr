@@ -15,7 +15,7 @@ const Testimonials = () => {
 				<p className="text-2xl lg:text-5xl !text-zinc-50 leading-snug">
           Ils nous font confiance. <br /> Merci à eux !
 				</p>
-				<div className="mt-16 relative lg:-left-7" >
+				<div className="mt-16 relative lg:-left-7 w-full" >
 					<CarouselProvider
 						naturalSlideWidth={300}
 						naturalSlideHeight={100}

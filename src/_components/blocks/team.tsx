@@ -9,7 +9,7 @@ import { members } from "@/lib/members";
 const Team = () => {
 	const isMobile = useIsMobile({ forIpad: true });
 	return (
-		<Container classes="z-0">
+		<Container classes="!mb-[300px]">
 			<div className="relative px-4 md:px-16 space-y-12 leading-10 overflow-visible">
 				<div className="flex flex-col lg:flex-row gap-4 justify-between">
 					<h2 className="lg:w-1/2">

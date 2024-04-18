@@ -37,7 +37,7 @@ const WhiteGrid = ({ children, type }: Props) => {
 	return (
 		<div className="sticky bg-transparent top-0 left-0 h-screen overflow-x-hidden">
 			<div className="absolute top-0 left-0 w-full mx-auto h-screen flex justify-center items-center ">
-				<Container>
+				<Container classes="w-full">
 					{children}
 				</Container>
 			</div>

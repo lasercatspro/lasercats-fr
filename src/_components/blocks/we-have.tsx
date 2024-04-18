@@ -75,15 +75,14 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 				<div
 					style={{
 						background:
-              "radial-gradient(closest-side, rgba(250,249,247,1) 50%, rgba(0,0,0,0) 100%)",
+					"radial-gradient(closest-side, rgba(255,255,255,0.5) 50%, rgba(0,0,0,0) 100%)",
 					}}
-					className="mx-auto max-w-7xl w-screen py-24 px-12 lg:py-64 lg:px-32 relative"
+					className="mx-auto lg:max-w-7xl lg:w-screen h-screen lg:h-auto lg:py-64 lg:px-32 relative"
 				>
-					<div className="absolute flex flex-col w-full top-24 max-w-5xl mx-auto">
+					<div className="absolute flex flex-col w-full h-full justify-center top-24 max-w-5xl mx-auto" >
 						{!isLikeContent && (
 							<h2 className="!text-3xl md:!text-5xl">
                 Nous avons <br />
-								
 							</h2>
 						)}
 						{isLikeContent && (
@@ -91,9 +90,9 @@ const WeHave = ({ isLikeContent = false }: Props) => {
                 Nous aimons <br />
 							</h2>
 						)}
-						<div className="h-1/2 space-y-4">
+						<div className="h-1/2 space-y-4 flex justify-center w-full" >
 							{/* We have */}
-							<Transition show={type === "exp"} {...transition} className={"absolute w-full"}>
+							<Transition show={type === "exp"} {...transition} className={"absolute w-full  lg:max-w-7xl"}>
 								{!isLikeContent && (
 									<>
 										<strong
@@ -101,7 +100,7 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 										>
 											{subTitle}
 										</strong>
-										<p className="mt-8 text-xs lg:text-xl">
+										<p className="mt-8 text-sm lg:text-xl">
                     Nous sommes d’anciens CTO et artisans du web depuis
                     loooongtemps : dans les secteurs de l’édition, des startups,
                     des marketplaces, de l’automation, de la protection des
@@ -109,14 +108,14 @@ const WeHave = ({ isLikeContent = false }: Props) => {
                     problématiques et saurons trouver comment construire ou
                     améliorer votre produit.
 										</p>
-										<p className="font-extrabold text-sm lg:text-xl">
+										<p className="mt-8 font-extrabold text-sm lg:text-xl">
                     Nous pourrons vous conseiller sur votre stratégie produit et
                     développement logiciel global
 										</p>
 									</>
 								)}
 							</Transition>
-							<Transition show={type === "skill"} {...transition} className={"absolute w-full"}>
+							<Transition show={type === "skill"} {...transition} className={"absolute w-full  lg:max-w-7xl"}>
 								{!isLikeContent && (
 									<>
 										<strong
@@ -124,7 +123,7 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 										>
 											{subTitle}
 										</strong>
-										<p className="mt-8 text-xs lg:text-xl">
+										<p className="mt-8 text-sm lg:text-xl">
                     Nous maîtrisons tout ce qu’il faut pour construire n’importe
                     quelle application web ou mobile. Nous avons toutes les
                     compétences essentielles en interne et pouvons compter sur
@@ -133,14 +132,14 @@ const WeHave = ({ isLikeContent = false }: Props) => {
                     devops, dataviz, produit, sécurité, hardware, performance,
                     accessibilité, écologie numérique, recherche UX…
 										</p>
-										<p className="font-extrabold text-sm lg:text-xl">
+										<p className="mt-8 font-extrabold text-sm lg:text-xl">
                     Nous pouvons couvrir 100% de vos besoins pour votre projet
 										</p>
 									</>
 								)}
 							</Transition>
 							{/* We Like */}
-							<Transition show={type === "challenges"} {...transition} className={"absolute w-full"}>
+							<Transition show={type === "challenges"} {...transition} className={"absolute w-full  lg:max-w-7xl"}>
 								{isLikeContent && (
 									<>
 										<strong
@@ -148,7 +147,7 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 										>
 											{subTitle}
 										</strong>
-										<p className="mt-8 text-xs lg:text-xl">
+										<p className="mt-8 text-sm lg:text-xl">
                     Nous adorons la stabilité des framework simples, mais aimons
                     aussi quand les challenges sont fous et débordent du web :
                     hardware, musique, blockchain, IA, sécurité et vie privée.
@@ -156,14 +155,14 @@ const WeHave = ({ isLikeContent = false }: Props) => {
                     probable qu’on ait envie de faire un bout de chemin avec
                     vous.
 										</p>
-										<p className="font-extrabold text-sm lg:text-xl">
+										<p className="mt-8 font-extrabold text-sm lg:text-xl">
                     Nous pourrons réaliser votre produit, qu’elle qu’en soit,
                     aussi fou soit-il son niveau de folie.
 										</p>
 									</>
 								)}
 							</Transition>
-							<Transition show={type === "vite"} {...transition} className={"absolute w-full"}>
+							<Transition show={type === "vite"} {...transition} className={"absolute w-full  lg:max-w-7xl"}>
 								{isLikeContent && (
 									<>
 										<strong
@@ -171,7 +170,7 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 										>
 											{subTitle}
 										</strong>
-										<p className="mt-8 text-xs lg:text-xl">
+										<p className="mt-8 text-sm lg:text-xl">
                     Nous savons aller vite pour tester un produit ou une
                     intuition en version beta et lui faire rencontrer son
                     marché, puis travailler plus lentement quand il commence à
@@ -179,7 +178,7 @@ const WeHave = ({ isLikeContent = false }: Props) => {
                     stabilité. Nous sommes expert de 3 frameworks que nous
                     connaissons par coeur et qui n’ont rien à prouver:
 										</p>
-										<p className="font-extrabold text-sm lg:text-xl">
+										<p className="mt-8 font-extrabold text-sm lg:text-xl">
                     Votre produit pourra être rapidement mis sur le marché
 										</p>
 									</>

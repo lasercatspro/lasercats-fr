@@ -3,7 +3,7 @@ import Container from "../container";
 
 const Numbers = () => {
 	return (
-		<div className="px-4 md:px-8 py-8 lg:py-32 bg-black">
+		<div className="px-4 md:px-8 py-16 lg:py-32 bg-black">
 			<Container>
 				<div className="flex justify-between flex-col mx-2 md:grid lg:grid-cols-3 gap-8">
 					<div className="flex flex-col text-center">
