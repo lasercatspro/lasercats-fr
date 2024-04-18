@@ -23,7 +23,8 @@ type Props = {
   backBtn?: boolean;
   nextBtn?: boolean;
   dotsType?: "range" | "bullets";
-	setBgColor?: Dispatch<SetStateAction<customBlue | customGreen | "transition">>
+	setBgColor?: Dispatch<SetStateAction<customBlue | customGreen | "transition">>;
+	isOverflowOpacity?: boolean;
 };
 
 const CustomSlider = ({
@@ -32,7 +33,8 @@ const CustomSlider = ({
 	backBtn = true,
 	nextBtn = true,
 	dotsType = "range",
-	setBgColor
+	setBgColor,
+	isOverflowOpacity = false
 }: Props) => {
 	const carouselContext = useContext(CarouselContext);
 	const [currentSlide, setCurrentSlide] = useState(
@@ -68,9 +70,9 @@ const CustomSlider = ({
 	
 	return (
 		<div className="relative">
-			{type === "quote" && <div className={"hidden lg:block absolute top-0 -right-32 z-10 h-full w-32  bg-gradient-to-r from-transparent to-custom-dark to-50%"} />}
-			{type === "quote" && <div className={"hidden lg:block absolute top-0 -left-32 z-10 h-full w-32  bg-gradient-to-l from-transparent to-custom-dark to-50%"} />}
-			<Slider className="relative mb-8" style={{overflow: type === "quote" ? "visible" : ""}}>
+			{isOverflowOpacity && <div className={"hidden lg:block absolute top-0 -right-32 z-10 h-full w-32  bg-gradient-to-r from-transparent to-custom-dark to-50%"} />}
+			{isOverflowOpacity && <div className={"hidden lg:block absolute top-0 -left-32 z-10 h-full w-32  bg-gradient-to-l from-transparent to-custom-dark to-50%"} />}
+			<Slider className="relative mb-8" style={{overflow: isOverflowOpacity ? "visible" : ""}}>
 				{type === "quote" && (items as QuoteI[]).map((quote, index) => (
 					<Slide key={quote?.author} index={index}>
 						<Quote quote={quote} />

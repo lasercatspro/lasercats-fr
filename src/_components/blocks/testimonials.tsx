@@ -24,7 +24,7 @@ const Testimonials = () => {
 						isIntrinsicHeight
 					>
 						
-						<CustomSlider items={quotes} type="quote" />
+						<CustomSlider items={quotes} type="quote" isOverflowOpacity/>
 					</CarouselProvider>
 				</div>
 			</Container>
