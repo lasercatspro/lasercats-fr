@@ -53,7 +53,8 @@ const CustomSlider = ({
 	useEffect(() => {
 		if (setBgColor) {
 			setBgColor("transition");
-			setTimeout(() => setBgColor(currentSlide % 2 === 0 ? customBlue : customGreen), 500);
+			const bgTimeOut = setTimeout(() => setBgColor(currentSlide % 2 === 0 ? customBlue : customGreen), 500);
+			return () => clearTimeout(bgTimeOut);
 		}
 	}, [currentSlide]);
 
@@ -91,7 +92,7 @@ const CustomSlider = ({
 			)}
 
 			{dotsType === "range" && (
-				<div className="bg-gray-500 flex justify-start mt-6 w-[83%] lg:w-[96%] mx-auto h-1 rounded-lg">
+				<div className="bg-gray-500 flex justify-start mt-6 w-[95%] lg:w-[96%] mx-auto h-1 rounded-lg">
 					<Dot
 						slide={currentSlide}
 						className={

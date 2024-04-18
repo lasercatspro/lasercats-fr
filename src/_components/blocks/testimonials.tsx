@@ -12,10 +12,10 @@ const Testimonials = () => {
 		<div className="bg-custom-dark px-4 md:px-16 py-32">
 			<Container>
 				<h2 className="text-primary hidden">Témoignages</h2>
-				<p className="text-2xl lg:text-5xl !text-zinc-50 leading-snug">
+				<p className="ml-2 lg:ml-0 text-2xl lg:text-5xl !text-zinc-50 leading-snug">
           Ils nous font confiance. <br /> Merci à eux !
 				</p>
-				<div className="mt-16 relative lg:-left-7 w-full" >
+				<div className="mt-16 relative lg:-left-2 w-full" >
 					<CarouselProvider
 						naturalSlideWidth={300}
 						naturalSlideHeight={100}
