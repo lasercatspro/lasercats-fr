@@ -41,28 +41,12 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 	const transition = useMemo(
 		() => ({
 			enter: "transform transition-all ease-in duration-1000",
-			enterFrom:
-        type === "exp" || type === "challenges" ? "opacity-0" : " opacity-0",
-			enterTo:
-        type === "exp" || type === "challenges" ? "opacity-70" : " opacity-70",
-			leave: "transform transition-all ease-out duration-50",
-			leaveFrom:
-				type === "exp" || type === "challenges" ? "opacity-0" : "opacity-0",
-			leaveTo:
-        type === "exp" || type === "challenges" ? "opacity-0" : "opacity-0",
+			enterFrom: "opacity-0",
+			enterTo: "opacity-70",
+			leave: "transform transition-all ease-out duration-300",
+			leaveFrom: "opacity-0",
+			leaveTo: "opacity-0",
 		}),
-		[type]
-	);
-
-	const subTitle = useMemo(
-		() =>
-			!isLikeContent
-				? type === "exp"
-					? "l'expérience métier"
-					: "les compétences"
-				: type === "challenges"
-					? "les challenges"
-					: "aller vite",
 		[type]
 	);
 
@@ -77,9 +61,9 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 						background:
 					"radial-gradient(closest-side, rgba(255,255,255,0.5) 50%, rgba(0,0,0,0) 100%)",
 					}}
-					className="mx-auto lg:max-w-7xl lg:w-screen h-screen lg:h-auto lg:py-64 lg:px-32 relative"
+					className="mx-auto lg:max-w-7xl lg:w-screen h-[90vh] lg:h-auto lg:px-32 relative"
 				>
-					<div className="absolute flex flex-col w-full h-full justify-center top-24 max-w-5xl mx-auto" >
+					<div className="absolute flex flex-col w-full h-full justify-center -mt-24 max-w-5xl mx-auto" >
 						{!isLikeContent && (
 							<h2 className="!text-3xl md:!text-5xl">
                 Nous avons <br />
@@ -90,7 +74,7 @@ const WeHave = ({ isLikeContent = false }: Props) => {
                 Nous aimons <br />
 							</h2>
 						)}
-						<div className="h-1/2 space-y-4 flex justify-center w-full" >
+						<div className="space-y-4 flex justify-center w-full" >
 							{/* We have */}
 							<Transition show={type === "exp"} {...transition} className={"absolute w-full  lg:max-w-7xl"}>
 								{!isLikeContent && (
@@ -98,7 +82,7 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 										<strong
 											className="!text-3xl md:!text-5xl"
 										>
-											{subTitle}
+											{"l'expérience métier"}
 										</strong>
 										<p className="mt-8 text-sm lg:text-xl">
                     Nous sommes d’anciens CTO et artisans du web depuis
@@ -121,7 +105,7 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 										<strong
 											className="!text-3xl md:!text-5xl !text-custom-blue"
 										>
-											{subTitle}
+											{"les compétences"}
 										</strong>
 										<p className="mt-8 text-sm lg:text-xl">
                     Nous maîtrisons tout ce qu’il faut pour construire n’importe
@@ -145,7 +129,7 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 										<strong
 											className="!text-3xl md:!text-5xl"
 										>
-											{subTitle}
+											{"les challenges"}
 										</strong>
 										<p className="mt-8 text-sm lg:text-xl">
                     Nous adorons la stabilité des framework simples, mais aimons
@@ -166,9 +150,9 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 								{isLikeContent && (
 									<>
 										<strong
-											className="!text-3xl md:!text-5xl !text-custom-blue" 
+											className="!text-3xl md:!text-5xl !text-custom-blue"
 										>
-											{subTitle}
+											{"aller vite"}
 										</strong>
 										<p className="mt-8 text-sm lg:text-xl">
                     Nous savons aller vite pour tester un produit ou une
