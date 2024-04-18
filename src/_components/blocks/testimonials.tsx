@@ -17,12 +17,13 @@ const Testimonials = () => {
 				</p>
 				<div className="mt-16 relative lg:-left-2 w-full" >
 					<CarouselProvider
-						naturalSlideWidth={300}
-						naturalSlideHeight={100}
+						naturalSlideWidth={480}
+						naturalSlideHeight={480}
 						totalSlides={3}
 						visibleSlides={isMobile ? 1 : 2.2}
 						isIntrinsicHeight
 					>
+						
 						<CustomSlider items={quotes} type="quote" />
 					</CarouselProvider>
 				</div>
