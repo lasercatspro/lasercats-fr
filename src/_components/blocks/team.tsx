@@ -30,20 +30,20 @@ const Team = () => {
 							alt="blue background"
 							title="blue svg"
 							src="/assets/images/backgrounds/svg-blue.svg"
-							className="absolute z-10 -top-96 -left-10 opacity-50 w-[150vw] -rotate-12"
-							width={1920}
-							height={800}
+							className="absolute z-10 -top-96 -left-32 opacity-50 w-[150vw] -rotate-[20deg]"
+							width={2800}
+							height={200}
 						/>
 						<Image
 							alt="green background"
 							title="green svg"
 							src="/assets/images/backgrounds/svg-green.svg"
-							className="absolute z-10 -bottom-72 -right-20 opacity-70 w-screen -rotate-12"
-							width={1920}
-							height={800}
+							className="absolute z-10 top-20 -right-32 opacity-70 -rotate-[20deg]"
+							width={2800}
+							height={200}
 						/>
 						{members.map((member: Member) => (
-							<Image
+							!(member.name === "Nico") ? <Image
 								key={`img-${member.name}`}
 								alt={`portait of ${member.name}`}
 								title={member.name}
@@ -52,6 +52,8 @@ const Team = () => {
 								height={400}
 								className="h-[200px] lg:h-[300px] w-full object-cover object-center"
 							/>
+								:
+								<div key={member.name} className="h-[200px] lg:h-[300px] w-full bg-zinc-200"/>
 						))}
 					</div>}
 					{members.map((member: Member) => (
