@@ -26,12 +26,13 @@ const GridTransition = () => {
 				ease: "expo.inOut",
 				duration: 0.25,
 				stagger: function() {
-					return Math.random() * 0.9;
+					const colsArray = square.id.split("/");
+					return Math.random() * (Number(colsArray.at(0)) - Number(colsArray.at(-1)));
 				},
 				scrollTrigger: {
 					trigger: gridRef.current,
-					start: isMobile ? "top 60%" : "top 50%", 
-					end: isMobile ?  "bottom 50%" : "bottom 70%",
+					start: isMobile ? "top 250%" : "top 200%", 
+					end: isMobile ?  "bottom 60%" : "bottom 70%",
 					scrub: true,
 					// markers: true
 				}
@@ -47,7 +48,7 @@ const GridTransition = () => {
 				animeSquares(squares);
 			}
 		}
-	}, [gridRef, isMobile]);
+	}, [gridRef, gridHeight, isMobile]);
 
 	const rows = 4;
 	const cols = 10;
@@ -59,7 +60,7 @@ const GridTransition = () => {
 			<Container classes="h-full flex items-center">
 				<p className="md:text-5xl text-center !text-zinc-50 mix-blend-difference px-2 lg:px-8">
 					{
-						"Votre succès est notre mission, et nous transformons chaque projet en une expérience digitale mémorable, reflétant l'excellence et l'innovation."
+						"N’importe quelle machine peut faire un site, mais il faut une vraie équipe pour développer votre produit."
 					}
 				</p>
 			</Container>
@@ -72,6 +73,7 @@ const GridTransition = () => {
 					Array.from(Array(isMobile ? colsMobile : cols).keys()).map((_col, colIndex) => (
 						<div
 							key={`${colIndex}-${rowIndex}`}
+							id={`${isMobile ? rowsMobile : rows}/${rowIndex}`}
 							className={"aspect-square squares bg-custom-dark"}
 						/>
 					))
