@@ -32,7 +32,7 @@ const GridTransition = () => {
 				scrollTrigger: {
 					trigger: gridRef.current,
 					start: isMobile ? "top 250%" : "top 200%", 
-					end: isMobile ?  "bottom 60%" : "bottom 70%",
+					end: isMobile ?  "bottom 150%" : "bottom 90%",
 					scrub: true,
 					// markers: true
 				}
