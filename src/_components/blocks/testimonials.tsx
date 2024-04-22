@@ -9,7 +9,7 @@ import Container from "../container";
 const Testimonials = () => {
 	const isMobile = useIsMobile({ forIpad: true });
 	return (
-		<div className="bg-custom-dark px-4 md:px-16 py-32">
+		<div className="bg-custom-dark px-4 md:px-16 pt-12 md:pt-0 md:py-32">
 			<Container>
 				<h2 className="text-primary hidden">Témoignages</h2>
 				<p className="ml-2 lg:ml-0 text-2xl lg:text-5xl !text-zinc-50 leading-snug">

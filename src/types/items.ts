@@ -21,6 +21,7 @@ export interface Client {
   imagePreview: string
   logo: string
   component?: () => MDXContent
+  href: string
 }
 
 export interface Member {
