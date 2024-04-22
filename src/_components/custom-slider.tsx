@@ -109,15 +109,20 @@ const CustomSlider = ({
 				</div>
 			)}
 			{dotsType === "bullets" && (
-				<div className="flex justify-center gap-6 lg:gap-8">
+				<div className="flex justify-center items-center gap-4 lg:gap-8">
 					{items.map((i, index) => (
-						<Dot
-							key={`index-${index}`}
-							slide={index}
-							className={
-								`h-2 w-2 lg:h-4 lg:w-4 rounded-full ${currentSlide === index ? "bg-primary" : "bg-zinc-800"}`
-							}
-						/>
+						<>
+							{currentSlide === index ? 
+								<img src="/assets/images/logos/laser-simple.svg" alt="lasercats logo" className="h-3 w-3 lg:h-4 lg:w-4"/>
+								:
+								<Dot
+									key={`index-${index}`}
+									slide={index}
+									className={
+										`h-3 w-3 lg:h-4 lg:w-4 rounded-full ${currentSlide === index ? "bg-primary" : "bg-zinc-800"}`
+									}
+								/>}
+						</>
 					))}
 				</div>
 			)}

@@ -16,8 +16,8 @@ const Project = ({ project }: Props) => {
 	const isMobile = useIsMobile({ forIpad: true });
 
 	return (
-		<div className="flex flex-col lg:flex-row justify-between min-h-[600px] lg:min-h-[500px]">
-			<div className="flex flex-col justify-between gap-8 items-start lg:w-1/2">
+		<div className="flex flex-col lg:flex-row justify-between lg:min-h-[500px]">
+			<div className="flex flex-col justify-between gap-2 md:gap-8 items-start lg:w-1/2 min-h-[450px] lg:min-h-auto mb-4">
 				<div>
 					<div className="flex gap-4">
 						<h3 className="text-[2rem] lg:text-[6rem] leading-snug text-zinc-50 mb-4 lg:mb-0">
@@ -27,7 +27,7 @@ const Project = ({ project }: Props) => {
 							{dayjs(project.date).format("YYYY") || project.date}
 						</p>
 					</div>
-					<div className="grid grid-cols-2 md:flex w-full gap-4 text-center">
+					<div className="grid grid-cols-3 md:flex w-full gap-2 md:gap-4 text-center">
 						{project?.technos.map((tech) => (
 							<p
 								key={tech}
@@ -37,17 +37,17 @@ const Project = ({ project }: Props) => {
 							</p>
 						))}
 					</div>
-					<div className="mt-8">
+					<div className="mt-4 lg:mt-8">
 						{(isMobile && project.description.length > 343) || (isMobile && project.description.length > 120) ? <Disclosure>
 							{({ open }) => (
 								<>
-									<p className={`${!open ? "line-clamp-2 lg:line-clamp-4" : "" } transform transition-all duration-1000 text-zinc-400  text-left`}>{project.description}</p>
-									<Disclosure.Button className="flex gap-4 items-center py-2 justify-start relative">
+									<p className={`${!open ? "line-clamp-2 lg:line-clamp-4" : "" } transform transition-all duration-1000 text-zinc-400 text-left text-xs lg:text-base`}>{project.description}</p>
+									<Disclosure.Button className="flex items-center py-2 justify-start relative">
 										<ChevronDownIcon className={`z-10 h-6 w-6 text-zinc-400 ${open ? "rotate-180 transform" : ""}`} />
 									</Disclosure.Button>
 								</>
 							)}
-						</Disclosure>: <p className={"text-zinc-400  text-left"}>{project.description}</p>}
+						</Disclosure>: <p className={"text-zinc-400 text-left text-xs lg:text-base"}>{project.description}</p>}
 					</div>
 				</div>
 				{isMobile && (
@@ -57,7 +57,7 @@ const Project = ({ project }: Props) => {
 						alt={`Projet ${project.title}`}
 						title={project.title}
 						src={project.imagePreview}
-						className="rounded-md w-full"
+						className="rounded-md w-full h-[180px] object-cover md:h-auto"
 					/>
 				)}
 				
