@@ -7,8 +7,6 @@ import { useState } from "react";
 import { Client } from "@/types/items";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import Container from "../container";
-import useIsMobile from "@/hooks/useIsMobile";
-import Image from "next/image";
 import { customBlue, customGreen } from "@/lib/constants";
 
 type Props = {
@@ -16,11 +14,20 @@ type Props = {
 };
 
 const Projects = ({ projects }: Props) => {
-	const isMobile = useIsMobile({forIpad: true});
-	const [bgColor, setBgColor] = useState<customBlue | customGreen | "transition">(customBlue);
+	const [bgColor, setBgColor] = useState<
+    customBlue | customGreen | "transition"
+  >(customBlue);
 	return (
 		<div
-			className={"px-4 py-16 md:px-16 relative bg-custom-dark z-10"}
+			className={`px-4 py-32 md:px-16 relative bg-custom-dark z-10 ${
+				bgColor === customBlue &&
+        "bg-cover bg-center bg-[url('/assets/images/backgrounds/svg-blue.svg')]"
+			} ${
+				bgColor === customGreen &&
+        "bg-cover bg-center bg-[url('/assets/images/backgrounds/svg-green.svg')]"
+			}
+			
+			`}
 		>
 			<Container>
 				<CarouselProvider
@@ -30,15 +37,6 @@ const Projects = ({ projects }: Props) => {
 					visibleSlides={1}
 					isIntrinsicHeight
 				>
-					<div className={`absolute -z-10 left-0 w-screen h-auto ${isMobile && "top-1/4"}`}>
-						{bgColor === customGreen && (
-							<Image alt="Logo Lasercats" title="Lasercats" src="/assets/images/backgrounds/svg-green.svg" className="w-screen" width={1920} height={800} />
-						)}
-
-						{bgColor === customBlue && (
-							<Image alt="Logo Lasercats" title="Lasercats" src="/assets/images/backgrounds/svg-blue.svg" className="w-screen" width={1920} height={800} />
-						)}
-					</div>
 					<div className="flex justify-between items-center">
 						<h2 className="text-zinc-50">Nos Projets</h2>
 						<div className="flex justify-end items-start px-8 gap-8">
@@ -53,7 +51,6 @@ const Projects = ({ projects }: Props) => {
 								</div>
 							</ButtonNext>
 						</div>
-
 					</div>
 					<div className="mt-8 lg:mt-24">
 						<CustomSlider
@@ -64,7 +61,6 @@ const Projects = ({ projects }: Props) => {
 							dotsType="bullets"
 							setBgColor={setBgColor}
 						/>
-
 					</div>
 				</CarouselProvider>
 			</Container>

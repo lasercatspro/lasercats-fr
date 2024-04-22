@@ -16,6 +16,7 @@ import { QuoteI } from "../lib/testimonials";
 import Project from "./project";
 import { Client } from "../types/items";
 import { customBlue, customGreen } from "@/lib/constants";
+import useIsMobile from "@/hooks/useIsMobile";
 
 type Props = {
   items: QuoteI[] | Client[];
@@ -34,8 +35,9 @@ const CustomSlider = ({
 	nextBtn = true,
 	dotsType = "range",
 	setBgColor,
-	isOverflowOpacity = false
+	isOverflowOpacity = false,
 }: Props) => {
+	const isMobile = useIsMobile({forIpad: true});
 	const carouselContext = useContext(CarouselContext);
 	const [currentSlide, setCurrentSlide] = useState(
 		carouselContext.state.currentSlide
@@ -70,9 +72,9 @@ const CustomSlider = ({
 	
 	return (
 		<div className="relative">
-			{isOverflowOpacity && <div className={"hidden lg:block absolute top-0 -right-32 z-10 h-full w-32  bg-gradient-to-r from-transparent to-custom-dark to-50%"} />}
-			{isOverflowOpacity && <div className={"hidden lg:block absolute top-0 -left-32 z-10 h-full w-32  bg-gradient-to-l from-transparent to-custom-dark to-50%"} />}
-			<Slider className="relative mb-8" style={{overflow: isOverflowOpacity ? "visible" : ""}}>
+			{isOverflowOpacity && <div className={"hidden lg:block absolute top-0 -right-[22rem] z-10 h-full w-[400px]  bg-gradient-to-r from-transparent to-custom-dark to-50%"} />}
+			{isOverflowOpacity && <div className={"hidden lg:block absolute top-0 -left-80 z-10 h-full w-[400px] bg-gradient-to-l from-transparent to-custom-dark to-50%"} />}
+			<Slider className="relative mb-2 lg:mb-16" style={{overflow: isOverflowOpacity && !isMobile ? "visible" : ""}}>
 				{type === "quote" && (items as QuoteI[]).map((quote, index) => (
 					<Slide key={quote?.author} index={index}>
 						<Quote quote={quote} />
@@ -107,13 +109,13 @@ const CustomSlider = ({
 				</div>
 			)}
 			{dotsType === "bullets" && (
-				<div className="flex justify-center gap-8">
+				<div className="flex justify-center gap-6 lg:gap-8">
 					{items.map((i, index) => (
 						<Dot
 							key={`index-${index}`}
 							slide={index}
 							className={
-								`h-4 w-4 rounded-full ${currentSlide === index ? "bg-primary" : "bg-zinc-800"}`
+								`h-2 w-2 lg:h-4 lg:w-4 rounded-full ${currentSlide === index ? "bg-primary" : "bg-zinc-800"}`
 							}
 						/>
 					))}
