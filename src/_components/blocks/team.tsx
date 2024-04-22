@@ -62,7 +62,7 @@ const Team = () => {
 							className="flex flex-col items-center w-full gap-1 mb-4"
 						>
 							{isMobile && (
-								<Image
+								!(member.name === "Nico") ? <Image
 									alt={`portait of ${member.name}`}
 									title={member.name}
 									src={member.imageSrc}
@@ -70,6 +70,8 @@ const Team = () => {
 									height={400}
 									className="h-[200px] lg:h-[300px] w-full object-cover object-center"
 								/>
+									:
+									<div key={member.name} className="h-[200px] lg:h-[300px] w-full bg-zinc-200"/>
 							)}
 							<div className="flex flex-col text-center gap-2">
 								<p className=" !text-custom-dark uppercase font-extrabold text-base md:text-xl">
