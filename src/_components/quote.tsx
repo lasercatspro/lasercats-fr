@@ -1,11 +1,12 @@
 import Image from "next/image";
 import { QuoteI } from "../lib/testimonials";
-import Link from "next/link";
 
 const Quote = ({ quote }: { quote: QuoteI }) => {
 	return (
-		<div className="p-8 xl:p-8 mx-2 !border !border-zinc-50 !border-opacity-20 rounded-md bg-gradient-to-t from-custom-dark to-[#141124] to-60% hover:!border-opacity-60">
-			<Link href={`/projets/${quote.name}`} className="!no-underline flex flex-col gap-4 items-start justify-between h-[370px] md:min-h-[410px]">
+		<div className="p-8 xl:p-8 mx-2 !border !border-zinc-50 !border-opacity-20 rounded-md bg-gradient-to-t from-custom-dark to-[#141124] to-60%">
+			{/* Removes links that point to customer pages  */}
+			{/* <Link href={`/projets/${quote.name}`} className="!no-underline flex flex-col gap-4 items-start justify-between h-[370px] md:min-h-[410px]"> */}
+			<div className="!no-underline flex flex-col gap-4 items-start justify-between h-[370px] md:min-h-[410px]">
 				<div className="">
 					<Image
 						alt={`Logo ${quote.name}`}
@@ -23,7 +24,8 @@ const Quote = ({ quote }: { quote: QuoteI }) => {
 					<i className="h-12 w-12 rounded-full bg-gray-500" />
 					<p className="ml-4 text-zinc-50 text-xs lg:text-base">{quote.author}</p>
 				</div>
-			</Link>
+			</div>
+			{/* </Link> */}
 		</div>
 	);
 };

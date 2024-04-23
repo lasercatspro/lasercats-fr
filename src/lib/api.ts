@@ -15,7 +15,7 @@ export async function getItemBySlug (type: "post"|"client"  = "post", slug: stri
 	try {
 		const { meta, default: component } = await import(`../_${type}s/${slug}.mdx`);
 		return {
-			slug: slug.replace(/(\/index)?\.mdx$/, ""),
+			slug,
 			...meta,
 			component
 		} satisfies Post;
