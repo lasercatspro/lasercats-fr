@@ -11,6 +11,7 @@ const ThreeLasercats = dynamic(() => import("./three-lasercats"), {
 const Header = (): ReactNode => {
 	return (
 		<header className="h-[100vh] flex flex-col justify-center bg-custom-dark relative">
+			<div className="absolute lg:hidden inset-0 h-full w-full bg-zinc-500 z-30 bg-opacity-10" />
 			<ThreeLasercats />
 			<div className="mx-6 lg:max-w-7xl lg:mx-auto absolute inset-0 z-30 flex items-center">
 				<div className="absolute z-20 mt-[10vh] lg:mt-[25vh] font-normal">

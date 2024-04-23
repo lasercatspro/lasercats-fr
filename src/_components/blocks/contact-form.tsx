@@ -197,28 +197,23 @@ const Contact = () => {
 						<Button title="Envoyer" role="primary" type="submit" />
 					</form>
 					<ul className="hidden md:flex items-end justify-between w-2/3">
-						<li className="flex flex-col justify-between gap-8">
-							<p className="text-2xl text-zinc-50">Bureaux</p>
+						<li className="flex flex-col justify-between h-[100px]">
+							<p className="text-2xl text-zinc-50 !text-opacity-80">Bureaux</p>
 							<div className="flex flex-col">
-								<span className="text-xl text-zinc-50">
+								<span className="text-xl text-zinc-50 !text-opacity-80">
                   2 avenue Jean Janvier
 								</span>
-								<span className="text-xl text-zinc-50">35000 RENNES</span>
+								<span className="text-xl text-zinc-50 !text-opacity-80">35000 RENNES</span>
 							</div>
 						</li>
-						<li className="flex flex-col justify-between gap-8">
-							<p className="text-2xl text-zinc-50">Contact</p>
-							<div className="">
-								<span className="text-xl text-zinc-50">+330234567890</span>
-								<br />
-								<Link
-									className="text-xl text-zinc-50"
-									href="mailto:contact@lasercats.fr"
-								>
+						<li className="flex flex-col justify-between gap-8 h-[100px]">
+							<p className="text-2xl text-zinc-50 !text-opacity-80">Contact</p>
+							<Link
+								className="text-xl text-zinc-50"
+								href="mailto:contact@lasercats.fr"
+							>
                 contact@lasercats.fr
-								</Link>
-
-							</div>
+							</Link>
 						</li>
 					</ul>
 				</div>
