@@ -67,6 +67,6 @@
   "version": "1.0.0",
   "main": "src/app/index.tsx",
   "repository": "git@github.com:lasercatspro/lasercats-fr-refonte-2024.git",
-  "author": "Antoine Brique <antoine.brique@gmail.com>",
+  "author": "Lasercats <contact@lasercats.fr>",
   "license": "MIT"
 }
