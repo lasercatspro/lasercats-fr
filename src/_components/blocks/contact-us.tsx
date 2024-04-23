@@ -3,7 +3,7 @@ import Container from "../container";
 
 const ContactUs = () => {
 	return (
-		<div className="flex justify-center items-center py-40 bg-custom-dark border-t-2 border-primary">
+		<div className="flex justify-center items-center py-60 bg-custom-dark border-t-2 border-primary">
 			<Container>
 				<div className="text-center leading-snug">
 					<p className="!text-5xl text-zinc-50 lg:!text-[6rem]">

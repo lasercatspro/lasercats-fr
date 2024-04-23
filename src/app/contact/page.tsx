@@ -1,4 +1,4 @@
-import Contact from "@/_components/blocks/contact";
+import Contact from "@/_components/blocks/contact-form";
 
 const ContactPage = () => {
 	return ( 
