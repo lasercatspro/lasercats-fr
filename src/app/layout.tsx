@@ -58,9 +58,7 @@ export default function RootLayout({
 				/>
 				<meta name="theme-color" content="#000" />
 				<link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-				<script defer data-domain={process.env.PLAUSIBLE_URL} src="https://plausible.io/js/script.js" />
 			</head>
-			{/*  */}
 			<body className="min-h-[100vh] overflow-x-hidden bg-cover bg-center bg-[url('/assets/images/backgrounds/bg-1.jpg')]">
 				<SmoothScrolling>
 					<Navbar />

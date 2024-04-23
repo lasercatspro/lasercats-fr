@@ -67,7 +67,7 @@ const GridTransition = () => {
 			<div
 				ref={gridRef}
 				style={{ zIndex: -1 }}
-				className="absolute top-0 -left-12 w-[120vw] grid grid-cols-10 h-fit"
+				className="absolute top-0 -left-3 lg:-left-12 w-[120vw] grid grid-cols-10 h-fit"
 			>
 				{Array.from(Array(isMobile ? rowsMobile : rows)).map((_row, rowIndex) =>
 					Array.from(Array(isMobile ? colsMobile : cols).keys()).map((_col, colIndex) => (

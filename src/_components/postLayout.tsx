@@ -53,7 +53,7 @@ export function PostLayout({ article }: { article: Post | Client }): ReactNode {
 								<Avatar />
 								<DateFormatter dateString={article.date} />
 							</div>
-							<hr className="!bg-custom-dark h-[2px]"/>
+							<hr />
 						</header>
 
 						<Prose className={""}>{mdx}</Prose>

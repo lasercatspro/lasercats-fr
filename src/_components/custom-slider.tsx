@@ -7,16 +7,16 @@ import {
 	ButtonBack,
 	ButtonNext,
 	Dot,
-	CarouselContext,
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
-import { Dispatch, SetStateAction, useContext, useEffect, useMemo, useState } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import Quote from "./quote";
 import { QuoteI } from "../lib/testimonials";
 import Project from "./project";
 import { Client } from "../types/items";
 import { customBlue, customGreen } from "@/lib/constants";
 import useIsMobile from "@/hooks/useIsMobile";
+import UseCarouselContext from "@/hooks/useCarouselContext";
 
 type Props = {
   items: QuoteI[] | Client[];
@@ -38,22 +38,8 @@ const CustomSlider = ({
 	isOverflowOpacity = false,
 }: Props) => {
 	const isMobile = useIsMobile({forIpad: true});
-	const carouselContext = useContext(CarouselContext);
-	const [currentSlide, setCurrentSlide] = useState(
-		carouselContext.state.currentSlide
-	);
-	// Return a float with to numbers after point
-	// Float between 0.00 and 1.00
-	// ex: 0.66
-	const slideRatio: number = useMemo(() => {
-		return Number(
-			(
-				(carouselContext.state.visibleSlides + currentSlide) /
-        carouselContext.state.totalSlides
-			).toFixed(2)
-		);
-	}, [carouselContext, currentSlide]);
-
+	const { currentSlide, slideRatio } = UseCarouselContext();
+	
 	useEffect(() => {
 		if (setBgColor) {
 			setBgColor("transition");
@@ -61,14 +47,6 @@ const CustomSlider = ({
 			return () => clearTimeout(bgTimeOut);
 		}
 	}, [currentSlide]);
-
-	useEffect(() => {
-		function onChange() {
-			setCurrentSlide(carouselContext.state.currentSlide);
-		}
-		carouselContext.subscribe(onChange);
-		return () => carouselContext.unsubscribe(onChange);
-	}, [carouselContext]);
 	
 	return (
 		<div className="relative">

@@ -38,10 +38,10 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 
 	const transition = useMemo(
 		() => ({
-			enter: "transform transition-all ease-in duration-1000",
-			enterFrom: "opacity-0",
-			enterTo: "opacity-70",
-			leave: "transform transition-all ease-out duration-300",
+			enter: "transform transition-all ease-in-expo duration-[1300ms]",
+			enterFrom: (type === "skill" || type === "vite") ? "translate-y-[1rem]" : "opacity-0",
+			enterTo: (type === "skill" || type === "vite") ? "translate-y-0" : "opacity-70",
+			leave: "transform transition-all ease-out duration-200",
 			leaveFrom: "opacity-0",
 			leaveTo: "opacity-0",
 		}),
@@ -77,11 +77,11 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 							<Transition show={type === "exp"} {...transition} className={"absolute w-full  lg:max-w-7xl"}>
 								{!isLikeContent && (
 									<>
-										<strong
-											className="!text-3xl md:!text-5xl"
+										<p
+											className="!text-3xl md:!text-5xl !text-primary"
 										>
 											{"l'expérience métier"}
-										</strong>
+										</p>
 										<p className="mt-8 text-sm lg:text-xl">
                     Nous sommes d’anciens CTO et artisans du web depuis
                     loooongtemps : dans les secteurs de l’édition, des startups,
@@ -100,11 +100,11 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 							<Transition show={type === "skill"} {...transition} className={"absolute w-full  lg:max-w-7xl"}>
 								{!isLikeContent && (
 									<>
-										<strong
+										<p
 											className="!text-3xl md:!text-5xl !text-custom-blue"
 										>
 											{"les compétences"}
-										</strong>
+										</p>
 										<p className="mt-8 text-sm lg:text-xl">
                     Nous maîtrisons tout ce qu’il faut pour construire n’importe
                     quelle application web ou mobile. Nous avons toutes les
@@ -124,11 +124,11 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 							<Transition show={type === "challenges"} {...transition} className={"absolute w-full  lg:max-w-7xl"}>
 								{isLikeContent && (
 									<>
-										<strong
-											className="!text-3xl md:!text-5xl"
+										<p
+											className="!text-3xl md:!text-5xl !text-primary"
 										>
 											{"les challenges"}
-										</strong>
+										</p>
 										<p className="mt-8 text-sm lg:text-xl">
                     Nous adorons la stabilité des framework simples, mais aimons
                     aussi quand les challenges sont fous et débordent du web :
@@ -147,11 +147,11 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 							<Transition show={type === "vite"} {...transition} className={"absolute w-full  lg:max-w-7xl"}>
 								{isLikeContent && (
 									<>
-										<strong
+										<p
 											className="!text-3xl md:!text-5xl !text-custom-blue"
 										>
 											{"aller vite"}
-										</strong>
+										</p>
 										<p className="mt-8 text-sm lg:text-xl">
                     Nous savons aller vite pour tester un produit ou une
                     intuition en version beta et lui faire rencontrer son

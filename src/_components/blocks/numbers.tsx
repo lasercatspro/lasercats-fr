@@ -8,11 +8,12 @@ const Numbers = () => {
 				<div className="flex justify-between flex-col mx-2 md:grid lg:grid-cols-3 gap-8">
 					<div className="flex flex-col text-center">
 						<p className="text-[6rem] lg:!text-[12rem] !text-zinc-100">50M</p>
-						<p className="!text-lg !text-zinc-100">
+						<p className="!text-base !text-zinc-100">
               Nous avons construit une{" "}
 							<Link
 								href={"https://citesia.fr"}
 								className="text-primary hover:underline"
+								target="_blank"
 							>
                 plate-forme de crowdfunding
 							</Link>{" "}
@@ -21,11 +22,12 @@ const Numbers = () => {
 					</div>
 					<div className="flex flex-col text-center">
 						<p className="text-[6rem] lg:!text-[12rem] !text-zinc-100">1M</p>
-						<p className="!text-lg !text-zinc-100">
+						<p className="!text-base !text-zinc-100">
               Pour un des{" "}
 							<Link
 								href={"https://splio.com"}
 								className="text-primary hover:underline"
+								target="_blank"
 							>
                 leader des marketing automation
 							</Link>
@@ -37,11 +39,12 @@ const Numbers = () => {
 					</div>
 					<div className="flex flex-col text-center">
 						<p className="text-[6rem] lg:!text-[12rem] !text-zinc-100">11M</p>
-						<p className="!text-lg !text-zinc-100">
+						<p className="!text-base !text-zinc-100">
               Nous avons soutenu l’équipe technique d’un{" "}
 							<Link
 								href={"https://www.futura-sciences.com/"}
 								className="text-primary hover:underline"
+								target="_blank"
 							>
                 média scientifique national
 							</Link>{" "}

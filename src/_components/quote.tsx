@@ -3,7 +3,7 @@ import { QuoteI } from "../lib/testimonials";
 
 const Quote = ({ quote }: { quote: QuoteI }) => {
 	return (
-		<div className="p-8 xl:p-8 mx-2 !border !border-zinc-50 !border-opacity-20 rounded-md bg-gradient-to-t from-custom-dark to-[#141124] to-60%">
+		<div className="p-8 xl:p-8 mx-2 !border !border-zinc-50 !border-opacity-20 rounded-md bg-gradient-to-t from-custom-dark to-[#0d0a17] to-60%">
 			{/* Removes links that point to customer pages  */}
 			{/* <Link href={`/projets/${quote.name}`} className="!no-underline flex flex-col gap-4 items-start justify-between h-[370px] md:min-h-[410px]"> */}
 			<div className="!no-underline flex flex-col gap-4 items-start justify-between h-[370px] md:min-h-[410px]">
@@ -16,7 +16,7 @@ const Quote = ({ quote }: { quote: QuoteI }) => {
 						height={100}
 						className="mb-6 h-[2rem] w-[4rem] lg:h-[4rem] lg:w-[8rem]"
 					/>
-					<p className="text-xs lg:text-sm leading-4 lg:line-clamp-none xl:leading-6 !text-zinc-50">
+					<p className="text-xs lg:text-sm leading-4 lg:line-clamp-none xl:leading-6 !text-zinc-50 !text-opacity-80">
 						{quote.content}
 					</p>
 				</div>

@@ -10,6 +10,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Container from "../container";
 import Image from "next/image";
+import SpecialButton from "../special-button";
 
 function classNames(...classes: string[]): string {
 	return classes.filter(Boolean).join(" ");
@@ -77,11 +78,9 @@ export const Navbar = (): ReactNode => {
 											{item.name}
 										</Link>
 									))}
-									<div className="flex gap-4">
-										<Link href={"/contact"} className="primary w-[180px] h-6 rounded-sm !text-custom-dark hover:no-underline hover:!text-primary">
-											Nous contacter
-										</Link>
-									</div>
+									<Link href={"/contact"} className="flex items-center my-auto">
+										<SpecialButton title="Nous contacter"/>
+									</Link>
 								</div>
 							</div>
 						</div>
