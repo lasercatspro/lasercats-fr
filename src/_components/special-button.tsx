@@ -22,7 +22,7 @@ const SpecialButton = ({ title, isDisabled = false, fullWidth = false }: Props) 
 					backgroundColor: customDark, // Couleur finale
 					ease: "expo.inOut",
 					duration: 0.01,
-					delay: fullWidth ? 0.0001 * (index / 100) : 0.04 * (index / 100), // Ajoute un délai pour chaque carré
+					delay: fullWidth ? 0.0001 * (index / 100) : 0.04 * (index / 100),
 				});
 			});
 
@@ -30,6 +30,12 @@ const SpecialButton = ({ title, isDisabled = false, fullWidth = false }: Props) 
 		},
 		[thisGsap]
 	);
+
+	useEffect(() => {
+		thisGsap.eventCallback("onReverseComplete", () => {
+			thisGsap.pause(0); // Met en pause la timeline à son début après l'inversion
+		});
+	}, [thisGsap]);
 
 	useEffect(() => {
 		if (gridRef.current) {
@@ -41,9 +47,7 @@ const SpecialButton = ({ title, isDisabled = false, fullWidth = false }: Props) 
 				animateSquares(squares);
 			} else {
 				thisGsap.reverse(); // Inverse l'animation si la souris quitte la zone du bouton
-			}
-		} else {
-			thisGsap.reverse(); // Inverse l'animation si la souris quitte la zone du bouton
+			} 
 		}
 	}, [gridRef, isHover, animateSquares, thisGsap, isDisabled]);
 
@@ -55,11 +59,11 @@ const SpecialButton = ({ title, isDisabled = false, fullWidth = false }: Props) 
 		<div
 			className={`relative ${fullWidth ? "w-full h-[3rem]" : "w-[180px] h-[2.8rem]"} rounded-sm group`}
 			onMouseEnter={() => setIsHover(true)}
-			onMouseOver={() => setIsHover(true)}
+			// onMouseOver={() => setIsHover(true)}
 			onMouseLeave={() => setIsHover(false)}
 		>
 			<div className={`${!isDisabled && "border-2 border-primary"} h-full w-full flex justify-center items-center rounded-sm`}>
-				<p className={` ${!isDisabled ? "group-hover:text-primary text-custom-dark" : "text-primary"} font-semibold`}>{title}</p>
+				<p className={` ${!isDisabled ? "group-hover:text-primary text-custom-dark " : "text-primary"} font-semibold transition-colors duration-500`}>{title}</p>
 				<div
 					ref={gridRef}
 					style={{ zIndex: -1 }}
