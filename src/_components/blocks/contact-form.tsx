@@ -1,12 +1,12 @@
 "use client";
 import { ChangeEvent, FormEvent, useCallback, useReducer, useState } from "react";
-import Button from "../button";
 import useIsMobile from "@/hooks/useIsMobile";
 import Link from "next/link";
 import axios, { AxiosError } from "axios";
 import { Transition } from "@headlessui/react";
 import { CheckCircleIcon, XCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { emailRegex } from "@/lib/utils";
+import SpecialButton from "../special-button";
 
 interface Action {
   type: "handle_text";
@@ -75,6 +75,7 @@ const Contact = () => {
 
 	const [state, dispatch] = useReducer(reducer, initialState);
 	const [notif, setNotif] = useState<Notif>({isError: false, message: undefined});
+	const [sendOk, setSendOk] = useState<boolean>(false);
 
 	const isValidated = useCallback(() => {
 		(Object.keys(state) as ("email" | "name" | "message")[]).forEach((input) => {
@@ -101,6 +102,7 @@ const Contact = () => {
 
 	const submitFn = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		setSendOk(false);
 		if (!isValidated()) return;
 		const jsonData = generateJSON(state);
 
@@ -112,6 +114,7 @@ const Contact = () => {
 				body: JSON.stringify(jsonData)
 			});
 			setNotif({...notif, message: response.data});
+			setSendOk(true);
 		} catch (error) {
 			setNotif({isError: true, message: (error as AxiosError)?.message});
 		}
@@ -145,18 +148,22 @@ const Contact = () => {
 							leave="transition-all duration-75"
 							leaveFrom="translate-x-0 opacity-100"
 							leaveTo="translate-x-10 opacity-0"
-							className={"absolute -top-28 lg:-top-12 right-0 lg:right-8 z-30 bg-zinc-50 rounded-sm text-custom-dark w-full lg:w-[91%]"}
+							className={"absolute top-20 lg:-top-12 right-0 lg:right-8 z-30 bg-zinc-50 rounded-md text-custom-dark w-full lg:w-[91%] border border-zinc-500 shadow-2xl"}
 						>
-							<div className="flex gap-2 relative px-12 py-6 ">
+							<div className="flex gap-2 relative p-6 shadow-lg">
 								{notif.isError ?
 									<XCircleIcon className="h-6 w-6 text-red-600" />
 									:
 									<CheckCircleIcon className="h-6 w-6 text-primary" />
 								}
 								{notif.message}
-								<span className="absolute top-2 right-2 hover:cursor-pointer" onClick={() => setNotif({isError: false, message: undefined})}>
+								<button type="button" className="absolute top-2 right-2 hover:cursor-pointer" onClick={() => {
+									setNotif({isError: false, message: undefined});
+									setSendOk(false);
+								}}>
+									<span className="sr-only">Close</span>
 									<XMarkIcon className="h-[1.45rem] w-[1.45rem] rounded-md border border-gray-500 p-1" />
-								</span>
+								</button>
 							</div>
 						</Transition>
 						<div className="flex gap-4 items-center">
@@ -177,8 +184,9 @@ const Contact = () => {
 												className={`custom-input ${state[input as "email" | "name"]?.error  ? "!border-red-500" : ""}`}
 												onChange={(e) => handleTextChange(e)}
 												placeholder={`Votre ${input.toLowerCase()}`}
-												// required
+												required
 												pattern={input === "email" ? `${emailRegex}` : "^.*"}
+												disabled={sendOk}
 											/>
 											:
 											<textarea
@@ -188,13 +196,19 @@ const Contact = () => {
 												className={`custom-input rounded-sm text-xl min-h-[40vh] lg:min-h-[50vh] ${state.message.error ? "!border-red-500" : "border-none"}`}
 												onChange={(e) => handleTextChange(e)}
 												placeholder="Laissez nous un petit mot"
-												// required
+												required
+												disabled={sendOk}
 											/>
 										}
 									</div>
 							)}
 						</div>
-						<Button title="Envoyer" role="primary" type="submit" />
+						{isMobile ? (
+							<button type={"submit"} role={"button"}className={"primary"} disabled={sendOk}>Envoyer</button>
+						) : (
+							<button type={"submit"} role={"button"}className={`h-10 rounded-sm ${sendOk && "cursor-not-allowed "}`} disabled={sendOk}>
+								<SpecialButton title={"Envoyer"} fullWidth isDisabled={sendOk} />
+							</button>)}
 					</form>
 					<ul className="hidden md:flex items-end justify-between w-2/3">
 						<li className="flex flex-col justify-between h-[100px]">
@@ -209,7 +223,7 @@ const Contact = () => {
 						<li className="flex flex-col justify-between gap-8 h-[100px]">
 							<p className="text-2xl text-zinc-50 !text-opacity-80">Contact</p>
 							<Link
-								className="text-xl text-zinc-50"
+								className="text-xl text-zinc-50 !text-opacity-80"
 								href="mailto:contact@lasercats.fr"
 							>
                 contact@lasercats.fr

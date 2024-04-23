@@ -6,9 +6,11 @@ import { customDark } from "@/lib/constants";
 
 interface Props {
   title: string;
+  fullWidth?: boolean;
+	isDisabled?: boolean;
 }
 
-const SpecialButton = ({ title }: Props) => {
+const SpecialButton = ({ title, isDisabled = false, fullWidth = false }: Props) => {
 	const gridRef = useRef<HTMLDivElement | null>(null);
 	const thisGsap = useMemo(() => gsap.timeline({ paused: true }), []);
 	const [isHover, setIsHover] = useState(false);
@@ -23,7 +25,7 @@ const SpecialButton = ({ title }: Props) => {
 					backgroundColor: customDark, // Couleur finale
 					ease: "expo.inOut",
 					duration: 0.01,
-					delay: 0.04 * (index / 100), // Ajoute un délai pour chaque carré
+					delay: fullWidth ? 0.0001 * (index / 100) : 0.04 * (index / 100), // Ajoute un délai pour chaque carré
 				});
 			});
 
@@ -34,6 +36,7 @@ const SpecialButton = ({ title }: Props) => {
 
 	useEffect(() => {
 		if (gridRef.current) {
+			if (isDisabled) return;
 			const squares = Array.from(
 				gridRef.current.querySelectorAll(".mini-squares")
 			);
@@ -43,35 +46,36 @@ const SpecialButton = ({ title }: Props) => {
 				thisGsap.reverse(); // Inverse l'animation si la souris quitte la zone du bouton
 			}
 		}
-	}, [gridRef, isHover, animateSquares, thisGsap]);
+	}, [gridRef, isHover, animateSquares, thisGsap, isDisabled]);
 
 	const rows = 2;
 	const cols = 8;
+	const colsFull = 26;
 
 	return (
 		<div
-			className="relative w-[180px] h-[2.8rem] rounded-sm group "
+			className={`relative ${fullWidth ? "w-full h-[3rem]" : "w-[180px] h-[2.8rem]"} rounded-sm group`}
 			onMouseEnter={() => setIsHover(true)}
 			onMouseLeave={() => setIsHover(false)}
 		>
-			<div className="border-2 border-primary h-full w-full flex justify-center items-center rounded-sm">
-				<p className="text-custom-dark group-hover:text-primary font-semibold">{title}</p>
+			<div className={`${!isDisabled && "border-2 border-primary"} h-full w-full flex justify-center items-center rounded-sm`}>
+				<p className={` ${!isDisabled ? "group-hover:text-primary text-custom-dark" : "text-primary"} font-semibold`}>{title}</p>
 				<div
 					ref={gridRef}
 					style={{ zIndex: -1 }}
-					className="absolute inset-0 grid grid-cols-8 grid-rows-2"
+					className={`absolute inset-0 grid ${fullWidth ? "grid-cols-26" : "grid-cols-8" } grid-rows-2`}
 				>
 					{Array.from(Array(rows)).map((_row, rowIndex) =>
-						Array.from(Array(cols).keys()).map((_col, colIndex) => (
+						Array.from(Array(fullWidth ? colsFull : cols).keys()).map((_col, colIndex) => (
 							<div
 								key={`${colIndex}-${rowIndex}`}
 								id={`${rows}/${rowIndex}`}
-								className={`aspect-square mini-squares bg-primary ${
+								className={`aspect-square ${fullWidth && "h-6 w-6" } mini-squares  ${!isDisabled ? "bg-primary" : "bg-custom-dark" }  ${
 									rowIndex === 0 && colIndex === 0 && "rounded-tl-sm"
 								} 
-              ${rowIndex === 0 && colIndex === 7 && "rounded-tr-sm"}
+              ${rowIndex === 0 && (fullWidth ? colIndex === (colsFull - 1) : colIndex === (cols - 1)) && "rounded-tr-sm"}
               ${rowIndex === 1 && colIndex === 0 && "rounded-bl-sm"}
-              ${rowIndex === 1 && colIndex === 7 && "rounded-br-sm"}
+              ${rowIndex === 1 && (fullWidth ? colIndex === (colsFull - 1) : colIndex === (cols - 1)) && "rounded-br-sm"}
               `}
 							/>
 						))

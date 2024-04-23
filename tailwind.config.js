@@ -26,6 +26,9 @@ const config = {
 			},
 			transitionTimingFunction: {
 				"in-expo": "cubic-bezier(0.8, 0.15, 0.3, 1)",
+			},
+			gridTemplateColumns: {
+				"26": "repeat(26, minmax(0, 1fr))",
 			}
 		},
 		fontFamily: {
