@@ -12,14 +12,11 @@ interface Props {
 
 const SpecialButton = ({ title, isDisabled = false, fullWidth = false }: Props) => {
 	const gridRef = useRef<HTMLDivElement | null>(null);
-	const thisGsap = useMemo(() => gsap.timeline({ paused: true }), []);
+	const thisGsap = useMemo(() => gsap.timeline(), []);
 	const [isHover, setIsHover] = useState(false);
 
 	const animateSquares = useCallback(
 		(squares: any) => {
-			thisGsap.clear(); // Efface les animations précédentes
-			// thisGsap.pause(0); // Remet la timeline à son début
-
 			squares?.forEach((square: any, index: number) => {
 				thisGsap.to(square, {
 					backgroundColor: customDark, // Couleur finale
@@ -45,6 +42,8 @@ const SpecialButton = ({ title, isDisabled = false, fullWidth = false }: Props) 
 			} else {
 				thisGsap.reverse(); // Inverse l'animation si la souris quitte la zone du bouton
 			}
+		} else {
+			thisGsap.reverse(); // Inverse l'animation si la souris quitte la zone du bouton
 		}
 	}, [gridRef, isHover, animateSquares, thisGsap, isDisabled]);
 
@@ -56,6 +55,7 @@ const SpecialButton = ({ title, isDisabled = false, fullWidth = false }: Props) 
 		<div
 			className={`relative ${fullWidth ? "w-full h-[3rem]" : "w-[180px] h-[2.8rem]"} rounded-sm group`}
 			onMouseEnter={() => setIsHover(true)}
+			onMouseOver={() => setIsHover(true)}
 			onMouseLeave={() => setIsHover(false)}
 		>
 			<div className={`${!isDisabled && "border-2 border-primary"} h-full w-full flex justify-center items-center rounded-sm`}>
