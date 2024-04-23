@@ -13,7 +13,7 @@ const Header = (): ReactNode => {
 		<header className="h-[100vh] flex flex-col justify-center bg-custom-dark relative">
 			<ThreeLasercats />
 			<div className="mx-6 lg:max-w-7xl lg:mx-auto absolute inset-0 z-30 flex items-center">
-				<div className="absolute z-20 mt-[25vh] font-normal">
+				<div className="absolute z-20 mt-[10vh] lg:mt-[25vh] font-normal">
 					<h1 className='text-primary !leading-snug'>
 					Hey, 
 						<br />

@@ -23,6 +23,9 @@ const config = {
 			lineClamp: {
 				10: "10",
 				13: "13"
+			},
+			transitionTimingFunction: {
+				"in-expo": "cubic-bezier(0.8, 0.15, 0.3, 1)",
 			}
 		},
 		fontFamily: {
