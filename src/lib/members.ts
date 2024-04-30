@@ -7,7 +7,7 @@ export const members: Member[] = [
 		imageSrc: "/assets/images/portraits/nicolas.jpg",
 	},
 	{
-		name: "Anthonin",
+		name: "Antonin",
 		role: "Dev",
 		imageSrc: "/assets/images/portraits/anthonin.png",
 	},

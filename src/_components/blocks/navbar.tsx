@@ -17,9 +17,9 @@ function classNames(...classes: string[]): string {
 }
 
 export const Navbar = (): ReactNode => {
-	const navigation = [
-		{ name: "Projets", href: "/projets", current: false },
-		{ name: "Blog", href: "/blog", current: false },
+	const navigation: { name: string, href: string, current: boolean }[] = [
+		//{ name: "Projets", href: "/projets", current: false },
+		//{ name: "Blog", href: "/blog", current: false },
 	];
 	const [actualNav, setActualNav] = useState<any>(null);
 	const path = usePathname();
@@ -37,7 +37,7 @@ export const Navbar = (): ReactNode => {
 				<>
 					<Container>
 						<div className="flex h-16 justify-between relative">
-							<div className="mx-6 xl:mx-0 flex w-full justify-between items-center">
+							<div className="sm:mx-6 xl:mx-0 flex w-full justify-between items-center">
 								<Link className="flex flex-shrink-0 items-center" href={"/"}>
 									<Image
 										alt="Lasercats Logo"
@@ -51,8 +51,7 @@ export const Navbar = (): ReactNode => {
 								<Link href={"/contact"} className="md:hidden primary h-6 rounded-sm hover:no-underline">
 									Nous contacter
 								</Link>
-								<div className="-ml-2 mr-2 flex items-center md:hidden">
-									{/* Mobile menu button */}
+								{/* pas de liens pour l'instant <div className="-ml-2 mr-2 flex items-center md:hidden">
 									<Disclosure.Button className="relative inline-flex items-center justify-center rounded-sm p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
 										<span className="absolute -inset-0.5" />
 										<span className="sr-only">Open main menu</span>
@@ -62,7 +61,7 @@ export const Navbar = (): ReactNode => {
 											<Bars3Icon className="block h-6 w-6" aria-hidden="true" />
 										)}
 									</Disclosure.Button>
-								</div>
+								</div> */}
 								<div className="hidden md:ml-6 md:flex md:items-center md:space-x-4">
 									{navigation.map((item) => (
 										<Link
