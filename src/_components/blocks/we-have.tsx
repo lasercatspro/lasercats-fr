@@ -10,7 +10,7 @@ type Props = {
 
 const WeHave = ({ isLikeContent = false }: Props) => {
 	const gridRef = useRef<HTMLDivElement | null>(null);
-	const [type, setType] = useState<"exp" | "skill" | "challenges" | "vite" | null>(
+	const [type, setType] = useState<"exp" | "skill" | "challenges" | "vite">(
 		isLikeContent ? "challenges" : "exp"
 	);
 

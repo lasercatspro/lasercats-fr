@@ -2,10 +2,10 @@
 
 import { type ReactNode, useEffect, useState } from "react";
 import { Disclosure } from "@headlessui/react";
-import {
-	Bars3Icon,
-	XMarkIcon,
-} from "@heroicons/react/24/outline";
+// import {
+// 	Bars3Icon,
+// 	XMarkIcon,
+// } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Container from "../container";
@@ -33,7 +33,7 @@ export const Navbar = (): ReactNode => {
 			as="nav"
 			className="fixed left-0 top-0 z-50 w-full bg-custom-dark bg-opacity-90 backdrop-blur-sm border-b border-b-custom-dark"
 		>
-			{({ open }) => (
+			{(/*{ open }*/) => (
 				<>
 					<Container>
 						<div className="flex h-16 justify-between relative">
