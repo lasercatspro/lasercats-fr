@@ -19,7 +19,7 @@ const Testimonials = () => {
 					<CarouselProvider
 						naturalSlideWidth={480}
 						naturalSlideHeight={480}
-						totalSlides={3}
+						totalSlides={4}
 						visibleSlides={isMobile ? 1 : 2.2}
 						isIntrinsicHeight
 					>

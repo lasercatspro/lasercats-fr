@@ -6,15 +6,15 @@ const Quote = ({ quote }: { quote: QuoteI }) => {
 		<div className="p-8 xl:p-8 mx-2 !border !border-zinc-50 !border-opacity-20 rounded-md bg-gradient-to-t from-custom-dark to-[#0d0a17] to-60%">
 			{/* Removes links that point to customer pages  */}
 			{/* <Link href={`/projets/${quote.name}`} className="!no-underline flex flex-col gap-4 items-start justify-between h-[370px] md:min-h-[410px]"> */}
-			<div className="!no-underline flex flex-col gap-4 items-start justify-between h-[370px] md:min-h-[410px]">
-				<div className="">
+			<div className="!no-underline flex flex-col gap-4 items-start justify-between h-[400px] md:min-h-[410px]">
+				<div className="space-y-4">
 					<Image
 						alt={`Logo ${quote.name}`}
 						title={quote.name}
-						src={`/assets/images/logos/${quote.name}.svg`}
+						src={`/assets/images/clients/${quote.name}_logo.png`}
 						width={300}
 						height={100}
-						className="mb-6 h-[2rem] w-[4rem] lg:h-[4rem] lg:w-[8rem]"
+						className="h-[50px] !w-auto"
 					/>
 					<p className="text-xs lg:text-sm leading-4 lg:line-clamp-none xl:leading-6 !text-zinc-50 !text-opacity-80">
 						{quote.content}
