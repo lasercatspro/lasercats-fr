@@ -50,8 +50,6 @@ const CustomSlider = ({
 	
 	return (
 		<div className="relative">
-			{isOverflowOpacity && <div className={"hidden lg:block absolute top-0 -right-[22rem] z-10 h-full w-[400px]  bg-gradient-to-r from-transparent to-custom-dark to-50%"} />}
-			{isOverflowOpacity && <div className={"hidden lg:block absolute top-0 -left-80 z-10 h-full w-[400px] bg-gradient-to-l from-transparent to-custom-dark to-50%"} />}
 			<Slider className="relative mb-2 lg:mb-16" style={{overflow: isOverflowOpacity && !isMobile ? "visible" : ""}}>
 				{type === "quote" && (items as QuoteI[]).map((quote, index) => (
 					<Slide key={quote?.author} index={index}>

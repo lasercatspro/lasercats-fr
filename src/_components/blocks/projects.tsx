@@ -59,26 +59,32 @@ const Projects = ({ projects }: Props) => {
   >(customBlue);
 	return (
 		<div
-			className={`px-4 py-32 md:px-16 relative bg-custom-dark z-10 ${
-				bgColor === customBlue &&
-        "bg-cover bg-center bg-[url('/assets/images/backgrounds/svg-blue.svg')]"
-			} ${
-				bgColor === customGreen &&
-        "bg-cover bg-center bg-[url('/assets/images/backgrounds/svg-green.svg')]"
-			}
+			className={`px-4 py-32 md:px-16 relative bg-custom-dark backdrop-blur-xl z-10 
 			`}
+			style={{
+				transition: "background-color 0.5s ease",
+			}}
 		>
-			<Container>
-				<CarouselProvider
-					naturalSlideWidth={300}
-					naturalSlideHeight={100}
-					totalSlides={projects?.length}
-					visibleSlides={1}
-					isIntrinsicHeight
-				>
-					<SubProjet projects={projects} setBgColor={setBgColor} />
-				</CarouselProvider>
-			</Container>
+			<div
+				className={"h-full w-full relative"} >
+				<div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-[1] flex pt-32 blur-3xl">
+					<div className={`!w-[50%] h-[20%] rotate-[12deg] ${bgColor === customBlue ? "bg-custom-blue" : bgColor === customGreen ? "bg-primary" : ""} transform skew-y-3 origin-bottom bg-opacity-65`} />
+					<div className={`!w-[35%] h-[20%] -rotate-[23deg] ${bgColor === customBlue ? "bg-custom-blue" : bgColor === customGreen ? "bg-primary" : ""} transform skew-y-3 origin-bottom bg-opacity-65`} />
+					<div className={`!w-[100%] h-[25%] rotate-[3deg] ${bgColor === customBlue ? "bg-custom-blue" : bgColor === customGreen ? "bg-primary" : ""} transform skew-y-3 origin-bottom bg-opacity-65`} />
+					<div className={`absolute left-[200px] bottom-[50px] !w-[100px] h-[100px] rounded-full ${bgColor === customBlue ? "bg-custom-blue" : bgColor === customGreen ? "bg-primary" : ""} transform skew-y-3  bg-opacity-100`} />
+				</div>
+				<Container>
+					<CarouselProvider
+						naturalSlideWidth={300}
+						naturalSlideHeight={100}
+						totalSlides={projects?.length}
+						visibleSlides={1}
+						isIntrinsicHeight
+					>
+						<SubProjet projects={projects} setBgColor={setBgColor} />
+					</CarouselProvider>
+				</Container>
+			</div>
 		</div>
 	);
 };

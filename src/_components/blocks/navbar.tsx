@@ -1,16 +1,17 @@
 "use client";
 
-import { type ReactNode, useEffect, useState } from "react";
-import { Disclosure } from "@headlessui/react";
-// import {
-// 	Bars3Icon,
-// 	XMarkIcon,
-// } from "@heroicons/react/24/outline";
+import { type ReactNode, useEffect, useState, useCallback, useRef } from "react";
+import { Disclosure, Transition } from "@headlessui/react";
+import {
+	Bars3Icon,
+	XMarkIcon,
+} from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Container from "../container";
 import Image from "next/image";
 import SpecialButton from "../special-button";
+import { isServer } from "@/hooks/useIsMobile";
 
 function classNames(...classes: string[]): string {
 	return classes.filter(Boolean).join(" ");
@@ -28,17 +29,34 @@ export const Navbar = (): ReactNode => {
 		actual != null ? setActualNav(actual?.name) : setActualNav(null);
 	}, [path]);
 
+	const [isShow, setIsShow] = useState<boolean>(false);
+	const navRef = useRef(null);
+	const handleWindowSizeChange = useCallback(() => {
+		console.log(window.scrollY, window.innerHeight);
+		setIsShow(window.scrollY > window.innerHeight);
+	}, []);
+
+	useEffect(() => {
+		if (!isServer) {
+			window.addEventListener("scroll", handleWindowSizeChange);
+			return () => {
+				window.removeEventListener("scroll", handleWindowSizeChange);
+			};
+		}
+	}, [isShow]);
+
 	return (
 		<Disclosure
 			as="nav"
+			ref={navRef}
 			className="fixed left-0 top-0 z-50 w-full bg-custom-dark bg-opacity-90 backdrop-blur-sm border-b border-b-custom-dark"
 		>
-			{(/*{ open }*/) => (
+			{({ open }) => (
 				<>
 					<Container>
-						<div className="flex h-16 justify-between relative">
+						<div className="flex h-16 justify-between relative ">
 							<div className="sm:mx-6 xl:mx-0 flex w-full justify-between items-center">
-								<Link className="flex flex-shrink-0 items-center" href={"/"}>
+								<Link href={"/"} className="w-full">
 									<Image
 										alt="Lasercats Logo"
 										title="Lasercats"
@@ -48,10 +66,23 @@ export const Navbar = (): ReactNode => {
 										height={50}
 									/>
 								</Link>
-								<Link href={"/contact"} className="md:hidden primary h-6 rounded-sm hover:no-underline">
-									Nous contacter
-								</Link>
-								{/* pas de liens pour l'instant <div className="-ml-2 mr-2 flex items-center md:hidden">
+								<Transition 
+									show={isShow}
+									enter="transition-all duration-300"
+									enterFrom="translate-x-10 opacity-0"
+									enterTo="translate-x-0 opacity-100"
+									leave="transition-all duration-300"
+									leaveFrom="translate-x-0 opacity-100"
+									leaveTo="translate-x-10 opacity-0"
+									className={"flex justify-between gap-4 w-full"}
+								>
+									<Link href={"/contact"} className="md:hidden primary h-6 rounded-sm hover:no-underline">
+										Nous contacter
+									</Link>
+								</Transition>
+								
+								{process.env.ENABLED_NAV && <div className="-ml-2 mr-2 flex items-center md:hidden">
+									{/* Mobile menu button */}
 									<Disclosure.Button className="relative inline-flex items-center justify-center rounded-sm p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
 										<span className="absolute -inset-0.5" />
 										<span className="sr-only">Open main menu</span>
@@ -61,9 +92,9 @@ export const Navbar = (): ReactNode => {
 											<Bars3Icon className="block h-6 w-6" aria-hidden="true" />
 										)}
 									</Disclosure.Button>
-								</div> */}
+								</div>}
 								<div className="hidden md:ml-6 md:flex md:items-center md:space-x-4">
-									{navigation.map((item) => (
+									{process.env.ENABLED_NAV && navigation.map((item) => (
 										<Link
 											key={item.name}
 											href={item.href}

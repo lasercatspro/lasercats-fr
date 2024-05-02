@@ -25,7 +25,7 @@ const Team = () => {
 					</p>
 				</div>
 				<div className="grid grid-cols-3 lg:grid-cols-7 gap-y-4 gap-x-1 justify-center relative">
-					{!isMobile && <div className="flex relative col-span-7 gap-1 overflow-hidden">
+					{!isMobile && <div className="grid grid-cols-3 lg:grid-cols-7 relative col-span-7 gap-1 overflow-hidden">
 						<Image
 							alt="blue background"
 							title="blue svg"
@@ -33,6 +33,8 @@ const Team = () => {
 							className="absolute z-10 -top-96 -left-32 opacity-50 w-[150vw] -rotate-[20deg]"
 							width={2800}
 							height={200}
+							priority={false}
+							loading="lazy"
 						/>
 						<Image
 							alt="green background"
@@ -41,6 +43,8 @@ const Team = () => {
 							className="absolute z-10 top-20 -right-32 opacity-70 -rotate-[20deg]"
 							width={2800}
 							height={200}
+							priority={false}
+							loading="lazy"
 						/>
 						{members.map((member: Member) => (
 							!(member.name === "Nico") ? <Image
@@ -51,6 +55,9 @@ const Team = () => {
 								width={400}
 								height={400}
 								className="h-[200px] lg:h-[300px] w-full object-cover object-center"
+								quality={90}
+								priority={false}
+								loading="lazy"
 							/>
 								:
 								<div key={member.name} className="h-[200px] lg:h-[300px] w-full bg-zinc-200"/>
@@ -69,6 +76,9 @@ const Team = () => {
 									width={400}
 									height={400}
 									className="h-[200px] lg:h-[300px] w-full object-cover object-center"
+									quality={90}
+									priority={false}
+									loading="lazy"
 								/>
 									:
 									<div key={member.name} className="h-[200px] lg:h-[300px] w-full bg-zinc-200"/>
