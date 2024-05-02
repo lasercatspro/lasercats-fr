@@ -23,7 +23,8 @@ const Testimonials = () => {
 						visibleSlides={isMobile ? 1 : 2.2}
 						isIntrinsicHeight
 					>
-						
+						<div className={"hidden lg:block absolute top-0 left-full z-10 h-full w-full bg-gradient-to-r from-transparent to-custom-dark to-25%"} />
+						<div className={"hidden lg:block absolute top-0 right-full z-10 h-full w-full bg-gradient-to-l from-transparent to-custom-dark to-25%"} />
 						<CustomSlider items={quotes} type="quote" isOverflowOpacity/>
 					</CarouselProvider>
 				</div>
