@@ -11,19 +11,19 @@ import Team from "../_components/blocks/team";
 import LaserGame from "../_components/game/lasergame";
 import ContactUs from "@/_components/blocks/contact-us";
 
-export default async function Index () {
+export default async function Index() {
 	const projects = (await getAllItems("client")).map(c => {
 		if (c?.component) delete c?.component;
 		return c;
 	});
-	
+
 	return (
 		<main>
 			<Header />
 			<Numbers />
 			<WeHave />
 			<Testimonials />
-			<Projects projects={projects as Client[]}/>
+			<Projects projects={projects as Client[]} />
 			<GridTransition />
 			<Team />
 			{/* <LaserGame /> */}

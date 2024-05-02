@@ -18,9 +18,9 @@ function classNames(...classes: string[]): string {
 }
 
 export const Navbar = (): ReactNode => {
-	const navigation = [
-		{ name: "Projets", href: "/projets", current: false },
-		{ name: "Blog", href: "/blog", current: false },
+	const navigation: { name: string, href: string, current: boolean }[] = [
+		//{ name: "Projets", href: "/projets", current: false },
+		//{ name: "Blog", href: "/blog", current: false },
 	];
 	const [actualNav, setActualNav] = useState<any>(null);
 	const path = usePathname();
@@ -55,8 +55,7 @@ export const Navbar = (): ReactNode => {
 				<>
 					<Container>
 						<div className="flex h-16 justify-between relative ">
-							<div className="flex w-full justify-between items-center">
-								
+							<div className="sm:mx-6 xl:mx-0 flex w-full justify-between items-center">
 								<Link href={"/"} className="w-full">
 									<Image
 										alt="Lasercats Logo"
@@ -99,10 +98,9 @@ export const Navbar = (): ReactNode => {
 										<Link
 											key={item.name}
 											href={item.href}
-											className={`${
-												actualNav === item.name
-													? " !text-primary !font-extrabold"
-													: "!text-zinc-50 hover:!text-primary "
+											className={`${actualNav === item.name
+												? " !text-primary !font-extrabold"
+												: "!text-zinc-50 hover:!text-primary "
 											} 
                           font-bold px-3 py-2 hover:no-underline `}
 										>
@@ -110,7 +108,7 @@ export const Navbar = (): ReactNode => {
 										</Link>
 									))}
 									<Link href={"/contact"} className="flex items-center my-auto">
-										<SpecialButton title="Nous contacter"/>
+										<SpecialButton title="Nous contacter" />
 									</Link>
 								</div>
 							</div>

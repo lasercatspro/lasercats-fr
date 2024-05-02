@@ -22,7 +22,10 @@ const Quote = ({ quote }: { quote: QuoteI }) => {
 				</div>
 				<div className="flex items-center gap-2 ">
 					<i className="h-12 w-12 rounded-full bg-gray-500" />
-					<p className="ml-4 text-zinc-50 text-xs lg:text-base">{quote.author}</p>
+					<div>
+						<p className="ml-4 text-zinc-100 text-xs lg:text-base">{quote.author}</p>
+						<p className="ml-4 text-zinc-400 text-xs lg:text-sm">{quote.authorStatus}</p>
+					</div>
 				</div>
 			</div>
 			{/* </Link> */}
