@@ -25,7 +25,7 @@ const Team = () => {
 					</p>
 				</div>
 				<div className="grid grid-cols-3 lg:grid-cols-7 gap-y-4 gap-x-1 justify-center relative">
-					{!isMobile && <div className="flex relative col-span-7 gap-1 overflow-hidden">
+					{!isMobile && <div className="grid grid-cols-3 lg:grid-cols-7 relative col-span-7 gap-1 overflow-hidden">
 						<Image
 							alt="blue background"
 							title="blue svg"
