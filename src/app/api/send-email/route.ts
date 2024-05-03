@@ -2,7 +2,7 @@ import axios from "axios";
 
 export async function POST(req: Request) {
 	const request = await req.json();
-	const { email, message, name } = JSON.parse(request.body);
+	const { email, message, nom } = JSON.parse(request.body);
 	const SLACK_TOKEN = process.env.SLACK_TOKEN;
 
 	const url = "https://slack.com/api/chat.postMessage";
@@ -10,7 +10,7 @@ export async function POST(req: Request) {
 		url,
 		{
 			channel: `#${process.env.SLACK_CHANNEL}`,
-			text: `:sunrise: Voici un message provenant de notre site lasercats.fr :point_down:\n  \`\`\`${message} \`\`\`\n\n de *${name}*  :email: \`${email}\``,
+			text: `:sunrise: Voici un message provenant de notre site lasercats.fr :point_down:\n  \`\`\`${message} \`\`\`\n\n de *${nom}*  :email: \`${email}\``,
 		},
 		{
 			headers: {
