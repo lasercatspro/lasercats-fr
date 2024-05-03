@@ -9,8 +9,8 @@ import { emailRegex } from "@/lib/utils";
 import SpecialButton from "../special-button";
 
 interface Action {
-  type: "handle_text";
-  field: "name" | "email" | "message";
+  type: "handle_text" | "reset";
+  field: "nom" | "email" | "message";
   payload: string;
 }
 interface State {
@@ -18,7 +18,7 @@ interface State {
 		value: string;
 		error: boolean;
 	};
-  name: {
+  nom: {
 		value: string;
 		error: boolean;
 	}
@@ -39,7 +39,7 @@ const Contact = () => {
 			value: "",
 			error: false,
 		},
-		name: {
+		nom: {
 			value: "",
 			error: false,
 		},
@@ -47,6 +47,12 @@ const Contact = () => {
 			value: "",
 			error: false,
 		},
+	};
+	const reset = (form: HTMLFormElement) => {
+		form.reset();
+		(Object.keys(state) as ("email" | "nom" | "message")[]).forEach((input: "email" | "nom" | "message") => {
+			dispatch({type: "reset", field: input, payload: ""});
+		});
 	};
 	function reducer(state: State, action: Action) {
 		switch (action.type) {
@@ -58,6 +64,8 @@ const Contact = () => {
 					error: false
 				}
 			};
+		case "reset":
+			return initialState;
 		default:
 			return state;
 		}
@@ -78,12 +86,12 @@ const Contact = () => {
 	const [sendOk, setSendOk] = useState<boolean>(false);
 
 	const isValidated = useCallback(() => {
-		(Object.keys(state) as ("email" | "name" | "message")[]).forEach((input) => {
+		(Object.keys(state) as ("email" | "nom" | "message")[]).forEach((input) => {
 			if (state[input]?.value === "") {
 				state[input].error = true;
 			}
 		});
-		if (Object.values(state).filter((v: State["email" | "message" |"name"]) => v.error).length > 0) {
+		if (Object.values(state).filter((v: State["email" | "message" |"nom"]) => v.error).length > 0) {
 			setNotif({isError: true, message: "Veuillez remplir les champs"});
 			return false;
 		}
@@ -94,7 +102,7 @@ const Contact = () => {
 		const result: any = {};
 		for (const key in state) {
 			if (Object.hasOwnProperty.call(someState, key)) {
-				result[key] = someState[key as "email" | "name" | "message"]?.value;
+				result[key] = someState[key as "email" | "nom" | "message"]?.value;
 			}
 		}
 		return result;
@@ -114,6 +122,7 @@ const Contact = () => {
 				body: JSON.stringify(jsonData)
 			});
 			setNotif({...notif, message: response.data});
+			reset(e.target as HTMLFormElement);
 			setSendOk(true);
 		} catch (error) {
 			setNotif({isError: true, message: (error as AxiosError)?.message});
@@ -181,7 +190,7 @@ const Contact = () => {
 											<input
 												type={input === "email" ? "email" : "text"}
 												name={input}
-												className={`custom-input ${state[input as "email" | "name"]?.error  ? "!border-red-500" : ""}`}
+												className={`custom-input ${state[input as "email" | "nom"]?.error  ? "!border-red-500" : ""}`}
 												onChange={(e) => handleTextChange(e)}
 												placeholder={`Votre ${input.toLowerCase()}`}
 												required

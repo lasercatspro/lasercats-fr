@@ -32,7 +32,6 @@ export const Navbar = (): ReactNode => {
 	const [isShow, setIsShow] = useState<boolean>(false);
 	const navRef = useRef(null);
 	const handleWindowSizeChange = useCallback(() => {
-		console.log(window.scrollY, window.innerHeight);
 		setIsShow(window.scrollY > window.innerHeight);
 	}, []);
 
