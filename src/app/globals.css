@@ -98,3 +98,29 @@
   }
 
 }
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.75);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.75);
+  }
+}
+
+.project-slide.carousel__slide--hidden {
+  animation: scaleOut 0.75s ease-out !important;
+}
+.project-slide.carousel__slide--visible {
+  animation: scaleIn 0.75s ease-out !important;
+}
+

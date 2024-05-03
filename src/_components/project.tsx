@@ -67,6 +67,7 @@ const Project = ({ project }: Props) => {
 				<Link
 					href={project.href ?? "/"}
 					className=" no-underline hover:no-underline"
+					target="_blank"
 				>
 					<GrayLink title="Découvrir le projet" isWhite />
 				</Link>

@@ -13,8 +13,8 @@ const Header = (): ReactNode => {
 		<header className="h-[100vh] flex flex-col justify-center bg-custom-dark relative">
 			<div className="absolute lg:hidden inset-0 h-full w-full bg-zinc-500 z-30 bg-opacity-10" />
 			<ThreeLasercats />
-			<div className="mx-6 lg:max-w-7xl xl:mx-auto absolute inset-0 z-30 flex items-center">
-				<div className="absolute z-20 mt-[10vh] lg:mt-[25vh] font-normal">
+			<div className="mx-6 lg:max-w-7xl xl:mx-auto absolute z-20 mt-[10vh] lg:mt-[25vh] inset-0 flex items-center">
+				<div className="font-normal">
 					<h1 className='text-primary !leading-snug'>
 						Hey,
 						<br />

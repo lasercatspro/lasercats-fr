@@ -24,7 +24,7 @@ type Props = {
   backBtn?: boolean;
   nextBtn?: boolean;
   dotsType?: "range" | "bullets";
-	setBgColor?: Dispatch<SetStateAction<customBlue | customGreen | "transition">>;
+	setBgColor?: Dispatch<SetStateAction<customBlue | customGreen>>;
 	isOverflowOpacity?: boolean;
 };
 
@@ -42,9 +42,7 @@ const CustomSlider = ({
 	
 	useEffect(() => {
 		if (setBgColor) {
-			setBgColor("transition");
-			const bgTimeOut = setTimeout(() => setBgColor(currentSlide % 2 === 0 ? customBlue : customGreen), 500);
-			return () => clearTimeout(bgTimeOut);
+			setBgColor(currentSlide % 2 === 0 ? customBlue : customGreen);
 		}
 	}, [currentSlide]);
 	
@@ -57,18 +55,18 @@ const CustomSlider = ({
 					</Slide>
 				))}
 				{type === "projects" && (items as Client[]).map((project, index) => (
-					<Slide key={project?.title} index={index}>
+					<Slide key={project?.title} index={index} className="project-slide">
 						<Project project={project} />
 					</Slide>
 				))}
 			</Slider>
 			{currentSlide > 0 && backBtn && (
-				<ButtonBack className="hidden lg:block absolute z-10 top-1/2 -left-16 border border-zinc-50 border-opacity-10 hover:border-opacity-30 rounded-full p-4 bg-custom-dark">
+				<ButtonBack className="hidden lg:block absolute z-10 top-[40%] -left-36 border border-zinc-50 border-opacity-10 hover:border-opacity-30 rounded-full p-4 bg-custom-dark">
 					<ArrowLeftIcon className={"h-8 w-8 text-primary"} />
 				</ButtonBack>
 			)}
 			{slideRatio < 1 && nextBtn && (
-				<ButtonNext className="hidden lg:block absolute z-10 top-1/2 -right-16 border border-zinc-50 border-opacity-10 hover:border-opacity-30 rounded-full p-4 bg-custom-dark">
+				<ButtonNext className="hidden lg:block absolute z-10 top-[40%] -right-36 border border-zinc-50 border-opacity-10 hover:border-opacity-30 rounded-full p-4 bg-custom-dark">
 					<ArrowRightIcon className={"h-8 w-8 text-primary"} />
 				</ButtonNext>
 			)}
