@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Header from "../_components/blocks/header";
-import Numbers from "../_components/blocks/numbers";
 import Testimonials from "../_components/blocks/testimonials";
 import WeHave from "../_components/blocks/we-have";
 import Projects from "../_components/blocks/projects";
@@ -21,7 +20,6 @@ export default async function Index() {
 	return (
 		<main>
 			<Header />
-			<Numbers />
 			<WeHave />
 			<Testimonials />
 			<Projects projects={projects as Client[]} />

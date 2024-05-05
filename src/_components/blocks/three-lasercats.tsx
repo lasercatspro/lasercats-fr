@@ -18,15 +18,19 @@ import throttle from "lodash.throttle";
 
 extend({ ShaderMaterial });
 
-const Lasercat = ({ isPlaying }: { isPlaying: boolean }) => {
+const Lasercat = ({ isPlaying, isMobile }: { isPlaying: boolean, isMobile: boolean }) => {
 	const { scene } = useGLTF("/assets/textures/lasercats-without-eyes.gltf");
-	const isMobile = useIsMobile({ forIpad: true });
 
 	useEffect(() => {
 		if (!isMobile) {
-			scene.position.set(5, 0, -3);
+			console.log("isMobile", isMobile);
+			scene.scale.set(0.6, 0.6, 0.6);
+			scene.position.set(6, 6, 0);
 		} else {
-			scene.position.set(0, 0, 0);
+
+			console.log("isMobile", isMobile);
+			scene.scale.set(0.4, 0.4, 0.4);
+			scene.position.set(0, 8, 0);
 		}
 	}, [scene, isMobile]);
 
@@ -66,6 +70,7 @@ const ThreeLasercats = () => {
 	const [loading, setIsLoading] = useState<boolean>(true);
 	const ref = useRef<HTMLCanvasElement | null>(null);
 	const [isPlaying, setIsPlaying] = useState<boolean>(true);
+	const isMobile = useIsMobile({ forIpad: true });
 
 	useEffect(() => {
 		setIsLoading(progress < 100);
@@ -91,13 +96,13 @@ const ThreeLasercats = () => {
 	return (
 		<Canvas
 			style={{ opacity: `${loading ? 0 : 1}`, zIndex: 20 }}
-			camera={{ position: [0, -1, 15], fov: 60 }}
+			camera={{ position: isMobile ? [-6, 10, 18] : [-6, 0, 18], fov: 60 }}
 			ref={ref}
 		>
 			{isPlaying && (
 				<>
-					<Lasercat isPlaying={isPlaying} />
-					<Environment files="/assets/textures/mini-test.hdr" background />
+					<Lasercat isPlaying={isPlaying} isMobile={Boolean(isMobile)} />
+					<Environment files="/assets/textures/mini-test2.hdr" background />
 					<EffectComposer>
 						<Bloom intensity={1.0} luminanceThreshold={0} luminanceSmoothing={0} height={300} mipmapBlur={true} />
 						<Noise opacity={0.01} />
