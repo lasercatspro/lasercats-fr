@@ -5,8 +5,8 @@ import useIsMobile from "../hooks/useIsMobile";
 import Container from "./container";
 
 type Props = {
-  type: "exp" | "skill" | "challenges" | "vite";
-  children: ReactNode;
+	type: "exp" | "skill" | "challenges" | "vite";
+	children: ReactNode;
 };
 
 const WhiteGrid = ({ children, type }: Props) => {
@@ -55,31 +55,28 @@ const WhiteGrid = ({ children, type }: Props) => {
 								key={col}
 								style={{
 									background: isGreen
-										? `linear-gradient(${
-											(till?.place === "bl" && "220deg") ||
-                        (till?.place === "br" && "135deg") ||
-                        (till?.place === "tl" && "315deg") ||
-                        (till?.place === "tr" && "45deg")
+										? `linear-gradient(${(till?.place === "bl" && "220deg") ||
+										(till?.place === "br" && "135deg") ||
+										(till?.place === "tl" && "315deg") ||
+										(till?.place === "tr" && "45deg")
 										}, rgba(255,255,255,0) 0%, rgba(0,198,94,0.02) 62%, rgba(0,198,94,0.3351541300113795) 100%)`
 										: !isGreen
-											? `linear-gradient(${
-												(till?.place === "bl" && "220deg") ||
-                        (till?.place === "br" && "135deg") ||
-                        (till?.place === "tl" && "315deg") ||
-                        (till?.place === "tr" && "45deg")
+											? `linear-gradient(${(till?.place === "bl" && "220deg") ||
+											(till?.place === "br" && "135deg") ||
+											(till?.place === "tl" && "315deg") ||
+											(till?.place === "tr" && "45deg")
 											}, rgba(255,255,255,0) 0%, rgba(6,3,141,0.015) 62%, rgba(6,3,141,0.3351541300113795) 100%)`
 											: "",
 								}}
 								className={`transition-opacity duration-500 ease-in
 									${till?.color ? "" : "border border-gray-200 border-opacity-20"}
-									${
-							isGreen || !till?.color
+									${isGreen || !till?.color
 								? "opacity-100"
 								: (type === "skill" || type === "vite") && !isGreen
 									? "opacity-100"
 									: "opacity-0"
 							}`}
-								// aspect-square if you want perfect squares
+							// aspect-square if you want perfect squares
 							/>
 						);
 					})

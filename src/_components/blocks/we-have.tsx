@@ -17,7 +17,7 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 	useEffect(() => {
 		const handleScroll = () => {
 			if (gridRef?.current) {
-				const gridTop = gridRef?.current.offsetTop;
+				const gridTop = gridRef?.current.offsetTop + 100;
 				const scrollY = window.scrollY;
 				if (!isLikeContent) {
 					if (scrollY < gridTop && type !== "exp") {
@@ -57,7 +57,7 @@ const WeHave = ({ isLikeContent = false }: Props) => {
 	return (
 		<div
 			ref={gridRef}
-			className={"relative h-[100vh] md:text-center"}
+			className={"relative h-[130vh] md:text-center"}
 		>
 			<WhiteGrid type={type}>
 				<div

@@ -19,11 +19,11 @@ import useIsMobile from "@/hooks/useIsMobile";
 import UseCarouselContext from "@/hooks/useCarouselContext";
 
 type Props = {
-  items: QuoteI[] | Client[];
-  type: "quote" | "projects";
-  backBtn?: boolean;
-  nextBtn?: boolean;
-  dotsType?: "range" | "bullets";
+	items: QuoteI[] | Client[];
+	type: "quote" | "projects";
+	backBtn?: boolean;
+	nextBtn?: boolean;
+	dotsType?: "range" | "bullets";
 	setBgColor?: Dispatch<SetStateAction<customBlue | customGreen>>;
 	isOverflowOpacity?: boolean;
 };
@@ -37,18 +37,18 @@ const CustomSlider = ({
 	setBgColor,
 	isOverflowOpacity = false,
 }: Props) => {
-	const isMobile = useIsMobile({forIpad: true});
+	const isMobile = useIsMobile({ forIpad: true });
 	const { currentSlide, slideRatio } = UseCarouselContext();
-	
+
 	useEffect(() => {
 		if (setBgColor) {
 			setBgColor(currentSlide % 2 === 0 ? customBlue : customGreen);
 		}
 	}, [currentSlide]);
-	
+
 	return (
 		<div className="relative">
-			<Slider className="relative mb-2 lg:mb-16" style={{overflow: isOverflowOpacity && !isMobile ? "visible" : ""}}>
+			<Slider className="relative mb-2 lg:mb-16" style={{ overflow: isOverflowOpacity && !isMobile ? "visible" : "" }}>
 				{type === "quote" && (items as QuoteI[]).map((quote, index) => (
 					<Slide key={quote?.author} index={index}>
 						<Quote quote={quote} />
@@ -61,12 +61,12 @@ const CustomSlider = ({
 				))}
 			</Slider>
 			{currentSlide > 0 && backBtn && (
-				<ButtonBack className="hidden lg:block absolute z-10 top-[40%] -left-36 border border-zinc-50 border-opacity-10 hover:border-opacity-30 rounded-full p-4 bg-custom-dark">
+				<ButtonBack className="hidden lg:block absolute z-10 top-[40%] -left-[8%] border border-zinc-50 border-opacity-10 hover:border-opacity-30 rounded-full p-4 bg-custom-dark">
 					<ArrowLeftIcon className={"h-8 w-8 text-primary"} />
 				</ButtonBack>
 			)}
 			{slideRatio < 1 && nextBtn && (
-				<ButtonNext className="hidden lg:block absolute z-10 top-[40%] -right-36 border border-zinc-50 border-opacity-10 hover:border-opacity-30 rounded-full p-4 bg-custom-dark">
+				<ButtonNext className="hidden lg:block absolute z-10 top-[40%] -right-[8%] border border-zinc-50 border-opacity-10 hover:border-opacity-30 rounded-full p-4 bg-custom-dark">
 					<ArrowRightIcon className={"h-8 w-8 text-primary"} />
 				</ButtonNext>
 			)}
@@ -85,8 +85,8 @@ const CustomSlider = ({
 			{dotsType === "bullets" && (
 				<div className="flex justify-center items-center gap-4 lg:gap-8">
 					{items.map((i, index) => (
-						currentSlide === index ? 
-							<img key={`index-${index}`} src="/assets/images/logos/laser-simple.svg" alt="lasercats logo" className="h-3 w-3 lg:h-4 lg:w-4"/>
+						currentSlide === index ?
+							<img key={`index-${index}`} src="/assets/images/logos/laser-simple.svg" alt="lasercats logo" className="h-3 w-3 lg:h-4 lg:w-4" />
 							:
 							<Dot
 								key={`index-${index}`}
