@@ -3,7 +3,7 @@
 
 import { CarouselProvider } from "pure-react-carousel";
 import CustomSlider from "../custom-slider";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState, useMemo, useRef } from "react";
 import { Client } from "@/types/items";
 import Container from "../container";
 import { customBlue, customGreen } from "@/lib/constants";
@@ -46,9 +46,24 @@ const Projects = ({ projects }: Props) => {
 	const [bgColor, setBgColor] = useState<
 		customBlue | customGreen
 	>(customBlue);
+
+	// autoplay starts when projects comes into view (we don't want user to miss our best customers)
+	const [autoplay, setAutoplay] = useState(false);
+	const ref = useRef<HTMLDivElement>(null);
+	const observer = useMemo(() => {
+		return typeof window !== "undefined" ? new IntersectionObserver(
+			([entry]) => setAutoplay(entry.isIntersecting)
+		) : null;
+	}, [ref]);
+	useEffect(() => {
+		if (ref.current) { observer?.observe(ref.current); }
+		return () => observer?.disconnect();
+	}, []);
+
 	const color = bgColor === customBlue ? "bg-custom-blue" : bgColor === customGreen ? "bg-primary bg-opacity-80" : "";
 	return (
 		<div
+			ref={ref}
 			className="px-4 py-32 md:px-16 relative bg-custom-dark z-10"
 		>
 			<div className="h-full w-full relative">
@@ -68,7 +83,7 @@ const Projects = ({ projects }: Props) => {
 						totalSlides={projects?.length}
 						visibleSlides={1}
 						isIntrinsicHeight
-						isPlaying={true}
+						isPlaying={autoplay}
 						interval={6000}
 					>
 						<SubProjet projects={projects} setBgColor={setBgColor} />
