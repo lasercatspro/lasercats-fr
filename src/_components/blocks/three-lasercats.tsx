@@ -78,10 +78,8 @@ const ThreeLasercats = () => {
 
 	useEffect(() => {
 		const handleScroll = throttle(() => {
-			if (ref?.current) {
-				const rect = ref.current?.getBoundingClientRect();
-				setIsPlaying(rect?.bottom > 0);
-			}
+			// we stop rendering at half screen (cat is passed in any case)
+			setIsPlaying(window.scrollY < window.innerHeight / 2);
 		}, 200);
 
 		handleScroll();
