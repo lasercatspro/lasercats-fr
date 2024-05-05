@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const GridTransition = () => {
 	const gridRef = useRef<HTMLDivElement | null>(null);
-	const thisGsap = useMemo(() => gsap.timeline({repeat: 1}), []);
+	const thisGsap = useMemo(() => gsap.timeline({ repeat: 1 }), []);
 	const isMobile = useIsMobile({ forIpad: true });
 	const [gridHeight, setGridHeight] = useState<number | null>(null);
 	useEffect(() => {
@@ -31,8 +31,8 @@ const GridTransition = () => {
 				},
 				scrollTrigger: {
 					trigger: gridRef.current,
-					start: isMobile ? "top 250%" : "top 200%", 
-					end: isMobile ?  "bottom 90%" : "bottom 90%",
+					start: isMobile ? "top 150%" : "top 200%",
+					end: isMobile ? "bottom 50%" : "bottom 90%",
 					scrub: true,
 					// markers: true
 				}
@@ -50,23 +50,23 @@ const GridTransition = () => {
 		}
 	}, [gridRef, gridHeight, isMobile]);
 
-	const rows = 4;
+	const rows = 3;
 	const cols = 10;
-	const rowsMobile = 9;
-	const colsMobile = 10;
-	
+	const rowsMobile = 3;
+	const colsMobile = 5;
+
 	return (
-		<div className={"mb-16 overflow-x-hidden relative !bg-opacity-10"} style={{ height: `${gridHeight}px`}}>
-			<Container classes="h-full flex items-center">
-				<p className="md:text-5xl text-center !text-zinc-50 mix-blend-difference px-2 lg:px-8">
+		<div className={"mb-16 overflow-x-hidden relative !bg-opacity-10"} style={{ height: `${gridHeight}px` }}>
+			<Container classes="h-full flex flex-col justify-end pb-12 lg:pb-24 items-center">
+				<h2 className="md:text-5xl text-center !text-zinc-50 mix-blend-difference px-2 lg:px-8">
 					{
 						"N’importe quelle machine peut faire un site, mais il faut une vraie équipe pour développer votre produit."
 					}
-				</p>
+				</h2>
 			</Container>
 			<div
 				ref={gridRef}
-				style={{ zIndex: -1 }}
+				style={{ zIndex: -1, gridTemplateColumns: `repeat(${isMobile ? colsMobile : cols}, 1fr)` }}
 				className="absolute top-0 -left-3 lg:-left-12 w-[120vw] grid grid-cols-10 h-fit"
 			>
 				{Array.from(Array(isMobile ? rowsMobile : rows)).map((_row, rowIndex) =>
@@ -79,8 +79,8 @@ const GridTransition = () => {
 					))
 				)}
 			</div>
-		</div>
-			
+		</div >
+
 	);
 };
 

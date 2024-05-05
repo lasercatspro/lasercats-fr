@@ -11,7 +11,7 @@ const Team = () => {
 	return (
 		<Container classes="mb-[50px] lg:mb-[150px]">
 			<div className="relative px-4 md:px-16 space-y-12 overflow-visible">
-				<div className="flex flex-col lg:flex-row gap-4 justify-between !tracking-wide">
+				{/*<div className="flex flex-col lg:flex-row gap-4 justify-between !tracking-wide">
 					<h2 className="lg:w-1/2">
             Nous sommes une équipe soudée, réactive et toujours présente
 					</h2>
@@ -23,7 +23,7 @@ const Team = () => {
             outils directs pour échanger avec vous et nous nous sommes organisés
             pour être toujours disponible.
 					</p>
-				</div>
+				</div>*/}
 				<div className="grid grid-cols-3 lg:grid-cols-7 gap-y-4 gap-x-1 justify-center relative">
 					{!isMobile && <div className="grid grid-cols-3 lg:grid-cols-7 relative col-span-7 gap-1 overflow-hidden">
 						<Image
@@ -60,7 +60,7 @@ const Team = () => {
 								loading="lazy"
 							/>
 								:
-								<div key={member.name} className="h-[200px] lg:h-[300px] w-full bg-zinc-200"/>
+								<div key={member.name} className="h-[200px] lg:h-[300px] w-full bg-zinc-200" />
 						))}
 					</div>}
 					{members.map((member: Member) => (
@@ -81,7 +81,7 @@ const Team = () => {
 									loading="lazy"
 								/>
 									:
-									<div key={member.name} className="h-[200px] lg:h-[300px] w-full bg-zinc-200"/>
+									<div key={member.name} className="h-[200px] lg:h-[300px] w-full bg-zinc-200" />
 							)}
 							<div className="flex flex-col text-center gap-2">
 								<p className=" !text-custom-dark uppercase font-extrabold text-base md:text-xl">
