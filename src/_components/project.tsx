@@ -9,7 +9,7 @@ import { Disclosure } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 type Props = {
-  project: Client;
+	project: Client;
 };
 
 const Project = ({ project }: Props) => {
@@ -41,13 +41,13 @@ const Project = ({ project }: Props) => {
 						{(isMobile && project.description.length > 343) || (isMobile && project.description.length > 120) ? <Disclosure>
 							{({ open }) => (
 								<>
-									<p className={`${!open ? "line-clamp-2 lg:line-clamp-4" : "" } transform transition-all duration-1000 text-zinc-400 text-left text-xs lg:text-base`}>{project.description}</p>
+									<p className={`${!open ? "line-clamp-2 lg:line-clamp-4" : ""} transform transition-all duration-1000 text-zinc-400 text-left text-xs lg:text-base`}>{project.description}</p>
 									<Disclosure.Button className="flex items-center py-2 justify-start relative">
 										<ChevronDownIcon className={`z-10 h-6 w-6 text-zinc-400 ${open ? "rotate-180 transform" : ""}`} />
 									</Disclosure.Button>
 								</>
 							)}
-						</Disclosure>: <p className={"text-zinc-400 text-left text-xs lg:text-base"}>{project.description}</p>}
+						</Disclosure> : <p className={"whitespace-pre-wrap text-zinc-400 text-left text-xs lg:text-base inline-block"}>{project.description}</p>}
 					</div>
 				</div>
 				{isMobile && (
@@ -63,7 +63,7 @@ const Project = ({ project }: Props) => {
 						loading="eager"
 					/>
 				)}
-				
+
 				<Link
 					href={project.href ?? "/"}
 					className=" no-underline hover:no-underline"

@@ -22,6 +22,7 @@ export interface Client {
   logo: string
   component?: () => MDXContent
   href: string
+  rank?: number
 }
 
 export interface Member {

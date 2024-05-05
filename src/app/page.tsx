@@ -12,7 +12,8 @@ import LaserGame from "../_components/game/lasergame";
 import ContactUs from "@/_components/blocks/contact-us";
 
 export default async function Index() {
-	const projects = (await getAllItems("client")).map(c => {
+	// sort by rank, less is better, nil is 10
+	const projects = (await getAllItems("client")).sort((a, b) => (a?.rank || 10) > (b?.rank || 10) ? 1 : -1).map(c => {
 		if (c?.component) delete c?.component;
 		return c;
 	});
