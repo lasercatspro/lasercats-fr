@@ -23,19 +23,16 @@ const Lasercat = ({ isPlaying, isMobile }: { isPlaying: boolean, isMobile: boole
 
 	useEffect(() => {
 		if (!isMobile) {
-			console.log("isMobile", isMobile);
 			scene.scale.set(0.6, 0.6, 0.6);
-			scene.position.set(6, 6, 0);
+			scene.position.set(0, 4.5, 0);
 		} else {
 
-			console.log("isMobile", isMobile);
-			scene.scale.set(0.4, 0.4, 0.4);
-			scene.position.set(0, 8, 0);
+			scene.scale.set(0.3, 0.3, 0.3);
+			scene.position.set(0, 7, 0);
 		}
 	}, [scene, isMobile]);
 
 	useMemo(() => {
-		if (!scene || !isPlaying) return null;
 
 		scene.traverse((child) => {
 			let material;
@@ -57,12 +54,13 @@ const Lasercat = ({ isPlaying, isMobile }: { isPlaying: boolean, isMobile: boole
 
 	useFrame(({ clock }) => {
 		if (scene && isPlaying) {
+
 			scene.rotation.y = 0.43 * clock.elapsedTime;
 		}
 	});
 
 	// eslint-disable-next-line react/no-unknown-property
-	return scene && isPlaying ? <primitive object={scene} ref={ref} /> : null;
+	return scene ? <primitive object={scene} ref={ref} /> : null;
 };
 
 const ThreeLasercats = () => {
@@ -90,23 +88,20 @@ const ThreeLasercats = () => {
 			window.removeEventListener("scroll", handleScroll);
 		};
 	}, []);
-
 	return (
 		<Canvas
 			style={{ opacity: `${loading ? 0 : 1}`, zIndex: 20 }}
-			camera={{ position: isMobile ? [-6, 10, 18] : [-6, 0, 18], fov: 60 }}
+			camera={{ position: isMobile ? [-6, 10, 18] : [-6, 5, 18], filmOffset: isMobile ? 0 : -9, fov: 50 }}
 			ref={ref}
 		>
-			{isPlaying && (
-				<>
-					<Lasercat isPlaying={isPlaying} isMobile={Boolean(isMobile)} />
-					<Environment files="/assets/textures/mini-test2.hdr" background />
-					<EffectComposer>
-						<Bloom intensity={1.0} luminanceThreshold={0} luminanceSmoothing={0} height={300} mipmapBlur={true} />
-						<Noise opacity={0.01} />
-					</EffectComposer>
-				</>
-			)}
+			<>
+				<Lasercat isPlaying={isPlaying} isMobile={Boolean(isMobile)} />
+				<Environment files="/assets/textures/mini-test2.hdr" background />
+				<EffectComposer enabled={isPlaying}>
+					<Bloom intensity={1.0} luminanceThreshold={0} luminanceSmoothing={0} height={300} mipmapBlur={true} />
+					<Noise opacity={0.01} />
+				</EffectComposer>
+			</>
 		</Canvas>
 	);
 };
