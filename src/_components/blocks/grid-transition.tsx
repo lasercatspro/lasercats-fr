@@ -32,7 +32,7 @@ const GridTransition = () => {
 				scrollTrigger: {
 					trigger: gridRef.current,
 					start: isMobile ? "top 150%" : "top 200%",
-					end: isMobile ? "bottom 50%" : "bottom 90%",
+					end: isMobile ? "bottom 50%" : "bottom 100%",
 					scrub: true,
 					// markers: true
 				}
@@ -50,14 +50,14 @@ const GridTransition = () => {
 		}
 	}, [gridRef, gridHeight, isMobile]);
 
-	const rows = 3;
+	const rows = 4;
 	const cols = 10;
 	const rowsMobile = 3;
 	const colsMobile = 5;
 
 	return (
 		<div className={"mb-16 overflow-x-hidden relative !bg-opacity-10"} style={{ height: `${gridHeight}px` }}>
-			<Container classes="h-full flex flex-col justify-end pb-12 lg:pb-24 items-center">
+			<Container classes="h-full flex flex-col justify-center pb-12 items-center">
 				<h2 className="md:text-5xl text-center !text-zinc-50 mix-blend-difference px-2 lg:px-8">
 					{
 						"N’importe quelle machine peut faire un site, mais il faut une vraie équipe pour développer votre produit."

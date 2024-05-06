@@ -11,21 +11,21 @@ const Team = () => {
 	return (
 		<Container classes="mb-[50px] lg:mb-[150px]">
 			<div className="relative px-4 md:px-16 space-y-12 overflow-visible">
-				{/*<div className="flex flex-col lg:flex-row gap-4 justify-between !tracking-wide">
+				<div className="flex flex-col lg:flex-row gap-4 justify-between !tracking-wide">
 					<h2 className="lg:w-1/2">
-            Nous sommes une équipe soudée, réactive et toujours présente
+						Nous sommes une équipe soudée, réactive et toujours présente
 					</h2>
 					<p className="lg:w-1/2">
-            Nous sommes une équipe qui travaille dans un cadre coopératif où
-            nous nous sentons bien. Nous travaillons sur les projets qui nous
-            donne envie et si nous décidons de travailler avec vous, c’est toute
-            l’équipe qui sera engagée pour réaliser votre projet. Nous avons des
-            outils directs pour échanger avec vous et nous nous sommes organisés
-            pour être toujours disponible.
+						Nous sommes une équipe qui travaille dans un cadre coopératif où
+						nous nous sentons bien. Nous travaillons sur les projets qui nous
+						donne envie et si nous décidons de travailler avec vous, c’est toute
+						l’équipe qui sera engagée pour réaliser votre projet. Nous avons des
+						outils directs pour échanger avec vous et nous nous sommes organisés
+						pour être toujours disponible.
 					</p>
-				</div>*/}
-				<div className="grid grid-cols-3 lg:grid-cols-7 gap-y-4 gap-x-1 justify-center relative">
-					{!isMobile && <div className="grid grid-cols-3 lg:grid-cols-7 relative col-span-7 gap-1 overflow-hidden">
+				</div>
+				<div className="grid grid-cols-3 lg:grid-cols-6 gap-y-4 gap-x-1 justify-center relative">
+					{!isMobile && <div className="grid grid-cols-3 lg:grid-cols-6 relative col-span-7 gap-1 overflow-hidden">
 						<Image
 							alt="blue background"
 							title="blue svg"
@@ -46,8 +46,8 @@ const Team = () => {
 							priority={false}
 							loading="lazy"
 						/>
-						{members.map((member: Member) => (
-							!(member.name === "Nico") ? <Image
+						{members.filter(m => m.name !== "Nico").map((member: Member) => (
+							<Image
 								key={`img-${member.name}`}
 								alt={`portait of ${member.name}`}
 								title={member.name}
@@ -59,17 +59,15 @@ const Team = () => {
 								priority={false}
 								loading="lazy"
 							/>
-								:
-								<div key={member.name} className="h-[200px] lg:h-[300px] w-full bg-zinc-200" />
 						))}
 					</div>}
-					{members.map((member: Member) => (
+					{members.filter(m => m.name !== "Nico").map((member: Member) => (
 						<div
 							key={member.name}
 							className="flex flex-col items-center w-full gap-1 mb-4"
 						>
 							{isMobile && (
-								!(member.name === "Nico") ? <Image
+								<Image
 									alt={`portait of ${member.name}`}
 									title={member.name}
 									src={member.imageSrc}
@@ -80,8 +78,6 @@ const Team = () => {
 									priority={false}
 									loading="lazy"
 								/>
-									:
-									<div key={member.name} className="h-[200px] lg:h-[300px] w-full bg-zinc-200" />
 							)}
 							<div className="flex flex-col text-center gap-2">
 								<p className=" !text-custom-dark uppercase font-extrabold text-base md:text-xl">
