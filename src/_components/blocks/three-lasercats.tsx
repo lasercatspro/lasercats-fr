@@ -3,9 +3,10 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment, useGLTF, useProgress } from "@react-three/drei";
+import { PerformanceMonitor, Environment, useGLTF, useProgress } from "@react-three/drei";
 import { Mesh, MeshStandardMaterial } from "three";
 import { ShaderMaterial } from "three";
+
 import {
 	EffectComposer,
 	DepthOfField,
@@ -88,13 +89,17 @@ const ThreeLasercats = () => {
 			window.removeEventListener("scroll", handleScroll);
 		};
 	}, []);
+	// we set dpr according to fps (it's ok if it's low - call it "retro")
+	const [dpr, setDpr] = useState(0.7);
 	return (
 		<Canvas
 			style={{ opacity: `${loading ? 0 : 1}`, zIndex: 20 }}
 			camera={{ position: isMobile ? [-6, 10, 18] : [-6, 5, 18], filmOffset: isMobile ? 0 : -9, fov: 50 }}
 			ref={ref}
+			dpr={dpr}
 		>
 			<>
+				<PerformanceMonitor onIncline={() => setDpr(1)} onDecline={() => setDpr(0.4)} />
 				<Lasercat isPlaying={isPlaying} isMobile={Boolean(isMobile)} />
 				<Environment files="/assets/textures/mini-test2.hdr" background />
 				<EffectComposer enabled={isPlaying}>
