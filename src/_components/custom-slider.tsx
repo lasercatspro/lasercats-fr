@@ -61,12 +61,12 @@ const CustomSlider = ({
 				))}
 			</Slider>
 			{currentSlide > 0 && backBtn && (
-				<ButtonBack className="hidden lg:block absolute z-10 top-[40%] -left-[8%] border border-zinc-50 border-opacity-10 hover:border-opacity-30 rounded-full p-4 bg-custom-dark">
+				<ButtonBack className="hidden lg:block absolute z-10 top-[40%] -left-[5vw] border border-zinc-50 border-opacity-10 hover:border-opacity-30 rounded-full p-4 bg-custom-dark">
 					<ArrowLeftIcon className={"h-8 w-8 text-primary"} />
 				</ButtonBack>
 			)}
 			{slideRatio < 1 && nextBtn && (
-				<ButtonNext className="hidden lg:block absolute z-10 top-[40%] -right-[8%] border border-zinc-50 border-opacity-10 hover:border-opacity-30 rounded-full p-4 bg-custom-dark">
+				<ButtonNext className="hidden lg:block absolute z-10 top-[40%] -right-[5vw] border border-zinc-50 border-opacity-10 hover:border-opacity-30 rounded-full p-4 bg-custom-dark">
 					<ArrowRightIcon className={"h-8 w-8 text-primary"} />
 				</ButtonNext>
 			)}
