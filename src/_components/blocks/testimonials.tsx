@@ -13,9 +13,9 @@ const Testimonials = () => {
 			<Container>
 				<h2 className="text-primary hidden">Témoignages</h2>
 				<p className="ml-2 lg:ml-0 text-2xl lg:text-5xl !text-zinc-50 leading-snug">
-          Ils nous font confiance. <br /> Merci à eux !
+					Ils nous font confiance. <br /> Merci à eux !
 				</p>
-				<div className="mt-16 relative lg:-left-2 w-full" >
+				<div className="mt-16 relative w-full" >
 					<CarouselProvider
 						naturalSlideWidth={480}
 						naturalSlideHeight={480}
@@ -25,7 +25,7 @@ const Testimonials = () => {
 					>
 						<div className={"hidden lg:block absolute top-0 left-full z-10 h-full w-full bg-gradient-to-r from-transparent to-custom-dark to-5%"} />
 						<div className={"hidden lg:block absolute top-0 right-full z-10 h-full w-full bg-gradient-to-l from-transparent to-custom-dark to-5%"} />
-						<CustomSlider items={quotes} type="quote" isOverflowOpacity/>
+						<CustomSlider items={quotes} type="quote" isOverflowOpacity />
 					</CarouselProvider>
 				</div>
 			</Container>
