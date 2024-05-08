@@ -57,7 +57,7 @@ const Project = ({ project }: Props) => {
 						alt={`Projet ${project.title}`}
 						title={project.title}
 						src={project.imagePreview}
-						className="rounded-md w-full h-[180px] object-cover md:h-auto"
+						className="rounded-md w-full h-[180px] object-contain md:h-auto"
 						quality={90}
 						priority={true}
 						loading="eager"
@@ -79,7 +79,7 @@ const Project = ({ project }: Props) => {
 					width={800}
 					height={600}
 					src={project.imagePreview}
-					className="rounded-md w-1/2 object-cover h-[400px]"
+					className="rounded-md w-1/2 object-contain h-[400px]"
 					quality={90}
 					priority={true}
 					loading="eager"
