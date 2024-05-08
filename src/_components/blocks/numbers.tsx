@@ -23,13 +23,14 @@ const Numbers = () => {
 					<p className="text-[6rem] lg:!text-[12rem] !text-zinc-100">1M</p>
 					<p className="!text-base !text-zinc-100">
 						Pour un des{" "}
-						<Link
-							href={"https://splio.com"}
+						{/*<Link
+							href={"https://apibots.io"}
 							className="text-primary hover:underline"
 							target="_blank"
 						>
-							leader des marketing automation
-						</Link>
+							leader du marketing automation
+						</Link>*/}
+						<span className="text-primary">leader du marketing automation</span>
 						, nous avons construit un outil de multi-postage sur les réseaux
 						sociaux pour que des centaines de PME envoient plus d’un million
 						de messages sur tiktok, pinterest, facebook, linkedin et twitter
@@ -47,8 +48,7 @@ const Numbers = () => {
 						>
 							média scientifique national
 						</Link>{" "}
-						qui fait 11.4M de visites par mois (c’est 5x moins que le plus
-						gros site de sport, mais c’est le plus gros pour la science 🤓 ).
+						qui fait 11.4M de visites par mois (c’est 5x moins que lequipe.fr, mais c’est le plus gros pour la science 🤓 ).
 					</p>
 				</div>
 			</div>

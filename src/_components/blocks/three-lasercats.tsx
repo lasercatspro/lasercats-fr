@@ -94,7 +94,7 @@ const ThreeLasercats = () => {
 	return (
 		<Canvas
 			style={{ opacity: `${loading ? 0 : 1}`, zIndex: 20 }}
-			camera={{ position: isMobile ? [-6, 10, 18] : [-6, 5, 18], filmOffset: isMobile ? 0 : -9, fov: 50 }}
+			camera={{ position: isMobile ? [-6, 10, 18] : [-6, 5, 18], filmOffset: isMobile ? 0 : -7, fov: 50 }}
 			ref={ref}
 			dpr={dpr}
 		>
