@@ -66,7 +66,6 @@ const WhiteGrid = ({ children, type }: Props) => {
 							case "tr":
 								orientation = "45deg"; break;
 							}
-							console.log(col, orientation, color);
 
 							return <div
 								key={`${rowIndex}-${colIndex}`}
