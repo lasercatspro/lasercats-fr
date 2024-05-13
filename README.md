@@ -1,4 +1,4 @@
-# Lasercats : Web Development Cooperative
+# Lasercats : Cooperative of Web Developers
 
 Lasercats: a cooperative of 7 Web developers based in Rennes.
 

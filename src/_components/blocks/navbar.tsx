@@ -75,7 +75,7 @@ export const Navbar = (): ReactNode => {
 									leaveTo="translate-x-10 opacity-0"
 									className={"flex justify-between gap-4 w-full"}
 								>
-									<Link href={"/contact"} className="md:hidden primary h-6 rounded-sm hover:no-underline">
+									<Link href={"/contact"} className="md:hidden primary h-6 rounded-sm hover:no-underline text-xs">
 										Nous contacter
 									</Link>
 								</Transition>
