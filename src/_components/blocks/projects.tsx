@@ -67,7 +67,7 @@ const Projects = ({ projects }: Props) => {
 			className="px-4 py-32 md:px-16 relative bg-custom-dark z-10"
 		>
 			<div className="h-full w-full relative">
-				<div className="absolute top-1/3 xl:top-0  left-0 w-full h-full overflow-hidden -z-[1] blur-[300px]">
+				<div className="absolute top-1/3 xl:top-0  left-0 w-full h-full overflow-hidden -z-[1] blur-[50px] lg:blur-[300px]">
 					<div className="flex h-full w-full pt-28 relative">
 						<PipeSegment reverse={bgColor === customBlue} color={color} />
 						<PipeSegment reverse={bgColor === customGreen} color={color} />
