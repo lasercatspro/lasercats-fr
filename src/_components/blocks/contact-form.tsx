@@ -133,9 +133,9 @@ const Contact = () => {
 	return (
 		<div id="contact" className=" !text-zinc-50 pt-16 relative bg-custom-dark min-h-screen">
 			<div className="bg-cover bg-[url(/assets/images/backgrounds/svg-blue.svg)]">
-				<div className="grid grid-col-1 gap-8 lg:grid-rows-2 lg:grid-cols-2 max-w-[1400px] mx-8 lg:mx-auto py-12 lg:py-24">
+				<div className="grid grid-col-1 gap-6 lg:gap-8 lg:grid-rows-2 lg:grid-cols-2 max-w-[1400px] mx-8 lg:mx-auto py-6 lg:py-24">
 					
-					<h1 className="!text-zinc-50 !text-5xl lg:!text-[8rem]">
+					<h1 className="!text-zinc-50 !text-3xl md:!text-[4rem] md:!leading-snug lg:!text-[8rem] lg:!leading-large-loose">
             Nous contacter
 					</h1>
 					<form
@@ -145,7 +145,7 @@ const Contact = () => {
 						className="
 						lg:row-span-2
 						flex flex-col gap-8 border border-zinc-400 
-						rounded-lg p-8 backdrop-blur-sm bg-zinc-50 
+						rounded-lg p-6 lg:p-8 backdrop-blur-sm bg-zinc-50 
 						bg-opacity-10 relative
 					"
 					>
@@ -179,7 +179,7 @@ const Contact = () => {
 							<div className="h-2 w-2 bg-primary rounded-full" />
 							<p className="!text-zinc-50">Démarrer un échange</p>
 						</div>
-						<div className="grid grid-cols-2 gap-4">
+						<div className="grid grid-cols-2 gap-4 content-around">
 							{Object.keys(initialState).map(
 								(input) =>
 									<div key={input} className={`flex flex-col w-full gap-2 ${input === "message" ? "col-span-2" : "col-span-2 lg:col-span-1"}`}>
@@ -200,9 +200,7 @@ const Contact = () => {
 											:
 											<textarea
 												name={input}
-												cols={10}
-												rows={isMobile ? 7 : 12}
-												className={`custom-input rounded-sm text-xl min-h-[40vh] lg:min-h-[50vh] ${state.message.error ? "!border-red-500" : "border-none"}`}
+												className={`h-[33vh] lg:h-[50vh] custom-input rounded-sm text-xl ${state.message.error ? "!border-red-500" : "border-none"}`}
 												onChange={(e) => handleTextChange(e)}
 												placeholder="Laissez nous un petit mot"
 												required
@@ -213,13 +211,13 @@ const Contact = () => {
 							)}
 						</div>
 						{isMobile ? (
-							<button type={"submit"} role={"button"}className={"primary"} disabled={sendOk}>Envoyer</button>
+							<button type={"submit"} role={"button"} className={"primary !h-10"} disabled={sendOk}>Envoyer</button>
 						) : (
 							<button type={"submit"} role={"button"}className={`h-10 rounded-sm ${sendOk && "cursor-not-allowed "}`} disabled={sendOk}>
 								<SpecialButton title={"Envoyer"} fullWidth isDisabled={sendOk} />
 							</button>)}
 					</form>
-					<ul className="hidden md:flex items-end justify-between w-2/3">
+					<ul className="hidden lg:flex items-end justify-between lg:w-2/3">
 						<li className="flex flex-col justify-between h-[100px]">
 							<p className="text-2xl text-zinc-50 !text-opacity-80">Bureaux</p>
 							<div className="flex flex-col">
