@@ -24,6 +24,9 @@ const config = {
 				10: "10",
 				13: "13"
 			},
+			lineHeight: {
+				"large-loose": "8rem"
+			},
 			transitionTimingFunction: {
 				"in-expo": "cubic-bezier(0.8, 0.15, 0.3, 1)",
 			},
