@@ -27,7 +27,7 @@ const Project = ({ project }: Props) => {
 							{dayjs(project.date).format("YYYY") || project.date}
 						</p>
 					</div>
-					<div className="grid grid-cols-3 md:flex w-full gap-2 md:gap-4 text-center">
+					<div className="flex flex-wrap w-full gap-2 lg:gap-4 ">
 						{project?.technos.map((tech) => (
 							<p
 								key={tech}
