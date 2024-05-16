@@ -12,7 +12,6 @@ const ThreeLasercats = dynamic(() => import("./three-lasercats"), {
 const Header = (): ReactNode => {
 	return (
 		<header className=" flex flex-col justify-start bg-custom-dark relative">
-			<div className="absolute lg:hidden inset-0 h-full w-full bg-zinc-500 z-30 bg-opacity-10" />
 			<div className="absolute h-full w-full">
 				<ThreeLasercats />
 			</div>
@@ -26,7 +25,7 @@ const Header = (): ReactNode => {
 						</h1>
 						<span className='pt-12 text-[2.25rem] md:text-[3.25rem] text-zinc-50 !leading-snug'>Nous fabriquons des applications Web  et mobile aux petits oignons.</span>
 						<div className="mt-24">
-							<p className="mb-8 text-zinc-50 opacity-50">Besoin ponctuel ou projet de long terme ?</p>
+							<p className="mb-8 text-zinc-50 opacity-50 z-30">Besoin ponctuel ou projet de long terme ?</p>
 							<Link href={"/contact"} className="hidden lg:block">
 								<SpecialButton title="Nous contacter" />
 							</Link>
