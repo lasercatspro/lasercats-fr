@@ -1,5 +1,5 @@
 "use client";
-import { ChangeEvent, FormEvent, useCallback, useReducer, useState } from "react";
+import { ChangeEvent, FormEvent, useCallback, useReducer, useRef, useState } from "react";
 import useIsMobile from "@/hooks/useIsMobile";
 import Link from "next/link";
 import axios, { AxiosError } from "axios";
@@ -7,6 +7,7 @@ import { Transition } from "@headlessui/react";
 import { CheckCircleIcon, XCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { emailRegex } from "@/lib/utils";
 import SpecialButton from "../special-button";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 
 interface Action {
   type: "handle_text" | "reset";
@@ -84,6 +85,8 @@ const Contact = () => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 	const [notif, setNotif] = useState<Notif>({isError: false, message: undefined});
 	const [sendOk, setSendOk] = useState<boolean>(false);
+	const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+	const turnstileRef = useRef<TurnstileInstance>(null);
 
 	const isValidated = useCallback(() => {
 		(Object.keys(state) as ("email" | "nom" | "message")[]).forEach((input) => {
@@ -112,6 +115,10 @@ const Contact = () => {
 		e.preventDefault();
 		setSendOk(false);
 		if (!isValidated()) return;
+		if (!turnstileToken) {
+			setNotif({isError: true, message: "Veuillez compléter la vérification anti-spam"});
+			return;
+		}
 		const jsonData = generateJSON(state);
 
 		try {
@@ -119,13 +126,15 @@ const Contact = () => {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify(jsonData)
+				body: JSON.stringify({ ...jsonData, turnstileToken })
 			});
 			setNotif({...notif, message: response.data});
 			reset(e.target as HTMLFormElement);
 			setSendOk(true);
 		} catch (error) {
 			setNotif({isError: true, message: (error as AxiosError)?.message});
+			turnstileRef.current?.reset();
+			setTurnstileToken(null);
 		}
 	};
 	const isMobile = useIsMobile({ forIpad: true });
@@ -210,6 +219,14 @@ const Contact = () => {
 									</div>
 							)}
 						</div>
+						<Turnstile
+							ref={turnstileRef}
+							siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+							onSuccess={setTurnstileToken}
+							onError={() => setTurnstileToken(null)}
+							onExpire={() => setTurnstileToken(null)}
+							options={{ theme: "dark" }}
+						/>
 						{isMobile ? (
 							<button type={"submit"} role={"button"} className={"primary !h-10"} disabled={sendOk}>Envoyer</button>
 						) : (
